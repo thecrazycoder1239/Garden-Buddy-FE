@@ -23,7 +23,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <h2>
+        <h2 className='pwa-install'>
           Click here to <button onClick={handleInstall}>download our app</button>
         </h2>
       </header>
