@@ -73,6 +73,30 @@
   background-color: #2142b9;
 }
 
+.form {
+  display: inline-block;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.input-field {
+  padding: 1rem;
+  padding-bottom: 3rem;
+  margin: 1rem;
+  border: 0.1rem solid rgb(195, 195, 195);
+  border-radius: 8px;
+  height: 10px;
+}
+
+#username-input {
+  border: none;
+  display: block;
+}
+
+.label {
+  text-align: left;
+}
+
 /* below is the code for conditionally rendering install button in the browser, not the desktop app*/
 
 @media all and (display-mode: standalone) {
