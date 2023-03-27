@@ -37,7 +37,7 @@
   }
 }
 
-/* below is the code for conditionally rendering install button */
+/* below is the code for conditionally rendering install button in the browser, not the desktop app*/
 
 @media all and (display-mode: standalone) {
   .pwa-install{
