@@ -37,10 +37,46 @@
   }
 }
 
+
+.install-btn {
+  position: absolute;
+  color: black;
+  left: 4rem;
+  top: 2rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  border: 0.2rem;
+  display:flex;
+}
+
+.install-btn:hover,
+.install-btn:focus {
+  scale: 1.1;
+  transition: all 0.5s ease-out;
+  box-shadow: 0rem 0rem 1rem #020f3d;
+}
+
+.install-btn-text {
+  border-radius: 0.3rem 0rem 0rem 0.3rem;
+  background-color: #2a56f5;
+  padding: 0.5rem;
+  height: 2rem;
+  margin: 0rem;
+  border: 0rem;
+}
+
+.install-btn-img {
+  border-radius: 0rem 0.3rem 0.3rem 0rem;
+  height: 1rem;
+  width: 1rem;
+  padding: 0.5rem;
+  background-color: #2142b9;
+}
+
 /* below is the code for conditionally rendering install button in the browser, not the desktop app*/
 
 @media all and (display-mode: standalone) {
-  .pwa-install{
+  .install-btn{
     display: none;
     opacity: 0;
     visibility: hidden;
