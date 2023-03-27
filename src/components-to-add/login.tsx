@@ -19,9 +19,7 @@ export default function Login () {
                 <label className="label" htmlFor="location-input">location</label>
                 <input id="location-input"></input>
             </div>
-            <div className="input-field">
                 <button type="submit">Log in</button>
-            </div>
         </form>
     )
 }
