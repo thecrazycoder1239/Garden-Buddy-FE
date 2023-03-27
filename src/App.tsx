@@ -1,23 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+
+  const object: any = {};
+
+  const [deferredPrompt, setDeferredPrompt] = useState(object);
+
+  useEffect(() => {
+    window.addEventListener("beforeinstallprompt", (event) => {
+      setDeferredPrompt(event)
+    })
+  }, [])
+
+  const handleInstall = () => {
+    deferredPrompt.prompt()
+  }
+
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h2>
+          Click here to <button onClick={handleInstall}>download our app</button>
+        </h2>
       </header>
     </div>
   );
