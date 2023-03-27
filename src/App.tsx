@@ -1,38 +1,38 @@
-import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
+// Hooks
+import React, { useEffect, useState } from "react";
+
+// Components
+import Header from "./components/Header";
+import MyCalendar from "./components/MyCalendar";
+import Nav from "./components/Nav";
+
+// Styles
+import "./App.css";
 
 function App() {
-
   const object: any = {};
 
   const [deferredPrompt, setDeferredPrompt] = useState(object);
-  const [hasInstalled, setHasInstalled] = useState(false)
+  const [hasInstalled, setHasInstalled] = useState(false);
 
   useEffect(() => {
     window.addEventListener("beforeinstallprompt", (event) => {
-      setDeferredPrompt(event)
-    })
-    window.addEventListener('appinstalled', () => {
-      setHasInstalled(true)
+      setDeferredPrompt(event);
     });
-  }, [])
+    window.addEventListener("appinstalled", () => {
+      setHasInstalled(true);
+    });
+  }, []);
 
   const handleInstall = () => {
-    deferredPrompt.prompt()
-  }
-
+    deferredPrompt.prompt();
+  };
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        {hasInstalled ? <></> :
-        <h2 className='pwa-install'>
-          Click here to <button onClick={handleInstall}>download our app</button>
-        </h2>
-        }
-      </header>
+      <Header />
+      <Nav />
+      <MyCalendar />
     </div>
   );
 }

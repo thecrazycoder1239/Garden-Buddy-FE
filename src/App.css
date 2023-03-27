@@ -1,48 +1,113 @@
-.App {
+/* Global */
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  color: #111;
+}
+
+/* Buttons */
+button.full-width {
+  width: 100%;
+  border: 2px solid #333;
+  background: none;
+  padding: 18px 10px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+/* Checkbox */
+input[type="checkbox"] {
+  border: 1px solid #333;
+  width: 15px;
+  height: 15px;
+}
+
+/* Fonts */
+h1 {
+  font-size: 1rem;
+}
+
+li, p, button {
+  font-size: .8rem;
+}
+
+/* Header */
+header {
+  padding: 18px 20px;
+  position: relative;
+  border-bottom: 2px solid #333;
+}
+
+header h1 {
+  font-size: 1rem;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header svg {
+  font-size: 2rem;
+  position: absolute;
+  right: 10px;
+  top: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Nav */
+nav {
+  background: #f1f1f1;
+  padding: 12px 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+nav ul {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-around;
 }
 
-.App-link {
-  color: #61dafb;
+nav ul li.active {
+  border-bottom: 2px solid #bbb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* My Calendar */
+section.my-calendar {
+  padding: 18px 10px;
 }
 
-/* below is the code for conditionally rendering install button in the browser, not the desktop app*/
+/* My Calendar Tabs */
+ul.my-calendar-tabs {
+  display: flex;
+  justify-content: space-around;
+}
 
-@media all and (display-mode: standalone) {
-  .pwa-install{
-    display: none;
-    opacity: 0;
-    visibility: hidden;
-  }
+ul.my-calendar-tabs li {
+  border: 2px solid #333;
+  border-radius: 20px;
+  padding: 5px 10px;
+}
+
+ul.my-calendar-tabs li.active {
+  background: #f1f1f1;
+}
+
+/* Today's Tasks */
+section.todays-tasks {
+  padding: 18px 0;
+}
+
+ul.task-card li {
+  padding: 18px 15px;
+  background: #f1f1f1;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+ul.task-card li {
+  margin-bottom: 12px;
+}
+
+ul.task-card li:last-of-type {
+  margin-bottom: 0;
+}
+
+section.todays-tasks button.add-more-plants {
+  margin-top: 12px;
 }
