@@ -53,7 +53,6 @@
 .install-btn:focus {
   scale: 1.1;
   transition: all 0.2s ease-out;
-
 }
 
 .install-btn-text {
@@ -92,7 +91,14 @@
   position: relative;
 }
 
-#username-input, #password-input, #location-input {
+#username-input, 
+#password-input, 
+#location-input, 
+#settings-username, 
+#settings-first-name, 
+#settings-surname, 
+#settings-password, 
+#settings-profile {
   border: 1px solid var(--light-teal);
   border-radius: 20px;
   display: block;
