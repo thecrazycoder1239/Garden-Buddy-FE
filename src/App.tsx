@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
 import downloadIcon from './assets/download.png'
 import './App.css';
+import Login from './components-to-add/login';
 
 function App() {
 
@@ -28,14 +28,13 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      
+        <Login/>
         {hasInstalled && ableToInstall ? <></> :
         <div className='install-btn' onClick={handleInstall}>
           <button className='install-btn-text'>Install App</button><img className='install-btn-img' src={downloadIcon} alt="install"></img>
         </div>
         }
-      </header>
     </div>
   );
 }
