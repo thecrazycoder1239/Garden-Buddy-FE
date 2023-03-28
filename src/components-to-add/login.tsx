@@ -2,8 +2,19 @@ import plantpot from '../assets/plant-icon2.png';
 import mail from '../assets/mail.png';
 import lock from '../assets/lock.png';
 import location from '../assets/location.png';
+import closedeye from '../assets/closed.png';
+import openeye from '../assets/open.png';
+import {useState} from 'react';
 
 export default function Login () {
+
+    const [passwordVisibility, setPasswordVisbility] = useState(false);
+
+    const togglePasswordVisibility = () => {
+        if (passwordVisibility === false ) {
+            setPasswordVisbility(true)
+        } else (setPasswordVisbility(false))
+    }
 
     return (
         <form className="form" onSubmit={(e) => {
@@ -23,8 +34,12 @@ export default function Login () {
             <div className="input-field">
                 <label className="label" htmlFor="password-input">
                 <img className='input-img' alt='' src={lock}></img>
-                password</label>
-                <input id="password-input"></input>
+                password
+                <img className='password-eye' alt='password-visibility-off' src={passwordVisibility ? openeye : closedeye}
+                onClick={togglePasswordVisibility}></img>
+                </label>
+                <input type={passwordVisibility ? 'input' : 'password'}
+                id="password-input"></input>
             </div>
             <div className="input-field">
                 <label className="label" htmlFor="location-input">
