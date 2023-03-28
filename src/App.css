@@ -164,24 +164,58 @@
   display: flex;
   flex-wrap: wrap;
   position: absolute;
-  top: 7rem;
-  justify-content: flex-start;
+  top: 10rem;
+  width: 90vw;
+  display: block;
+  left: 5vw;
+  background-color: #8ebc93;
+  border-radius: 20px;
+  opacity: 0.95;
 }
 
 .edit-form-item {
   width: 100vw;
-  border-bottom: 0.1rem solid black;
-
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  padding-bottom: 1.5rem;
+  padding-top: 1.5rem;
 }
 
-.edit-button {
+.edit-btn {
+  grid-area: 1 / 3 / 1 / 3;
+  font-size: 1.3rem;
+  width: 50%;
   position: relative;
-  left: 10rem;
-  bottom: 2.25rem;
+  right: 0.75rem;
+  border: 0.1rem solid grey;
+  border-radius: 0px 20px 20px 0px;
+  background-color: rgb(238, 238, 238);
 }
 
 .edit-label {
-  margin-right: 2rem;
+  grid: 1 / 1 / 1 / 1;
+  font-size: 1.3rem;
+  position: relative;
+  text-align: center;
+  padding-right: 1rem;
+  
+}
+
+#edit-username {
+  grid: 1 / 2 / 1 / 2;
+  border: 1px solid var(--light-teal);
+  border-radius: 20px;
+  display: block;
+  padding: 0.2rem;
+  padding-left: 0.7rem;
+  font-size: 1rem;
+  padding-right: 1rem;
+}
+
+.settings-background {
+  width: 100vw;
+  height: 100vh;
 }
 
 @media only screen and (min-width: 900px) {

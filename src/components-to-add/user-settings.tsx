@@ -1,4 +1,5 @@
 import { useState } from "react";
+import floralPattern from "../assets/floral.png";
 
 export default function Settings() {
 	const [usernameFormEdit, setUsernameFormEdit] = useState(false);
@@ -8,175 +9,124 @@ export default function Settings() {
 	const [profileUrlFormEdit, setProfileUrlFormEdit] = useState(false);
 
 	return (
+		<>
 		<section className="edit-form">
-			<div className="edit-form-item">
-			{usernameFormEdit ? (
 				<form
-					className="input-field"
 					onSubmit={(e) => {
 						e.preventDefault();
-						setUsernameFormEdit(false);
+						if(usernameFormEdit) {
+							// patch request
+							// rerender the page again, so the placeholders are updated
+							setUsernameFormEdit(false);
+						} else {
+							setUsernameFormEdit(true)
+						}
 					}}
+					className="edit-form-item"
 				>
-					<label className="edit-label" htmlFor="settings-username">username</label>
+					<label className="edit-label" htmlFor="edit-username">Username:</label>
 					<input
 						type="text"
-						id="settings-username"
+						id="edit-username"
 						placeholder="<current username>"
+						disabled={!usernameFormEdit ? true : false}
 					/>
-					<button type="submit">submit</button>
+					<button className="edit-btn" type="submit">{ usernameFormEdit ? "submit" : "edit"}</button>
 				</form>
-			) : (
-				<p className="edit-label">username: *insert username*</p>
-			)}
-			{usernameFormEdit ? (
-				<></>
-			) : (
-				<button
-					onClick={() => {
-						setUsernameFormEdit(true);
-					}}
-					className="edit-button"
-				>
-					edit
-				</button>
-			)}
-		</div>
 
-		<div className="edit-form-item">
-        {firstNameFormEdit ? (
-			<form 
-                className="input-field"
-                onSubmit={(e) => {
-                e.preventDefault();
-                setFirstNameFormEdit(false);
-            }}
-        >
-				<label className="edit-label" htmlFor="settings-first-name">firstname</label>
-				<input 
-                type='text'
-                id="settings-first-name" 
-                placeholder="<first name>" 
-            />
-				<button type="submit">submit</button>
-			</form>
-        ) : (
-            <p className="edit-label">firsname: *insert firstname*</p>
-        )}
-            {firstNameFormEdit ? (
-                <></>
-            ) : (
-                <button onClick={() => {
-                    setFirstNameFormEdit(true);
-                }}
-				className="edit-button"
-            >
-                edit
-                </button>
-            )}
-		</div>
-
-		<div className="edit-form-item">
-        {surnameFormEdit ? (
-			<form 
-                className="input-field"
-                onSubmit={(e) => {
-						e.preventDefault();
-						setSurnameFormEdit(false);
-					}}
-                >
-				<label className="edit-label" htmlFor="settings-surname">surname</label>
-				<input 
-                    type='text' 
-                    id="settings-surname" 
-                    placeholder="<surname>" 
-                />
-				<button type="submit">submit</button>
-			</form>
-        ) : (
-            <p className="edit-label">surname: *insert surname*</p>
-        )}
-        {surnameFormEdit ? (
-            <></>
-        ) : (
-            <button
-                onClick={() => {
-                setSurnameFormEdit(true);
-            }}
-			className="edit-button"
-        >
-            edit
-            </button>
-        )}
-        </div>
-
-		<div className="edit-form-item">
-        {passwordFormEdit ? (
 				<form
-					className="input-field"
 					onSubmit={(e) => {
 						e.preventDefault();
-						setPasswordFormEdit(false);
+						if(firstNameFormEdit) {
+							// patch request
+							// rerender the page again, so the placeholders are updated
+							setFirstNameFormEdit(false);
+						} else {
+							setFirstNameFormEdit(true)
+						}
 					}}
+					className="edit-form-item"
 				>
-					<label className="edit-label" htmlFor="settings-password">password</label>
+					<label className="edit-label" htmlFor="edit-username">First name:</label>
 					<input
 						type="text"
-						id="settings-password"
+						id="edit-username"
+						placeholder="<current first name>"
+						disabled={!firstNameFormEdit ? true : false}
+					/>
+					<button className="edit-btn" type="submit">{ firstNameFormEdit ? "submit" : "edit"}</button>
+				</form>
+
+				<form
+					onSubmit={(e) => {
+						e.preventDefault();
+						if(surnameFormEdit) {
+							// patch request
+							// rerender the page again, so the placeholders are updated
+							setSurnameFormEdit(false);
+						} else {
+							setSurnameFormEdit(true)
+						}
+					}}
+					className="edit-form-item"
+				>
+					<label className="edit-label" htmlFor="edit-username">Last name:</label>
+					<input
+						type="text"
+						id="edit-username"
+						placeholder="<current last name>"
+						disabled={!surnameFormEdit ? true : false}
+					/>
+					<button className="edit-btn" type="submit">{ surnameFormEdit ? "submit" : "edit"}</button>
+				</form>
+
+				<form
+					onSubmit={(e) => {
+						e.preventDefault();
+						if(passwordFormEdit) {
+							// patch request
+							// rerender the page again, so the placeholders are updated
+							setPasswordFormEdit(false);
+						} else {
+							setPasswordFormEdit(true)
+						}
+					}}
+					className="edit-form-item"
+				>
+					<label className="edit-label" htmlFor="edit-username">Password:</label>
+					<input
+						type="text"
+						id="edit-username"
 						placeholder="<current password>"
+						disabled={!passwordFormEdit ? true : false}
 					/>
-					<button type="submit">submit</button>
+					<button className="edit-btn" type="submit">{ passwordFormEdit ? "submit" : "edit"}</button>
 				</form>
-			) : (
-				<p className="edit-label">password: *insert password*</p>
-			)}
-			{passwordFormEdit ? (
-				<></>
-			) : (
-				<button
-					onClick={() => {
-						setPasswordFormEdit(true);
-					}}
-					className="edit-button"
-				>
-					edit
-				</button>
-			)}
-		</div>
 
-		<div className="edit-form-item">
-            {profileUrlFormEdit ? (
 				<form
-					className="input-field"
 					onSubmit={(e) => {
 						e.preventDefault();
-						setProfileUrlFormEdit(false);
+						if(profileUrlFormEdit) {
+							// patch request
+							// rerender the page again, so the placeholders are updated
+							setProfileUrlFormEdit(false);
+						} else {
+							setProfileUrlFormEdit(true)
+						}
 					}}
+					className="edit-form-item"
 				>
-					<label className="edit-label" htmlFor="settings-profile-url">profile-url</label>
+					<label className="edit-label" htmlFor="edit-username">Avatar url:</label>
 					<input
 						type="text"
-						id="settings-profle-url"
-						placeholder="<current profile-url>"
+						id="edit-username"
+						placeholder="<current avatar url>"
+						disabled={!profileUrlFormEdit ? true : false}
 					/>
-					<button type="submit">submit</button>
+					<button className="edit-btn" type="submit">{ profileUrlFormEdit ? "submit" : "edit"}</button>
 				</form>
-			) : (
-				<p className="edit-label">profile: *insert profile-url*</p>
-			)}
-			{profileUrlFormEdit ? (
-				<></>
-			) : (
-				<button
-					onClick={() => {
-						setProfileUrlFormEdit(true);
-					}}
-					className="edit-button"
-				>
-					edit
-				</button>
-			)}
-		</div>
-	</section>
+		</section>
+		<img className="settings-background" src={floralPattern} alt="floral pattern"/>
+		</>
 	);
 }
