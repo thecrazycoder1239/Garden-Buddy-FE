@@ -1,9 +1,40 @@
+/* Contents */
+/* -------- */
+/* Global */
+/* Buttons */
+/* Checkbox */
+/* Fonts */
+/* Line Break */
+/* Header */
+/* Nav */
+/* My Calendar */
+/* My Calendar Tabs */
+/* Today's Tasks */
+/* Upcoming Tasks */
+/* My Plants */
+/* Edit And Log */
+/* New Log */
+/* Log History */
+/* Edit Tasks */
+/* Task Frequency */
+/* Add Tasks */
+/* Edit and Log - remove button and more info button */
+/* View All Plants */
+/* Search For a Plant */
+/* Sort Plants */
+/* Filter Plants */
+/* Plant Cards */
+/* Pagination */
+/* Toggle Visibility */
+/* -------- */
+
 /* Global */
 * {
   padding: 0;
   margin: 0;
   list-style: none;
   color: #111;
+  box-sizing: border-box;
 }
 
 /* Buttons */
@@ -25,9 +56,17 @@ button.plain-text {
   border-bottom: 2px dotted #333;
 }
 
+button.form {
+  padding: 8px 15px;
+  border-radius: 5px;
+  border: none;
+  background: #333;
+  color: white;
+}
+
 /* Checkbox */
 input[type="checkbox"] {
-  border: 1px solid #333;
+  border: 2px solid #333;
   width: 15px;
   height: 15px;
 }
@@ -41,12 +80,22 @@ h2 {
   font-size: 1rem;
 }
 
-li, p, button {
-  font-size: .8rem;
+li,
+p,
+button,
+label {
+  font-size: 0.8rem;
 }
 
 a {
   text-decoration: none;
+}
+
+/* Line Break */
+.line-break {
+  width: 100%;
+  height: 1px;
+  background: #999;
 }
 
 /* Header */
@@ -110,10 +159,13 @@ ul.task-cards li {
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 12px;
+  align-items: center;
 }
 
-ul.task-cards li {
-  margin-bottom: 12px;
+ul.task-cards li a {
+  margin-left: auto;
+  cursor: pointer;
 }
 
 ul.task-cards li:last-of-type {
@@ -123,6 +175,11 @@ ul.task-cards li:last-of-type {
 /* Today's Tasks */
 section.todays-tasks {
   padding: 18px 0;
+}
+
+section.todays-tasks input[type="checkbox"] {
+  margin-top: 4px;
+  margin-right: 10px;
 }
 
 section.todays-tasks button.add-more-plants {
@@ -135,20 +192,241 @@ section.upcoming-tasks {
 }
 
 section.upcoming-tasks ul li h2 {
-  margin-block: .6rem;
+  margin-block: 0.6rem;
 }
 
 /* My Plants */
 section.my-plants {
-  padding: 18px 0;
+  margin: 18px 15px;
 }
 
 ul.my-plants-cards li {
-  margin: 0 15px;
   padding: 18px 0;
-  border-bottom: 1px solid #999;
 }
 
+ul.my-plants-cards li h2,
 ul.my-plants-cards li p {
-  margin-block-end: .6rem; 
+  margin-block-end: 0.6rem;
+}
+
+/* Edit and Log */
+section.edit-and-log {
+  padding: 18px;
+}
+
+/* New Log */
+form.new-log {
+  margin: 12px 0 18px;
+}
+
+form.new-log textarea {
+  width: 100%;
+  border-radius: 5px;
+  padding: 5px;
+  font-family: inherit;
+  margin-top: 6px;
+  margin-bottom: 2px;
+  min-height: 90px;
+}
+
+/* Log History */
+section.log-history {
+  margin: 18px 0;
+}
+
+section.log-history h2 {
+  margin-block-end: 0.6rem;
+}
+section.log-history ul li {
+  margin-block-end: 0.6rem;
+}
+
+/* Edit tasks */
+section.edit-tasks {
+  margin: 18px 0;
+}
+
+section.edit-tasks h2 {
+  margin-top: 12px;
+}
+
+/* task Frequency */
+section.edit-tasks h2 {
+  margin-block-end: .6rem;
+}
+
+section.edit-tasks form.task-frequency {
+  padding-bottom: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+section.edit-tasks form.task-frequency div {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  background: #e1e1e1;
+  border-radius: 5px;
+}
+
+section.edit-tasks form.task-frequency input[type="radio"] {
+	appearance: none;
+	width: 15px;
+	height: 15px;
+	border: 2px solid #333;
+	border-radius: 50%;
+	background-clip: content-box;
+	padding: 2px;
+  margin-right: 5px;
+}
+
+section.edit-tasks form.task-frequency input[type="radio"]:checked {
+	background-color: #333;
+}
+
+/* Add Tasks */
+section.edit-tasks form.add-tasks {
+  padding: 18px 0;
+}
+
+section.edit-tasks form.add-tasks > button {
+  padding: 10px 15px;
+  background: #e1e1e1;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 9px;
+}
+
+section.edit-tasks form.add-tasks button span {
+  font-weight: 600;
+  margin-left: 3px;
+}
+
+section.edit-tasks form.add-tasks .add-another-task {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+section.edit-tasks form.add-tasks .add-another-task input[type="text"] {
+  border: 1px solid #333;
+  min-width: 300px;
+  border-radius: 4px;
+}
+
+section.edit-tasks form.add-tasks p {
+  opacity: .5;
+}
+
+/* Edit and Log - remove button and more info button */
+section.edit-and-log button.remove-from-my-plants {
+  margin-bottom: 18px;
+}
+
+section.edit-and-log button.more-info-on-plant {
+  margin-top: 18px;
+}
+
+/* View All Plants */
+section.all-plants {
+  margin: 18px 15px;
+}
+
+/* Search For Plant */
+form.search-for-plant {
+  border: 1px solid #333;
+}
+
+form.search-for-plant input[type="search"],
+form.search-for-plant button {
+  border: none;
+  font-size: 1rem;
+  padding: 10px;
+}
+
+form.search-for-plant input[type="search"]{
+  width: calc(100% - 50px);
+}
+
+form.search-for-plant button {
+  width: 50px;
+  background: none;
+}
+
+/* Sort Filter Flex */
+.sort-filter-flex {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+}
+
+/* Sort Plants */
+form.sort-plants {
+  width: 50%;
+}
+
+form.sort-plants select {
+  margin-top: 9px;
+  width: 100%;
+  border: 1px solid #333;
+  padding: 10px;
+}
+
+/* Filter Plants */
+form.filter-plants {
+  width: 50%;
+}
+
+form.filter-plants select {
+  margin-top: 9px;
+  width: 100%;
+  border: 1px solid #333;
+  padding: 10px;
+}
+
+/* Plant Cards */
+section.plant-cards {
+  margin-top: 18px;
+}
+
+ul.plant-cards li.plant-card {
+  padding: 18px 15px;
+  background: #f1f1f1;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+
+ul.plant-cards li.plant-card h2,
+ul.plant-cards li.plant-card p {
+  margin-block-end: .6rem;
+}
+
+ul.plant-cards li.plant-card p:last-of-type {
+  margin-block-end: 0;
+}
+
+ul.plant-cards li.plant-card img {
+  background: white;
+  width: 150px;
+  height: 130px;
+}
+
+/* Pagination */
+section.pagination {
+  justify-content: center;
+  display: flex;
+}
+
+section.pagination h2 {
+  border: 1px solid #333;
+  padding: 5px 10px 8px;
+}
+
+/* Toggle Visibility */
+
+.invisible {
+  display: none!important;
 }

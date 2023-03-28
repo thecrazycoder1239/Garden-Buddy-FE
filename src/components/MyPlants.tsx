@@ -3,7 +3,7 @@ export default function MyPlants() {
       <section className="my-plants">
         <ul className="my-plants-cards">
           <li>
-            <p>Tomatoes</p>
+            <h2>Tomatoes</h2>
             <p>Growing Since: 12/02/23</p>
             <form>
               <button className="plain-text" type="submit">
@@ -11,8 +11,9 @@ export default function MyPlants() {
               </button>
             </form>
           </li>
+          <div className="line-break"></div>
           <li>
-            <p>Potatoes</p>
+            <h2>Potatoes</h2>
             <p>Growing Since: 12/02/23</p>
             <form>
               <button className="plain-text" type="submit">
@@ -20,6 +21,7 @@ export default function MyPlants() {
               </button>
             </form>
           </li>
+          <div className="line-break"></div>
         </ul>
       </section>
     );
