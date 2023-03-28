@@ -1,9 +1,9 @@
 export default function TodaysTasks() {
     return (
       <section className="todays-tasks">
-        <ul className="task-card">
+        <ul className="task-cards">
           <li>
-            <p>Water tomatoes</p>
+            <p>Water Tomatoes</p>
             <form>
               <input type="checkbox"></input>
             </form>

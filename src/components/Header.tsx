@@ -1,3 +1,6 @@
+// Hooks
+import { Link } from 'react-router-dom'
+
 // Icons
 import { BiUserCircle } from "react-icons/bi";
 
@@ -11,7 +14,9 @@ export default function Header() {
             download our app
           </button>
         )} */}
-      <h1>Garden Buddy</h1>
+      <Link to={"/"}>
+        <h1>Garden Buddy</h1>
+      </Link>
       <BiUserCircle />
     </header>
   );

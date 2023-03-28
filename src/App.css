@@ -7,13 +7,22 @@
 }
 
 /* Buttons */
+button {
+  cursor: pointer;
+}
+
 button.full-width {
   width: 100%;
   border: 2px solid #333;
   background: none;
   padding: 18px 10px;
   border-radius: 15px;
-  cursor: pointer;
+}
+
+button.plain-text {
+  background: none;
+  border: none;
+  border-bottom: 2px dotted #333;
 }
 
 /* Checkbox */
@@ -28,8 +37,16 @@ h1 {
   font-size: 1rem;
 }
 
+h2 {
+  font-size: 1rem;
+}
+
 li, p, button {
   font-size: .8rem;
+}
+
+a {
+  text-decoration: none;
 }
 
 /* Header */
@@ -87,12 +104,7 @@ ul.my-calendar-tabs li.active {
   background: #f1f1f1;
 }
 
-/* Today's Tasks */
-section.todays-tasks {
-  padding: 18px 0;
-}
-
-ul.task-card li {
+ul.task-cards li {
   padding: 18px 15px;
   background: #f1f1f1;
   border-radius: 10px;
@@ -100,14 +112,43 @@ ul.task-card li {
   justify-content: space-between;
 }
 
-ul.task-card li {
+ul.task-cards li {
   margin-bottom: 12px;
 }
 
-ul.task-card li:last-of-type {
+ul.task-cards li:last-of-type {
   margin-bottom: 0;
+}
+
+/* Today's Tasks */
+section.todays-tasks {
+  padding: 18px 0;
 }
 
 section.todays-tasks button.add-more-plants {
   margin-top: 12px;
+}
+
+/* Upcoming Tasks */
+section.upcoming-tasks {
+  padding: 18px 0;
+}
+
+section.upcoming-tasks ul li h2 {
+  margin-block: .6rem;
+}
+
+/* My Plants */
+section.my-plants {
+  padding: 18px 0;
+}
+
+ul.my-plants-cards li {
+  margin: 0 15px;
+  padding: 18px 0;
+  border-bottom: 1px solid #999;
+}
+
+ul.my-plants-cards li p {
+  margin-block-end: .6rem; 
 }
