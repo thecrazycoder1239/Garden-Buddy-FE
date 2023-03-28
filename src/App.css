@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background-color: var(--super-pale);
+  height: 100vh;
 }
 
 .App-logo {
@@ -36,8 +38,6 @@
     transform: rotate(360deg);
   }
 }
-
-
 .install-btn {
   position: absolute;
   color: black;
@@ -52,13 +52,13 @@
 .install-btn:hover,
 .install-btn:focus {
   scale: 1.1;
-  transition: all 0.5s ease-out;
-  box-shadow: 0rem 0rem 1rem #020f3d;
+  transition: all 0.2s ease-out;
+
 }
 
 .install-btn-text {
   border-radius: 0.3rem 0rem 0rem 0.3rem;
-  background-color: #2a56f5;
+  background-color: var(--lime-green);
   padding: 0.5rem;
   height: 2rem;
   margin: 0rem;
@@ -70,31 +70,88 @@
   height: 1rem;
   width: 1rem;
   padding: 0.5rem;
-  background-color: #2142b9;
+  background-color:  #8ebc93;
 }
 
 .form {
   display: inline-block;
   flex-wrap: wrap;
   position: relative;
+  margin-top: 6rem;
 }
 
 .input-field {
+  display: flex;
+  flex-direction: column;
   padding: 1rem;
-  padding-bottom: 3rem;
   margin: 1rem;
-  border: 0.1rem solid rgb(195, 195, 195);
-  border-radius: 8px;
-  height: 10px;
+  border: 0.1rem solid var(--light-teal);
+  border-radius: 25px;
+  width: 60vw;
+  background-color: white;
+  position: relative;
 }
 
-#username-input {
-  border: none;
+#username-input, #password-input, #location-input {
+  border: 1px solid var(--light-teal);
+  border-radius: 20px;
   display: block;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  padding: 0.2rem;
+  margin-left: 30px;
+  padding-left: 0.7rem;
 }
 
 .label {
   text-align: left;
+  font-size: 1.2rem;
+  color: var(--dark-teal);
+  padding-left: 7px;
+}
+
+.image-div{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  padding: 10px;
+  background-color: var(--pale-yellow);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-image{
+  position: relative;
+  top: 10%;
+}
+
+.submit-button{
+    padding: 1em;
+		background: var(--lime-green);
+		border: 1px solid var(--light-teal);
+		border-radius: 30px;
+    font-size: 1rem;
+    width: 30vw;
+}
+
+.submit-button:hover, .submit-button:focus{
+  transition: all 0.2s ease-out;
+  scale: 1.1;
+  background-color: #93c499;
+}
+
+.input-img{
+  height: 1.3rem;
+  width: 1.3rem;
+  position: absolute;
+  top: 3.05rem;
+}
+
+@media only screen and (min-width: 900px) {
+  .input-field{
+    width: 35vw;
+  }
 }
 
 /* below is the code for conditionally rendering install button in the browser, not the desktop app*/
