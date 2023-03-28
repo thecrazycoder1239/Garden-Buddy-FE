@@ -8,7 +8,8 @@ export default function Settings() {
 	const [profileUrlFormEdit, setProfileUrlFormEdit] = useState(false);
 
 	return (
-		<section className="form">
+		<section className="edit-form">
+			<div className="edit-form-item">
 			{usernameFormEdit ? (
 				<form
 					className="input-field"
@@ -17,7 +18,7 @@ export default function Settings() {
 						setUsernameFormEdit(false);
 					}}
 				>
-					<label htmlFor="settings-username">username</label>
+					<label className="edit-label" htmlFor="settings-username">username</label>
 					<input
 						type="text"
 						id="settings-username"
@@ -26,7 +27,7 @@ export default function Settings() {
 					<button type="submit">submit</button>
 				</form>
 			) : (
-				<p>username: *insert username*</p>
+				<p className="edit-label">username: *insert username*</p>
 			)}
 			{usernameFormEdit ? (
 				<></>
@@ -35,11 +36,14 @@ export default function Settings() {
 					onClick={() => {
 						setUsernameFormEdit(true);
 					}}
+					className="edit-button"
 				>
 					edit
 				</button>
 			)}
+		</div>
 
+		<div className="edit-form-item">
         {firstNameFormEdit ? (
 			<form 
                 className="input-field"
@@ -48,7 +52,7 @@ export default function Settings() {
                 setFirstNameFormEdit(false);
             }}
         >
-				<label htmlFor="settings-first-name">firstname</label>
+				<label className="edit-label" htmlFor="settings-first-name">firstname</label>
 				<input 
                 type='text'
                 id="settings-first-name" 
@@ -57,7 +61,7 @@ export default function Settings() {
 				<button type="submit">submit</button>
 			</form>
         ) : (
-            <p>firsname: *insert firstname*</p>
+            <p className="edit-label">firsname: *insert firstname*</p>
         )}
             {firstNameFormEdit ? (
                 <></>
@@ -65,11 +69,14 @@ export default function Settings() {
                 <button onClick={() => {
                     setFirstNameFormEdit(true);
                 }}
+				className="edit-button"
             >
                 edit
                 </button>
             )}
+		</div>
 
+		<div className="edit-form-item">
         {surnameFormEdit ? (
 			<form 
                 className="input-field"
@@ -78,7 +85,7 @@ export default function Settings() {
 						setSurnameFormEdit(false);
 					}}
                 >
-				<label htmlFor="settings-surname">surname</label>
+				<label className="edit-label" htmlFor="settings-surname">surname</label>
 				<input 
                     type='text' 
                     id="settings-surname" 
@@ -87,7 +94,7 @@ export default function Settings() {
 				<button type="submit">submit</button>
 			</form>
         ) : (
-            <p>surname: *insert surname*</p>
+            <p className="edit-label">surname: *insert surname*</p>
         )}
         {surnameFormEdit ? (
             <></>
@@ -96,12 +103,14 @@ export default function Settings() {
                 onClick={() => {
                 setSurnameFormEdit(true);
             }}
+			className="edit-button"
         >
             edit
             </button>
         )}
-        
+        </div>
 
+		<div className="edit-form-item">
         {passwordFormEdit ? (
 				<form
 					className="input-field"
@@ -110,7 +119,7 @@ export default function Settings() {
 						setPasswordFormEdit(false);
 					}}
 				>
-					<label htmlFor="settings-password">password</label>
+					<label className="edit-label" htmlFor="settings-password">password</label>
 					<input
 						type="text"
 						id="settings-password"
@@ -119,7 +128,7 @@ export default function Settings() {
 					<button type="submit">submit</button>
 				</form>
 			) : (
-				<p>password: *insert password*</p>
+				<p className="edit-label">password: *insert password*</p>
 			)}
 			{passwordFormEdit ? (
 				<></>
@@ -128,11 +137,14 @@ export default function Settings() {
 					onClick={() => {
 						setPasswordFormEdit(true);
 					}}
+					className="edit-button"
 				>
 					edit
 				</button>
 			)}
+		</div>
 
+		<div className="edit-form-item">
             {profileUrlFormEdit ? (
 				<form
 					className="input-field"
@@ -141,7 +153,7 @@ export default function Settings() {
 						setProfileUrlFormEdit(false);
 					}}
 				>
-					<label htmlFor="settings-profile-url">profile-url</label>
+					<label className="edit-label" htmlFor="settings-profile-url">profile-url</label>
 					<input
 						type="text"
 						id="settings-profle-url"
@@ -150,7 +162,7 @@ export default function Settings() {
 					<button type="submit">submit</button>
 				</form>
 			) : (
-				<p>profile: *insert profile-url*</p>
+				<p className="edit-label">profile: *insert profile-url*</p>
 			)}
 			{profileUrlFormEdit ? (
 				<></>
@@ -159,10 +171,12 @@ export default function Settings() {
 					onClick={() => {
 						setProfileUrlFormEdit(true);
 					}}
+					className="edit-button"
 				>
 					edit
 				</button>
 			)}
-		</section>
+		</div>
+	</section>
 	);
 }

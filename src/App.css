@@ -160,6 +160,30 @@
   right: 1.6rem;
 }
 
+.edit-form {
+  display: flex;
+  flex-wrap: wrap;
+  position: absolute;
+  top: 7rem;
+  justify-content: flex-start;
+}
+
+.edit-form-item {
+  width: 100vw;
+  border-bottom: 0.1rem solid black;
+
+}
+
+.edit-button {
+  position: relative;
+  left: 10rem;
+  bottom: 2.25rem;
+}
+
+.edit-label {
+  margin-right: 2rem;
+}
+
 @media only screen and (min-width: 900px) {
   .input-field{
     width: 35vw;
