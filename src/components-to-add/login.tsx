@@ -14,18 +14,22 @@ export default function Login () {
                 <img className="form-image" alt="user-profile" src={plantpot}></img>
             </div>
             <div className="input-field">
-                <label className="label" htmlFor="username-input">username</label>
-                <img className='input-img' alt='litte-icon' src={mail}></img>
+                <label className="label" htmlFor="username-input">
+                    <img className='input-img' alt='' src={mail}></img>
+                    username</label>
+                
                 <input id="username-input" placeholder="e.g. john123"></input>
             </div>
             <div className="input-field">
-                <label className="label" htmlFor="password-input">password</label>
-                <img className='input-img' alt='litte-icon' src={lock}></img>
+                <label className="label" htmlFor="password-input">
+                <img className='input-img' alt='' src={lock}></img>
+                password</label>
                 <input id="password-input"></input>
             </div>
             <div className="input-field">
-                <label className="label" htmlFor="location-input">location</label>
-                <img className='input-img' alt='litte-icon' src={location}></img>
+                <label className="label" htmlFor="location-input">
+                <img className='input-img' alt='' src={location}></img>
+                location</label>
                 <input id="location-input"></input>
             </div>
                 <button className='submit-button' type="submit">Log in</button>
