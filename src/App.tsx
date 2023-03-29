@@ -1,8 +1,10 @@
+
 // Hooks
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 // Components
+import Login from './components-to-add/login';
 import Header from "./components/Header";
 import Nav from "./components/Nav";
 import MyCalendar from "./components/MyCalendar";
@@ -15,18 +17,24 @@ import AllPlants from "./components/AllPlants";
 // Styles
 import "./App.css";
 
+// Images
+import downloadIcon from './assets/download.png'
+
 function App() {
   const object: any = {};
 
   const [deferredPrompt, setDeferredPrompt] = useState(object);
-  const [hasInstalled, setHasInstalled] = useState(false);
+
+  const [ableToInstall, setAbleToInstall] = useState(false)
+  const [hasInstalled, setHasInstalled] = useState(false)
 
   useEffect(() => {
     window.addEventListener("beforeinstallprompt", (event) => {
-      setDeferredPrompt(event);
-    });
-    window.addEventListener("appinstalled", () => {
-      setHasInstalled(true);
+      setDeferredPrompt(event)
+      setAbleToInstall(true)
+    })
+    window.addEventListener('appinstalled', () => {
+      setHasInstalled(true)
     });
   }, []);
 
@@ -36,6 +44,7 @@ function App() {
 
   return (
     <div className="App">
+
       <Header />
       <Nav />
       <Routes>
@@ -53,6 +62,15 @@ function App() {
         </Route>
         <Route path="/all-plants" element={<AllPlants />} />
       </Routes>
+
+      
+        <Login/>
+        {hasInstalled && ableToInstall ? <></> :
+        <div className='install-btn' onClick={handleInstall}>
+          <button className='install-btn-text'>Install App</button><img className='install-btn-img' src={downloadIcon} alt="install"></img>
+        </div>
+        }
+
     </div>
   );
 }
