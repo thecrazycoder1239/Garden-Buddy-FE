@@ -474,6 +474,7 @@ section.pagination h2 {
   flex-direction: column;
   padding: 1rem;
   margin: 1rem;
+  margin-left: 0.5rem;
   border: 0.1rem solid var(--light-teal);
   border-radius: 25px;
   width: 60vw;
@@ -485,7 +486,9 @@ section.pagination h2 {
 
 #username-input, 
 #password-input, 
-#location-input, 
+#location-input,
+#first-name-input,
+#last-name-input, 
 #settings-username, 
 #settings-first-name, 
 #settings-surname, 
@@ -497,7 +500,7 @@ section.pagination h2 {
   margin-top: 0.5rem;
   font-size: 1rem;
   padding: 0.2rem;
-  margin-left: 30px;
+  margin-left: 33px;
   padding-left: 0.7rem;
 }
 
@@ -546,6 +549,7 @@ section.pagination h2 {
   width: 1.3rem;
   position: absolute;
   top: 3.05rem;
+
 }
 
 .password-eye{
@@ -553,6 +557,12 @@ section.pagination h2 {
   position: absolute;
   top: 3.2rem;
   right: 1.6rem;
+}
+
+.sign-up-text {
+  position: relative;
+  text-align: center;
+  top: 2rem;
 }
 
 .edit-form {

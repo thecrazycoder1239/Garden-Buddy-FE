@@ -18,6 +18,7 @@ import Settings from './components/user-settings';
 
 // Styles
 import "./App.css";
+import SignUp from "./components/SignUp";
 
 function App() {
 
@@ -42,6 +43,7 @@ function App() {
         </Route>
         <Route path="/all-plants" element={<AllPlants />} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/sign-up" element={<SignUp />} />
       </Routes>
 
     </div>
