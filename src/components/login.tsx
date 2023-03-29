@@ -1,7 +1,7 @@
 import plantpot from '../assets/plant-icon2.png';
 import mail from '../assets/mail.png';
 import lock from '../assets/lock.png';
-import location from '../assets/location.png';
+// import location from '../assets/location.png';
 import closedeye from '../assets/closed.png';
 import openeye from '../assets/open.png';
 import {useState} from 'react';
