@@ -128,22 +128,32 @@ export default function Settings() {
 		</section>
 
 		<section className="toggle-options">
+			<div className="toggle-option">
+			<p className="label-text">Notifications</p>
 
 			<label className='toggle-label' htmlFor="notifications-switch">
-				Notifications
+				
 				<input id='notifications-switch' type="checkbox" hidden/>
 				<span className="slider"></span>
 			</label>
+			</div>
+			
+			<div className="toggle-option">
+			<p className="label-text">Location access</p>
 			<label className='toggle-label' htmlFor="location-access-switch">
-				Location access
+				
 				<input id='location-access-switch' type="checkbox" hidden/>
 				<span className="slider"></span>
 			</label>
+			</div>
+
+			<div className="toggle-option">
+			<p className="label-text">Dark Mode</p>
 			<label className='toggle-label' 								htmlFor="dark-mode-switch">
-				Dark mode
 				<input id='dark-mode-switch' type="checkbox" hidden/>
 				<span className="slider"></span>
 			</label>
+			</div>
 		</section>
 
 

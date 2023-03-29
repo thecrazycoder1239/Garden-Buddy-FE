@@ -231,7 +231,6 @@
 }
 
 .toggle-options{
-  justify-content: space-around;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -245,13 +244,24 @@
   box-sizing: border-box;
 }
 
-.toggle-label{
+.toggle-option {
+  display: flex;
+}
+
+.label-text {
   position: relative;
+  top: 0.4rem;
+  left: 4rem;
+}
+
+.toggle-label{
+  position: absolute;
   display: block;
   margin-left: 1rem;
   margin-right: auto;
   margin-bottom: 1rem;
   margin-top: 1rem;
+  right: 4rem;
   width: 60px;
   height: 34px;
 }
