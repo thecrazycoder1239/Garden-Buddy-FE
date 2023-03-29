@@ -1,5 +1,4 @@
 import { useState } from "react";
-import floralPattern from "../assets/floral.png";
 
 export default function Settings() {
 	const [usernameFormEdit, setUsernameFormEdit] = useState(false);
@@ -149,7 +148,7 @@ export default function Settings() {
 
 			<div className="toggle-option">
 			<p className="label-text">Dark Mode</p>
-			<label className='toggle-label' 								htmlFor="dark-mode-switch">
+			<label className='toggle-label' htmlFor="dark-mode-switch">
 				<input id='dark-mode-switch' type="checkbox" hidden/>
 				<span className="slider"></span>
 			</label>
@@ -158,9 +157,6 @@ export default function Settings() {
 		</section>
 
 		<button className="review-app-button">Leave a review on Garden Buddy!</button>
-
-
-		<img className="settings-background" src={floralPattern} alt="floral pattern"/>
 
 		</>
 	);

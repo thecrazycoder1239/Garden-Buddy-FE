@@ -19,7 +19,6 @@ export default function Login () {
     return (
         <form className="form" onSubmit={(e) => {
             e.preventDefault();
-            console.log('hello')
         }}> 
             <div className='image-div'>
                 <img className="form-image" alt="user-profile" src={plantpot}></img>
