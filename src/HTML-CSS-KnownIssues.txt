@@ -1,0 +1,14 @@
+Known Issues / Still to do
+
+> Home (‘/‘) should be today’s tasks. At the moment it’s blank and today’s tasks is conditionally rendered (after clicking associated tab)
+
+> Active tab in Nav and My Calendar > Sub Nav should be styled differently
+
+> My Calendar > Today’s Tasks > Edit / Log > Add another task
+Bug here. If you click in certain places on SelectTaskFrequency tabs, it has undesired results (alters the other instance on the page of SelectTaskFrequency)
+
+> View All Plants > Filter drop down needs to have options insert. Should be able to select more than one, and should have a reset button
+
+> View All Plants > Single Plant still to be built.
+
+> Weather Warning conditionally rendered component to be built
