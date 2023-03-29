@@ -1,8 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import downloadIcon from './assets/download.png'
-import './App.css';
-// import Login from './components-to-add/login';
-import Settings from './components-to-add/user-settings';
+
 
 function App() {
 
