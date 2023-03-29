@@ -630,7 +630,7 @@ section.pagination h2 {
   flex-direction: column;
   flex-wrap: wrap;
   position: absolute;
-  top: 64%;
+  top: 35rem;
   background-color: #8ebc93;
   border-radius: 20px;
   padding: 0.6rem;
@@ -723,7 +723,7 @@ input:checked + .slider:before {
   border: 0.1rem solid black;
   border-radius: 20px;
   position: absolute;
-  top: 86%;
+  top: 47rem;
   padding: 1.5rem;
   font-size: 1.2rem;
   width: 20rem;
