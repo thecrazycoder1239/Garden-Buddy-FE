@@ -231,6 +231,7 @@
 }
 
 .toggle-options{
+  justify-content: space-around;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -240,7 +241,6 @@
   border-radius: 20px;
   padding: 0.6rem;
   width: 60vw;
-  justify-content: center;
   left: calc(50% - 30vw);
   box-sizing: border-box;
 }
@@ -248,13 +248,12 @@
 .toggle-label{
   position: relative;
   display: block;
-  margin-left: auto;
+  margin-left: 1rem;
   margin-right: auto;
   margin-bottom: 1rem;
   margin-top: 1rem;
   width: 60px;
   height: 34px;
-
 }
 
 #notifications-switch input, 
@@ -263,7 +262,6 @@
   position: absolute;
   opacity: 0;
   width: 0;
-  right: 2rem;
   height: 0;
 }
 
