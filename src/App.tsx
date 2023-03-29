@@ -1,6 +1,5 @@
 
 // Hooks
-import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import './App.css';
 
@@ -20,30 +19,7 @@ import Settings from './components/user-settings';
 // Styles
 import "./App.css";
 
-// Images
-import downloadIcon from './assets/download.png'
-
 function App() {
-  const object: any = {};
-
-  const [deferredPrompt, setDeferredPrompt] = useState(object);
-
-  const [ableToInstall, setAbleToInstall] = useState(false)
-  const [hasInstalled, setHasInstalled] = useState(false)
-
-  useEffect(() => {
-    window.addEventListener("beforeinstallprompt", (event) => {
-      setDeferredPrompt(event)
-      setAbleToInstall(true)
-    })
-    window.addEventListener('appinstalled', () => {
-      setHasInstalled(true)
-    });
-  }, []);
-
-  const handleInstall = () => {
-    deferredPrompt.prompt();
-  };
 
   return (
     <div className="App">
@@ -67,12 +43,6 @@ function App() {
         <Route path="/all-plants" element={<AllPlants />} />
         <Route path="/settings" element={<Settings />} />
       </Routes>
-        
-        {hasInstalled && ableToInstall ? <></> :
-        <div className='install-btn' onClick={handleInstall}>
-          <button className='install-btn-text'>Install App</button><img className='install-btn-img' src={downloadIcon} alt="install"></img>
-        </div>
-        }
 
     </div>
   );
