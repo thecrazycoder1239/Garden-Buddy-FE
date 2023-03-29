@@ -731,6 +731,7 @@ input:checked + .slider:before {
 
 .invisible {
   display: none!important;
+}
 
 /* Install Button */
 @media all and (display-mode: standalone) {

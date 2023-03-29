@@ -5,7 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import './App.css';
 
 // Components
-import Login from './components-to-add/login';
+// import Login from './components/login';
 import Header from "./components/Header";
 import Nav from "./components/Nav";
 import MyCalendar from "./components/MyCalendar";
@@ -14,10 +14,7 @@ import EditAndLog from "./components/EditAndLog";
 import UpcomingTasks from "./components/UpcomingTasks";
 import MyPlants from "./components/MyPlants";
 import AllPlants from "./components/AllPlants";
-import Settings from './components-to-add/user-settings';
-        
-// Assets
-import downloadIcon from './assets/download.png';
+import Settings from './components/user-settings';
 
 
 // Styles
