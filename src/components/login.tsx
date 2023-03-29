@@ -41,12 +41,12 @@ export default function Login () {
                 <input type={passwordVisibility ? 'input' : 'password'}
                 id="password-input"></input>
             </div>
-            <div className="input-field">
+            {/* <div className="input-field">
                 <label className="label" htmlFor="location-input">
                 <img className='input-img' alt='' src={location}></img>
                 location</label>
                 <input id="location-input"></input>
-            </div>
+            </div> */}
                 <button className='submit-button' type="submit">Log in</button>
         </form>
     )

@@ -5,7 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import './App.css';
 
 // Components
-// import Login from './components/login';
+import Login from './components/login';
 import Header from "./components/Header";
 import Nav from "./components/Nav";
 import MyCalendar from "./components/MyCalendar";
@@ -51,6 +51,7 @@ function App() {
       <Header />
       <Nav />
       <Routes>
+        <Route path="/login" element={<Login />} />
         <Route path="/" element={<MyCalendar />}>
           <Route path="my-calendar/todays-tasks" element={<TodaysTasks />} />
           <Route
@@ -64,12 +65,8 @@ function App() {
           />
         </Route>
         <Route path="/all-plants" element={<AllPlants />} />
+        <Route path="/settings" element={<Settings />} />
       </Routes>
-
-      
-        {/* <Login/> */}
-
-        <Settings/>
         
         {hasInstalled && ableToInstall ? <></> :
         <div className='install-btn' onClick={handleInstall}>
