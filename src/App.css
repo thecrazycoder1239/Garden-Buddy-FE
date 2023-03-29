@@ -235,7 +235,7 @@
   flex-direction: column;
   flex-wrap: wrap;
   position: absolute;
-  top: 70%;
+  top: 64%;
   background-color: #8ebc93;
   border-radius: 20px;
   padding: 0.6rem;
@@ -319,6 +319,23 @@ input:checked + .slider:before {
 
 .slider:before{
   border-radius: 50%;
+}
+
+.review-app-button {
+  box-sizing: border-box;
+  background-color: #8ebc93;
+  border: 0.1rem solid black;
+  border-radius: 20px;
+  position: absolute;
+  top: 85%;
+  padding: 1.5rem;
+  font-size: 1.2rem;
+  width: 20rem;
+  left: calc(50% - 10rem)
+}
+
+.review-app-button:hover {
+  scale: 1.1;
 }
 
 /* below is the code for conditionally rendering install button in the browser, not the desktop app*/

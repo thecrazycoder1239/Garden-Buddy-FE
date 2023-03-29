@@ -154,7 +154,10 @@ export default function Settings() {
 				<span className="slider"></span>
 			</label>
 			</div>
+
 		</section>
+
+		<button className="review-app-button">Leave a review on Garden Buddy!</button>
 
 
 		<img className="settings-background" src={floralPattern} alt="floral pattern"/>
