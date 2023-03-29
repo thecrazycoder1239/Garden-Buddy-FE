@@ -47,10 +47,10 @@ export default function Settings() {
 					}}
 					className="edit-form-item"
 				>
-					<label className="edit-label" htmlFor="edit-username">First name:</label>
+					<label className="edit-label" htmlFor="edit-firstname">First name:</label>
 					<input
 						type="text"
-						id="edit-username"
+						id="edit-firstname"
 						placeholder="<current first name>"
 						disabled={!firstNameFormEdit ? true : false}
 					/>
@@ -70,10 +70,10 @@ export default function Settings() {
 					}}
 					className="edit-form-item"
 				>
-					<label className="edit-label" htmlFor="edit-username">Last name:</label>
+					<label className="edit-label" htmlFor="edit-surname">Last name:</label>
 					<input
 						type="text"
-						id="edit-username"
+						id="edit-surname"
 						placeholder="<current last name>"
 						disabled={!surnameFormEdit ? true : false}
 					/>
@@ -93,10 +93,10 @@ export default function Settings() {
 					}}
 					className="edit-form-item"
 				>
-					<label className="edit-label" htmlFor="edit-username">Password:</label>
+					<label className="edit-label" htmlFor="edit-password">Password:</label>
 					<input
 						type="text"
-						id="edit-username"
+						id="edit-password"
 						placeholder="<current password>"
 						disabled={!passwordFormEdit ? true : false}
 					/>
@@ -116,17 +116,35 @@ export default function Settings() {
 					}}
 					className="edit-form-item"
 				>
-					<label className="edit-label" htmlFor="edit-username">Avatar url:</label>
+					<label className="edit-label" htmlFor="edit-profileurl">Avatar url:</label>
 					<input
 						type="text"
-						id="edit-username"
+						id="edit-profileurl"
 						placeholder="<current avatar url>"
 						disabled={!profileUrlFormEdit ? true : false}
 					/>
 					<button className="edit-btn" type="submit">{ profileUrlFormEdit ? "submit" : "edit"}</button>
 				</form>
 		</section>
+
+		<section className="toggle-options">
+			<label className='toggle-label' htmlFor="notifications-switch">Notifications
+				<input id='notifications-switch' type="checkbox" hidden/>
+				<span className="slider"></span>
+			</label>
+			<label className='toggle-label' htmlFor="location-access-switch">Location access
+				<input id='location-access-switch' type="checkbox" hidden/>
+				<span className="slider"></span>
+			</label>
+			<label className='toggle-label' 								htmlFor="dark-mode-switch">Dark mode
+				<input id='dark-mode-switch' type="checkbox" hidden/>
+				<span className="slider"></span>
+			</label>
+		</section>
+
+
 		<img className="settings-background" src={floralPattern} alt="floral pattern"/>
+
 		</>
 	);
 }
