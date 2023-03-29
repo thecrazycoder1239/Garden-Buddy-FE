@@ -2,6 +2,7 @@
 // Hooks
 import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import './App.css';
 
 // Components
 import Login from './components-to-add/login';
@@ -13,6 +14,11 @@ import EditAndLog from "./components/EditAndLog";
 import UpcomingTasks from "./components/UpcomingTasks";
 import MyPlants from "./components/MyPlants";
 import AllPlants from "./components/AllPlants";
+import Settings from './components-to-add/user-settings';
+        
+// Assets
+import downloadIcon from './assets/download.png';
+
 
 // Styles
 import "./App.css";
@@ -64,7 +70,10 @@ function App() {
       </Routes>
 
       
-        <Login/>
+        {/* <Login/> */}
+
+        <Settings/>
+        
         {hasInstalled && ableToInstall ? <></> :
         <div className='install-btn' onClick={handleInstall}>
           <button className='install-btn-text'>Install App</button><img className='install-btn-img' src={downloadIcon} alt="install"></img>
