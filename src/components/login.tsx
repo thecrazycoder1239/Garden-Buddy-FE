@@ -27,14 +27,14 @@ export default function Login () {
             <div className="input-field">
                 <label className="label" htmlFor="username-input">
                     <img className='input-img' alt='' src={mail}></img>
-                    username</label>
+                    Username</label>
                 
                 <input id="username-input" placeholder="e.g. kev13"></input>
             </div>
             <div className="input-field">
                 <label className="label" htmlFor="password-input">
                 <img className='input-img' alt='' src={lock}></img>
-                password
+                Password
                 <img className='password-eye' alt='password-visibility-off' src={passwordVisibility ? openeye : closedeye}
                 onClick={togglePasswordVisibility}></img>
                 </label>
