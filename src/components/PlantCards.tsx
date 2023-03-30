@@ -28,6 +28,7 @@ export default function PlantCards() {
         {plants.map((plant) => {
           return (
             <Link to={`/all-plants/${plant["_id"]}`}>
+              {/* <li onClick={() => setSinglePlant(plant["_id"])} className="plant-card" key={plant["_id"]}> */}
               <li className="plant-card" key={plant["_id"]}>
                 <div>
                   <h2>{plant["name"]}</h2>

@@ -13,7 +13,6 @@ import EditAndLog from "./components/EditAndLog";
 import UpcomingTasks from "./components/UpcomingTasks";
 import MyPlants from "./components/MyPlants";
 import AllPlants from "./components/AllPlants";
-import SinglePlant from "./components/SinglePlant";
 
 // Styles
 import "./App.css";
@@ -72,12 +71,6 @@ function App() {
               path="/all-plants"
               element={
                 <AllPlants />
-              }
-            />
-            <Route
-              path="/all-plants/:_id"
-              element={
-                <SinglePlant />
               }
             />
           </Routes>
