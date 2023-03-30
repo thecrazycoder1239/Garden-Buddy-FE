@@ -23,6 +23,7 @@ import downloadIcon from "./assets/download.png";
 
 // Icons
 import { BiUserCircle } from "react-icons/bi";
+import Settings from "./components/user-settings";
 
 function App() {
   const object: any = {};
