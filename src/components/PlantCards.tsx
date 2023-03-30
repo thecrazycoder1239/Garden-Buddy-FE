@@ -8,9 +8,15 @@ import { getPlants } from "../utils/api";
 // Icons
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
-export default function PlantCards() {
+interface PlantCardsProps {
+  setSinglePlant: (singlePlant: string) => void;
+}
+
+export default function PlantCards(props: PlantCardsProps): JSX.Element {
+  const { setSinglePlant } = props;
+
   const [isLoadingPlants, setIsLoadingPlants] = useState(false);
-  const [plants, setPlants] = useState([]);
+  const [plants, setPlants] = useState<GrowStuffCrop[]>([]);
 
   useEffect(() => {
     getPlants().then((data) => {
@@ -28,8 +34,8 @@ export default function PlantCards() {
         {plants.map((plant) => {
           return (
             <Link to={`/all-plants/${plant["_id"]}`}>
-              {/* <li onClick={() => setSinglePlant(plant["_id"])} className="plant-card" key={plant["_id"]}> */}
-              <li className="plant-card" key={plant["_id"]}>
+              <li onClick={() => setSinglePlant(plant["_id"])} className="plant-card" key={plant["_id"]}>
+              {/* <li className="plant-card" key={plant["_id"]}> */}
                 <div>
                   <h2>{plant["name"]}</h2>
                   <p>{plant["scientific_name"]}</p>

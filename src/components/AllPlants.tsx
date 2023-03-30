@@ -12,7 +12,7 @@ import SinglePlant from "./SinglePlant";
 
 export default function AllPlants() {
   // const [plantId, setPlantId] = useState<number>(0)
-  const [singlePlant, setSinglePlant] = useState([])
+  const [singlePlant, setSinglePlant] = useState<string>("");
 
   return (
     <section className="all-plants">
@@ -22,7 +22,7 @@ export default function AllPlants() {
         <FilterPlants />
       </div>
       {/* <PlantCards setPlantId={setPlantId}/> */}
-      <PlantCards />
+      <PlantCards setSinglePlant={setSinglePlant}/>
       <Pagination />
       <Routes>
         <Route path="/all-plants/:_id" element={<SinglePlant />} />

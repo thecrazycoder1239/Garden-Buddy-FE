@@ -7,7 +7,6 @@ import { getSinglePlant } from "../utils/api";
 
 export default function SinglePlantCard() {
   const { _id } = useParams();
-  const [singlePlant, setSinglePlant] = useState([]);
   const [isLoadingSinglePlant, setIsLoadingSinglePlant] = useState(false);
 
   useEffect(() => {
