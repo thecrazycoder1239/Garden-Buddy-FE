@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 // Components
-// import Login from "./components-to-add/login";
+import Login from "./components/login";
 import HeaderInstalled from "./components/HeaderInstalled";
 import Nav from "./components/Nav";
 import MyCalendar from "./components/MyCalendar";
@@ -45,7 +45,6 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Login /> */}
       {/* {hasInstalled && ableToInstall ? ( */}
       {true ? (
         <>
@@ -72,6 +71,10 @@ function App() {
               element={
                 <AllPlants />
               }
+            />
+            <Route
+              path="/login"
+              element={<Login />}
             />
           </Routes>
         </>
