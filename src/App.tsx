@@ -57,7 +57,6 @@ function App() {
           <Nav />
           <Routes>
             <Route path="/" element={<MyCalendar />}>
-            <Route path="/log-in" element={<Login />}/>
               <Route
                 path="my-calendar/todays-tasks"
                 element={<TodaysTasks />}
@@ -72,6 +71,7 @@ function App() {
                 element={<EditAndLog />}
               />
             </Route>
+            <Route path="/log-in" element={<Login />}/>
             <Route
               path="/all-plants"
               element={
