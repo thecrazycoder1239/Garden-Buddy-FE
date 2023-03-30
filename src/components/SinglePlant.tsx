@@ -11,7 +11,7 @@ export default function SinglePlant() {
 
   // IMPORTANT: change any on line 14. We didn't know what to put.
   const [isLoadingSinglePlant, setIsLoadingSinglePlant] = useState(false);
-  const [singlePlant, setSinglePlant] = useState<GrowStuffCrop | any>("");
+  const [singlePlant, setSinglePlant] = useState<GrowStuffCrop | null>(null);
 
   useEffect(() => {
     getSinglePlant(1).then((data) => {
@@ -27,7 +27,7 @@ export default function SinglePlant() {
     <h1>Plant Incoming...</h1>
   ) : (
     <section className="single-plant-card">
-      <h3>{singlePlant["name"]}</h3>
+      {singlePlant !== null ? <h3>{singlePlant["name"]}</h3> : <></>}
       <p>hello</p>
     </section>
   );
