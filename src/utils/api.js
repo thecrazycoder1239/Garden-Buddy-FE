@@ -1,5 +1,20 @@
 import axios from "axios";
 
+const gardenBuddy = axios.create({
+  baseURL: "https://garden-buddy.onrender.com"
+})
+
+export const valididateLogin = ({username, password}) => {
+  return gardenBuddy
+    .post('/login', {
+      username,
+      password
+    })
+    .then(({ data }) => {
+      return data.user
+    })
+}
+
 const growStuffAPI = axios.create({
   baseURL: "https://www.growstuff.org/crops.json/",
 });
