@@ -16,12 +16,12 @@ export const getPlants = () => {
 };
 
 export const getSinglePlant = (_id) => {
-    return growStuffAPI
-      .get(`/crops/1.json`)
-      .then(({ data }) => {
-        return data;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-}
+  return growStuffAPI
+    .get(`/crops/${_id}.json`)
+    .then(({ data }) => {
+      return data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
