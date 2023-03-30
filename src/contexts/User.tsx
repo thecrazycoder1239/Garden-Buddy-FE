@@ -2,42 +2,52 @@ import { createContext, useState } from "react";
 import { valididateLogin } from "../utils/api";
 
 interface User {
-  username: string,
-  password: string,
-  first_name: string,
-  last_name: string,
+  username: string;
+  password: string;
+  first_name: string;
+  last_name: string;
 }
 
 interface UserContextType {
-  user: User | null,
-  login: ({username, password} : {username: string, password: string}) => Promise<void>
-  logout: () => void
+  user: User | null;
+  login: ({
+    username,
+    password,
+  }: {
+    username: string;
+    password: string;
+  }) => Promise<void>;
+  logout: () => void;
 }
 
 export const UserContext = createContext<UserContextType>({
   user: null,
   login: () => valididateLogin(),
-  logout: () => {}
+  logout: () => {},
 });
 
-export const UserProvider = ({ children } : { children: React.ReactNode }) => {
-  const [user, setUser] = useState<User | null>(null)
+export const UserProvider = ({ children }: { children: React.ReactNode }) => {
+  const [user, setUser] = useState<User | null>(null);
 
-  const login = ({ username, password } : { username: string, password: string }) : Promise<void> => {
-    return valididateLogin({ username, password })
-      .then(user => {
-        setUser(user)
-      })
-  }
+  const login = ({
+    username,
+    password,
+  }: {
+    username: string;
+    password: string;
+  }): Promise<void> => {
+    return valididateLogin({ username, password }).then((user) => {
+      setUser(user);
+    });
+  };
 
   const logout = () => {
     setUser(null);
-  }
+  };
 
   return (
-    <UserContext.Provider value={{user, login, logout}}>
-      { children }
+    <UserContext.Provider value={{ user, login, logout }}>
+      {children}
     </UserContext.Provider>
-  )
-
-}
+  );
+};

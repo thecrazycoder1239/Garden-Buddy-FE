@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 // Components
-import Login from "./components/login";
+import Login from "./components/Login";
 import HeaderInstalled from "./components/HeaderInstalled";
 import Nav from "./components/Nav";
 import MyCalendar from "./components/MyCalendar";
