@@ -8,11 +8,8 @@ import SortPlants from "./SortPlants";
 import FilterPlants from "./FilterPlants";
 import PlantCards from "./PlantCards";
 import Pagination from "./Pagination";
-import SinglePlant from "./SinglePlant";
 
 export default function AllPlants() {
-  // const [plantId, setPlantId] = useState<number>(0)
-
   return (
     <section className="all-plants">
       <SearchForPlant />
@@ -20,8 +17,6 @@ export default function AllPlants() {
         <SortPlants />
         <FilterPlants />
       </div>
-      {/* <PlantCards setPlantId={setPlantId}/> */}
-      {/* setSinglePlant={setSinglePlant} */}
       <PlantCards />
       <Pagination />
       

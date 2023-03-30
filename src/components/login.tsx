@@ -7,7 +7,6 @@ import openeye from '../assets/open.png';
 import {useState} from 'react';
 
 export default function Login () {
-
     const [passwordVisibility, setPasswordVisbility] = useState(false);
 
     const togglePasswordVisibility = () => {

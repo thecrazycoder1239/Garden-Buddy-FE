@@ -5,6 +5,9 @@ import { useParams } from "react-router-dom";
 // API
 import { getSinglePlant } from "../utils/api";
 
+// Components
+import Comments from './Comments'
+
 export default function SinglePlant() {
   const { _id } = useParams();
   const [isLoadingSinglePlant, setIsLoadingSinglePlant] = useState(false);
@@ -21,9 +24,18 @@ export default function SinglePlant() {
   return isLoadingSinglePlant ? (
     <h1>Plant Incoming...</h1>
   ) : (
-    <section className="single-plant-card">
-      {singlePlant !== null ? <h3>{singlePlant["name"]}</h3> : <></>}
-      <p>hello</p>
+    <section className="single-plant">
+      {singlePlant === null ? (
+        <></>
+      ) : (
+        <>
+          <h2>{singlePlant["name"]}</h2>
+          <img src={singlePlant["openfarm_data"]["attributes"]["main_image_path"]} alt="plant image" />
+          <p>{singlePlant["openfarm_data"]["attributes"]["description"]}</p>
+          <p>...other values from api '/crops/:id'</p>
+          <Comments />
+        </>
+      )}
     </section>
   );
 }

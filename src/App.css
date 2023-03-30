@@ -534,14 +534,14 @@ section.pagination h2 {
 
 .submit-button{
   display: block;
-    padding: 1em;
-		background: var(--lime-green);
-		border: 1px solid var(--light-teal);
-		border-radius: 30px;
-    font-size: 1rem;
-    width: 30vw;
-    margin-left: auto;
-    margin-right: auto;
+  padding: 1em;
+  background: var(--lime-green);
+  border: 1px solid var(--light-teal);
+  border-radius: 30px;
+  font-size: 1rem;
+  width: 30vw;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .submit-button:hover,
@@ -744,7 +744,6 @@ input:checked + .slider:before {
 }
 
 /* Toggle Visibility */
-
 .invisible {
   display: none !important;
 }
@@ -756,4 +755,13 @@ input:checked + .slider:before {
     opacity: 0;
     visibility: hidden;
   }
+}
+
+/* Single Plant */
+section.single-plant {
+  margin: 18px 15px;
+}
+
+section.single-plant h2 {
+  text-transform: capitalize!important;
 }

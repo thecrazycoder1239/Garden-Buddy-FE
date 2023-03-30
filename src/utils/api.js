@@ -19,6 +19,7 @@ export const getSinglePlant = (_id) => {
   return growStuffAPI
     .get(`/crops/${_id}.json`)
     .then(({ data }) => {
+      console.log(data, 'heree')
       return data;
     })
     .catch((error) => {
