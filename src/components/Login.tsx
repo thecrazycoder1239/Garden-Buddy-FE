@@ -15,7 +15,7 @@ export default function Login() {
   const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
-  const { user, login, logout } = useContext(UserContext);
+  const { user, login } = useContext(UserContext);
 
   const togglePasswordVisibility = () => {
     if (passwordVisibility === false) {
