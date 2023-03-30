@@ -1,13 +1,14 @@
-import plantpot from '../assets/plant-icon2.png';
+import { Link } from 'react-router-dom';
 import mail from '../assets/mail.png';
 import lock from '../assets/lock.png';
-// import location from '../assets/location.png';
+import location from '../assets/location.png';
 import closedeye from '../assets/closed.png';
 import openeye from '../assets/open.png';
+import person from '../assets/person.png';
 import {useState} from 'react';
-import { Link } from 'react-router-dom';
 
-export default function Login () {
+export default function SignUp () {
+
 
     const [passwordVisibility, setPasswordVisbility] = useState(false);
 
@@ -21,14 +22,22 @@ export default function Login () {
         <form className="form" onSubmit={(e) => {
             e.preventDefault();
         }}> 
-            <div className='image-div'>
-                <img className="form-image" alt="user-profile" src={plantpot}></img>
+            <div className="input-field">
+                <label className="label" htmlFor="first-name-input">
+                <img className='input-img' alt='' src={person}></img>
+                First name</label>
+                <input id="first-name-input"></input>
+            </div>
+            <div className="input-field">
+                <label className="label" htmlFor="last-name-input">
+                <img className='input-img' alt='' src={person}></img>
+                Last name</label>
+                <input id="last-name-input"></input>
             </div>
             <div className="input-field">
                 <label className="label" htmlFor="username-input">
                     <img className='input-img' alt='' src={mail}></img>
                     Username</label>
-                
                 <input id="username-input" placeholder="e.g. kev13"></input>
             </div>
             <div className="input-field">
@@ -41,15 +50,15 @@ export default function Login () {
                 <input type={passwordVisibility ? 'input' : 'password'}
                 id="password-input"></input>
             </div>
-            {/* <div className="input-field">
+            <div className="input-field">
                 <label className="label" htmlFor="location-input">
                 <img className='input-img' alt='' src={location}></img>
-                location</label>
+                Garden location</label>
                 <input id="location-input"></input>
-            </div> */}
-                <button className='submit-button' type="submit">Log in</button>
-                <Link to="/sign-up">
-                <p className='sign-up-text'>Sign Up</p>
+            </div>
+                <button className='submit-button' type="submit">Sign up</button>
+                <Link to="/login">
+                <p className='sign-up-text'>Log in</p>
                 </Link>
         </form>
     )

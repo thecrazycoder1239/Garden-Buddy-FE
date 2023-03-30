@@ -16,6 +16,7 @@ import AllPlants from "./components/AllPlants";
 
 // Styles
 import "./App.css";
+import SignUp from "./components/SignUp";
 
 // Images
 import downloadIcon from "./assets/download.png";
@@ -39,9 +40,11 @@ function App() {
     });
   }, []);
 
+
   const handleInstall = () => {
     deferredPrompt.prompt();
   };
+
 
   return (
     <div className="App">
@@ -73,6 +76,8 @@ function App() {
                 <AllPlants />
               }
             />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/sign-up" element={<SignUp />} />
           </Routes>
         </>
       ) : (
