@@ -1,27 +1,27 @@
 import axios from "axios";
 
 const gardenBuddy = axios.create({
-  baseURL: "https://garden-buddy.onrender.com"
-})
+  baseURL: "https://garden-buddy.onrender.com",
+});
 
-export const valididateLogin = ({username, password}) => {
+export const valididateLogin = ({ username, password }) => {
   return gardenBuddy
-    .post('/login', {
+    .post("/login", {
       username,
-      password
+      password,
     })
     .then(({ data }) => {
-      return data.user
-    })
-}
+      return data.user;
+    });
+};
 
 const growStuffAPI = axios.create({
-  baseURL: "https://www.growstuff.org/crops.json/",
+  baseURL: "https://garden-buddy.onrender.com/growstuff",
 });
 
 export const getPlants = () => {
   return growStuffAPI
-    .get()
+    .get(`/crops`)
     .then(({ data }) => {
       return data;
     })
@@ -31,13 +31,13 @@ export const getPlants = () => {
 };
 
 export const getSinglePlant = (_id) => {
-    return growStuffAPI
-      .get(`/all-plants/${_id}`)
-      .then(({ data }) => {
-        console.log(data)
-        return data;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-}
+  return growStuffAPI
+    .get(`/crops/${_id}`)
+    .then(({ data }) => {
+      console.log(data);
+      return data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
