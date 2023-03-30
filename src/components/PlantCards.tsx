@@ -9,13 +9,13 @@ import { getPlants } from "../utils/api";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 export default function PlantCards() {
-  const [isLoadingPlants, setIsLoadingPlants] = useState(false)
-  const [plants, setPlants] = useState([])
+  const [isLoadingPlants, setIsLoadingPlants] = useState(false);
+  const [plants, setPlants] = useState([]);
 
   useEffect(() => {
     getPlants().then((data) => {
       setIsLoadingPlants(true);
-      setPlants(data)
+      setPlants(data);
       setIsLoadingPlants(false);
     });
   }, []);

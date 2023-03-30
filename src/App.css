@@ -252,7 +252,7 @@ section.edit-tasks h2 {
 
 /* task Frequency */
 section.edit-tasks h2 {
-  margin-block-end: .6rem;
+  margin-block-end: 0.6rem;
 }
 
 section.edit-tasks form.task-frequency {
@@ -271,18 +271,18 @@ section.edit-tasks form.task-frequency div {
 }
 
 section.edit-tasks form.task-frequency input[type="radio"] {
-	appearance: none;
-	width: 15px;
-	height: 15px;
-	border: 2px solid #333;
-	border-radius: 50%;
-	background-clip: content-box;
-	padding: 2px;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border: 2px solid #333;
+  border-radius: 50%;
+  background-clip: content-box;
+  padding: 2px;
   margin-right: 5px;
 }
 
 section.edit-tasks form.task-frequency input[type="radio"]:checked {
-	background-color: #333;
+  background-color: #333;
 }
 
 /* Add Tasks */
@@ -316,7 +316,7 @@ section.edit-tasks form.add-tasks .add-another-task input[type="text"] {
 }
 
 section.edit-tasks form.add-tasks p {
-  opacity: .5;
+  opacity: 0.5;
 }
 
 /* Edit and Log - remove button and more info button */
@@ -345,7 +345,7 @@ form.search-for-plant button {
   padding: 10px;
 }
 
-form.search-for-plant input[type="search"]{
+form.search-for-plant input[type="search"] {
   width: calc(100% - 50px);
 }
 
@@ -401,8 +401,7 @@ ul.plant-cards li.plant-card {
 
 ul.plant-cards li.plant-card h2,
 ul.plant-cards li.plant-card p {
-  margin-block-end: .6rem;
-  
+  margin-block-end: 0.6rem;
 }
 
 ul.plant-cards li.plant-card h2 {
@@ -488,7 +487,9 @@ section.pagination h2 {
   position: relative;
 }
 
-#username-input, #password-input, #location-input {
+#username-input,
+#password-input,
+#location-input {
   border: 1px solid var(--light-teal);
   border-radius: 20px;
   display: block;
@@ -506,7 +507,7 @@ section.pagination h2 {
   padding-left: 7px;
 }
 
-.image-div{
+.image-div {
   width: 100px;
   height: 100px;
   border-radius: 50%;
@@ -517,33 +518,34 @@ section.pagination h2 {
   margin-right: auto;
 }
 
-.form-image{
+.form-image {
   position: relative;
   top: 10%;
 }
 
-.submit-button{
-    padding: 1em;
-		background: var(--lime-green);
-		border: 1px solid var(--light-teal);
-		border-radius: 30px;
-    font-size: 1rem;
-    width: 30vw;
+.submit-button {
+  padding: 1em;
+  background: var(--lime-green);
+  border: 1px solid var(--light-teal);
+  border-radius: 30px;
+  font-size: 1rem;
+  width: 30vw;
 }
 
-.submit-button:hover, .submit-button:focus{
+.submit-button:hover,
+.submit-button:focus {
   scale: 1.1;
   background-color: #93c499;
 }
 
-.input-img{
+.input-img {
   height: 1.3rem;
   width: 1.3rem;
   position: absolute;
   top: 3.05rem;
 }
 
-.password-eye{
+.password-eye {
   height: 1.1rem;
   position: absolute;
   top: 3.2rem;
@@ -551,23 +553,20 @@ section.pagination h2 {
 }
 
 @media only screen and (min-width: 900px) {
-  .input-field{
+  .input-field {
     width: 35vw;
   }
 }
 
-
-
 /* Toggle Visibility */
 
-
 .invisible {
-  display: none!important;
+  display: none !important;
 }
 
 /* Install Button */
 @media all and (display-mode: standalone) {
-  .install-btn{
+  .install-btn {
     display: none;
     opacity: 0;
     visibility: hidden;

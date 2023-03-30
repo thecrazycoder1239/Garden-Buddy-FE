@@ -1,5 +1,5 @@
 // Hooks
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 // Icons
 import { BiUserCircle } from "react-icons/bi";
@@ -14,5 +14,3 @@ export default function HeaderInstalled() {
     </header>
   );
 }
-
-
