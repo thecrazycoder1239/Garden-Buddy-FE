@@ -24,7 +24,6 @@ import downloadIcon from "./assets/download.png";
 // Icons
 import { BiUserCircle } from "react-icons/bi";
 import Settings from "./components/user-settings";
-import Login from "./components/login";
 
 function App() {
   const object: any = {};
@@ -42,11 +41,9 @@ function App() {
     });
   }, []);
 
-
   const handleInstall = () => {
     deferredPrompt.prompt();
   };
-
 
   return (
     <div className="App">
@@ -71,13 +68,8 @@ function App() {
                 element={<EditAndLog />}
               />
             </Route>
-            <Route path="/log-in" element={<Login />}/>
-            <Route
-              path="/all-plants"
-              element={
-                <AllPlants />
-              }
-            />
+            <Route path="/log-in" element={<Login />} />
+            <Route path="/all-plants" element={<AllPlants />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/sign-up" element={<SignUp />} />
           </Routes>
