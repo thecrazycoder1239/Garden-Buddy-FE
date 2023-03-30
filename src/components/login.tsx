@@ -6,7 +6,7 @@ import closedeye from '../assets/closed.png';
 import openeye from '../assets/open.png';
 import {useContext, useState} from 'react';
 import { UserContext } from '../contexts/User';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
 
 export default function Login () {
 
@@ -55,9 +55,8 @@ export default function Login () {
             <div className="input-field">
                 <label className="label" htmlFor="username-input">
                     <img className='input-img' alt='' src={mail}></img>
-                    username</label>
-                
-                <input id="username-input" placeholder="e.g. john123" value={username} onChange={
+                    Username</label>
+                <input id="username-input" placeholder="e.g. kev13" value={username} onChange={
                   (e) => setUsername(e.target.value)
                 }></input>
                 <p className="login-error-message">{usernameError !== '' ? usernameError : ''}</p>
@@ -65,7 +64,7 @@ export default function Login () {
             <div className="input-field">
                 <label className="label" htmlFor="password-input">
                 <img className='input-img' alt='' src={lock}></img>
-                password
+                Password
                 <img className='password-eye' alt='password-visibility-off' src={passwordVisibility ? openeye : closedeye}
                 onClick={togglePasswordVisibility}></img>
                 </label>
@@ -82,6 +81,9 @@ export default function Login () {
                 <input id="location-input"></input>
             </div> */}
                 <button className='submit-button' type="submit">Log in</button>
+                <Link to="/sign-up">
+                <p className='sign-up-text'>Sign Up</p>
+                </Link>
         </form>
     )
 }

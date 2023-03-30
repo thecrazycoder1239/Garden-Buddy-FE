@@ -12,8 +12,8 @@ export default function Nav () {
         <ul>
           {user === null ? 
         <li>
-            <Link to={"/login"}>Log in</Link>
-        </li> : <></>}
+            <Link to={"/log-in"}>Log in</Link>
+        </li>
           <li className="active">
             <Link to={"/my-calendar/todays-tasks"}>My Calendar</Link>
           </li>
