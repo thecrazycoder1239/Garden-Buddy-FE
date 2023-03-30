@@ -24,6 +24,7 @@ import downloadIcon from "./assets/download.png";
 // Icons
 import { BiUserCircle } from "react-icons/bi";
 import Settings from "./components/user-settings";
+import Login from "./components/login";
 
 function App() {
   const object: any = {};
@@ -49,7 +50,6 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Login /> */}
       {/* {hasInstalled && ableToInstall ? ( */}
       {true ? (
         <>
@@ -57,6 +57,7 @@ function App() {
           <Nav />
           <Routes>
             <Route path="/" element={<MyCalendar />}>
+            <Route path="/log-in" element={<Login />}/>
               <Route
                 path="my-calendar/todays-tasks"
                 element={<TodaysTasks />}

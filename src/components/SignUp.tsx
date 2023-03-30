@@ -57,7 +57,7 @@ export default function SignUp () {
                 <input id="location-input"></input>
             </div>
                 <button className='submit-button' type="submit">Sign up</button>
-                <Link to="/login">
+                <Link to="/log-in">
                 <p className='sign-up-text'>Log in</p>
                 </Link>
         </form>

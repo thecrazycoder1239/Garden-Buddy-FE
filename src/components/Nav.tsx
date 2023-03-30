@@ -6,7 +6,7 @@ export default function Nav () {
       <nav>
         <ul>
         <li>
-            <Link to={"/login"}>Log in</Link>
+            <Link to={"/log-in"}>Log in</Link>
         </li>
           <li className="active">
             <Link to={"/my-calendar/todays-tasks"}>My Calendar</Link>
