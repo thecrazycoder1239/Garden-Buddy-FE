@@ -8,12 +8,12 @@ import { getPlants } from "../utils/api";
 // Icons
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
-interface PlantCardsProps {
-  setSinglePlant: (singlePlant: string) => void;
-}
+// interface PlantCardsProps {
+//   setSinglePlant: (singlePlant: string) => void;
+// }
 
-export default function PlantCards(props: PlantCardsProps): JSX.Element {
-  const { setSinglePlant } = props;
+export default function PlantCards() {
+  // const { setSinglePlant } = props;
 
   const [isLoadingPlants, setIsLoadingPlants] = useState(false);
   const [plants, setPlants] = useState<GrowStuffCrop[]>([]);
@@ -34,7 +34,7 @@ export default function PlantCards(props: PlantCardsProps): JSX.Element {
         {plants.map((plant) => {
           return (
             <Link to={`/all-plants/${plant["_id"]}`}>
-              <li onClick={() => setSinglePlant(plant["_id"])} className="plant-card" key={plant["_id"]}>
+              <li className="plant-card" key={plant["_id"]}>
               {/* <li className="plant-card" key={plant["_id"]}> */}
                 <div>
                   <h2>{plant["name"]}</h2>
@@ -48,7 +48,7 @@ export default function PlantCards(props: PlantCardsProps): JSX.Element {
                     <AiOutlineStar />
                   </div>
                 </div>
-                <img src={plant["thumbnail_url"]} />
+                <img src={plant["thumbnail_url"]} alt='example'/>
               </li>
             </Link>
           );

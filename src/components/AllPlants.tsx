@@ -12,7 +12,6 @@ import SinglePlant from "./SinglePlant";
 
 export default function AllPlants() {
   // const [plantId, setPlantId] = useState<number>(0)
-  const [singlePlant, setSinglePlant] = useState<string>("");
 
   return (
     <section className="all-plants">
@@ -22,11 +21,10 @@ export default function AllPlants() {
         <FilterPlants />
       </div>
       {/* <PlantCards setPlantId={setPlantId}/> */}
-      <PlantCards setSinglePlant={setSinglePlant}/>
+      {/* setSinglePlant={setSinglePlant} */}
+      <PlantCards />
       <Pagination />
-      <Routes>
-        <Route path="/all-plants/:_id" element={<SinglePlant />} />
-      </Routes>
+      
     </section>
   );
 }

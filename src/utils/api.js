@@ -1,12 +1,12 @@
 import axios from "axios";
 
 const growStuffAPI = axios.create({
-  baseURL: "https://www.growstuff.org/crops.json/",
+  baseURL: "https://www.growstuff.org",
 });
 
 export const getPlants = () => {
   return growStuffAPI
-    .get()
+    .get(`/crops.json`)
     .then(({ data }) => {
       return data;
     })
@@ -17,9 +17,8 @@ export const getPlants = () => {
 
 export const getSinglePlant = (_id) => {
     return growStuffAPI
-      .get(`/all-plants/${_id}`)
+      .get(`/crops/1.json`)
       .then(({ data }) => {
-        console.log(data)
         return data;
       })
       .catch((error) => {

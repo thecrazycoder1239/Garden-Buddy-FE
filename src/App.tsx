@@ -22,6 +22,7 @@ import downloadIcon from "./assets/download.png";
 
 // Icons
 import { BiUserCircle } from "react-icons/bi";
+import SinglePlant from "./components/SinglePlant";
 
 function App() {
   const object: any = {};
@@ -73,6 +74,7 @@ function App() {
                 <AllPlants />
               }
             />
+            <Route path="/all-plants/:_id" element={<SinglePlant />} />
           </Routes>
         </>
       ) : (
