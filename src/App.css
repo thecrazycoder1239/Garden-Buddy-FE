@@ -56,6 +56,10 @@ button.plain-text {
   border-bottom: 2px dotted #333;
 }
 
+button.logout {
+  padding: 5px;
+}
+
 button.form {
   padding: 8px 15px;
   border-radius: 5px;
@@ -114,6 +118,12 @@ header svg {
   font-size: 2rem;
   position: absolute;
   right: 10px;
+  top: 10px;
+}
+
+header button {
+  position: absolute;
+  left: 10px;
   top: 10px;
 }
 

@@ -4,7 +4,7 @@ import lock from "../assets/lock.png";
 // import location from '../assets/location.png';
 import closedeye from "../assets/closed.png";
 import openeye from "../assets/open.png";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../contexts/User";
 import { Navigate, Link } from "react-router-dom";
 
@@ -15,7 +15,7 @@ export default function Login() {
   const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
-  const { user, login } = useContext(UserContext);
+  const { user, login, logout } = useContext(UserContext);
 
   const togglePasswordVisibility = () => {
     if (passwordVisibility === false) {
