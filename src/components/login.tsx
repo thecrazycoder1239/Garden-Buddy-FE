@@ -6,13 +6,15 @@ import closedeye from '../assets/closed.png';
 import openeye from '../assets/open.png';
 import {useContext, useState} from 'react';
 import { UserContext } from '../contexts/User';
+import { Navigate } from 'react-router-dom';
 
 export default function Login () {
 
     const [passwordVisibility, setPasswordVisbility] = useState(false);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [errCode, setErrCode] = useState(0);
+    const [usernameError, setUsernameError] = useState('');
+    const [passwordError, setPasswordError] = useState('');
 
     const { user, login, logout } = useContext(UserContext);
 
@@ -23,7 +25,7 @@ export default function Login () {
     }
 
     if (user) {
-      return <p>Welcome {user.first_name} {user.last_name}</p>
+      return <Navigate to="/all-plants"/>
     }
 
     return (
@@ -32,7 +34,19 @@ export default function Login () {
 
             login({username, password})
               .catch(reason => {
-                setErrCode(reason.response.status)
+                if(password === '') {
+                    setPasswordError("please provide a password")
+                    setUsernameError('')
+                } else if(username === '') {
+                    setUsernameError("please provide a password")
+                    setPasswordError('')
+                } else if(reason.response.status === 403) {
+                    setPasswordError("incorrect password")
+                    setUsernameError('')
+                } else if(reason.response.status === 404) {
+                    setUsernameError("username not found")
+                    setPasswordError('')
+                }
               })
         }}> 
             <div className='image-div'>
@@ -46,7 +60,7 @@ export default function Login () {
                 <input id="username-input" placeholder="e.g. john123" value={username} onChange={
                   (e) => setUsername(e.target.value)
                 }></input>
-                <p>{errCode === 404? 'wrong username' : ''}</p>
+                <p className="login-error-message">{usernameError !== '' ? usernameError : ''}</p>
             </div>
             <div className="input-field">
                 <label className="label" htmlFor="password-input">
@@ -59,7 +73,7 @@ export default function Login () {
                 id="password-input" value={password} onChange={
                   (e) => setPassword(e.target.value)
                 }></input>
-                <p>{errCode === 403 ? 'incorrect password': ''}</p>
+                <p className="login-error-message">{passwordError !== '' ? passwordError : ''}</p>
             </div>
             {/* <div className="input-field">
                 <label className="label" htmlFor="location-input">

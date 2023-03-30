@@ -491,6 +491,14 @@ section.pagination h2 {
   margin-right: auto;
 }
 
+.login-error-message {
+  text-align: left;
+  color: rgb(156, 0, 0);
+  padding-top: 0.5rem;
+  position: relative;
+  margin-left: 40px;
+}
+
 #username-input, 
 #password-input, 
 #location-input, 
@@ -505,7 +513,7 @@ section.pagination h2 {
   margin-top: 0.5rem;
   font-size: 1rem;
   padding: 0.2rem;
-  margin-left: 30px;
+  margin-left: 35px;
   padding-left: 0.7rem;
 }
 
