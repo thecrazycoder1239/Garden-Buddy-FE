@@ -1,3 +1,5 @@
+import AddPlantButton from './AddPlantButton';
+
 export default function PlantCards() {
   return (
     <section className="plant-cards">
@@ -5,6 +7,7 @@ export default function PlantCards() {
         <li className="plant-card">
           <div>
             <h2>Tomatoes</h2>
+            <AddPlantButton />
             <p>Description...</p>
             <p>Other API-sourced data fields...</p>
           </div>

@@ -2,6 +2,7 @@
 /* -------- */
 /* Global */
 /* Buttons */
+/* AddPlants Button */
 /* Checkbox */
 /* Fonts */
 /* Line Break */
@@ -63,6 +64,10 @@ button.form {
   background: #333;
   color: white;
 }
+
+/* AddPlants Button */
+
+
 
 /* Checkbox */
 input[type="checkbox"] {
