@@ -1,15 +1,10 @@
-import CalendarPicker from "./CalendarPicker";
+import SinglePlantCard from "./SinglePlantCard";
 
 // Hooks
-import { useContext, useEffect, useState } from "react";
-import { UserContext } from "../contexts/User";
-import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 // API
-import { getPlants, postPlantToUser } from "../utils/api";
-
-// Icons
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { getPlants } from "../utils/api";
 
 export default function PlantCards() {
   const [isLoadingPlants, setIsLoadingPlants] = useState(false);
@@ -74,6 +69,7 @@ export default function PlantCards() {
                 <img src={plant["thumbnail_url"]} alt='plant'/>
               </li>
             </Link>
+            <SinglePlantCard plant={plant} key={plant["_id"]}/>
             </div>
           );
         })}

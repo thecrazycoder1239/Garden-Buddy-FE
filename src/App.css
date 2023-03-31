@@ -401,7 +401,7 @@ section.plant-cards {
   margin-top: 18px;
 }
 
-ul.plant-cards li.plant-card {
+ul.plant-cards div.plant-card {
   padding: 18px 15px;
   background: #f1f1f1;
   border-radius: 10px;
@@ -411,29 +411,30 @@ ul.plant-cards li.plant-card {
   padding-bottom: 2rem;
 }
 
-ul.plant-cards li.plant-card h2,
-ul.plant-cards li.plant-card p {
+ul.plant-cards div.plant-card h2,
+ul.plant-cards div.plant-card p {
   margin-block-end: 0.6rem;
 }
 
-ul.plant-cards li.plant-card h2 {
+ul.plant-cards div.plant-card h2 {
   text-transform: capitalize;
 }
 
-ul.plant-cards li.plant-card p:last-of-type {
+ul.plant-cards div.plant-card p:last-of-type {
   margin-block-end: 0;
 }
 
-ul.plant-cards li.plant-card div div.votes {
+ul.plant-cards div.plant-card div div.votes {
   margin-top: 4px;
   position: relative;
   top: 18px;
 }
 
-ul.plant-cards li.plant-card img {
+ul.plant-cards div.plant-card img {
   background: white;
   width: 150px;
   height: 130px;
+  border-radius: 8px;
 }
 
 .description-container{
