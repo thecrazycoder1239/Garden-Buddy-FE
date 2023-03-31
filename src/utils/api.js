@@ -15,6 +15,19 @@ export const valididateLogin = ({ username, password }) => {
     });
 };
 
+export const signUp = (username, first_name, last_name, password) => {
+  return gardenBuddy
+    .post("/api/users", {
+      username,
+      first_name,
+      last_name,
+      password,
+    })
+    .then(({ data }) => {
+      return data.user;
+    });
+};
+
 const growStuffAPI = axios.create({
   baseURL: "https://garden-buddy.onrender.com/growstuff",
 });
