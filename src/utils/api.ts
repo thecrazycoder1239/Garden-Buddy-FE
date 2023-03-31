@@ -20,6 +20,20 @@ export const valididateLogin = (userObject ?:{username: string, password: string
   }
 };
 
+
+export const signUp = (username: string, first_name: string, last_name: string, password: string) => {
+  return gardenBuddy
+    .post("/api/users", {
+      username,
+      first_name,
+      last_name,
+      password,
+    })
+    .then(({ data }) => {
+      return data.user;
+    });
+};
+
 const growStuffAPI = axios.create({
   baseURL: "https://garden-buddy.onrender.com/growstuff",
 });

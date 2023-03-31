@@ -555,6 +555,19 @@ section.pagination h2 {
   margin-left: 40px;
 }
 
+.password-instructions {
+  text-align: left;
+  color: rgb(0, 0, 0);
+  padding-top: 0.5rem;
+  position: relative;
+  margin-left: 40px;
+}
+
+.request-waiting-message {
+  text-align: center;
+  padding-top: 1rem;
+}
+
 #username-input, 
 #password-input, 
 #location-input,
