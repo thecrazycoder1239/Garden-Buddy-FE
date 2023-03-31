@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 // Components
-// import Login from "./components-to-add/login";
+import Login from "./components/Login";
 import HeaderInstalled from "./components/HeaderInstalled";
 import Nav from "./components/Nav";
 import MyCalendar from "./components/MyCalendar";
@@ -16,12 +16,14 @@ import AllPlants from "./components/AllPlants";
 
 // Styles
 import "./App.css";
+import SignUp from "./components/SignUp";
 
 // Images
 import downloadIcon from "./assets/download.png";
 
 // Icons
 import { BiUserCircle } from "react-icons/bi";
+import Settings from "./components/Settings";
 
 function App() {
   const object: any = {};
@@ -45,7 +47,6 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Login /> */}
       {/* {hasInstalled && ableToInstall ? ( */}
       {true ? (
         <>
@@ -54,7 +55,7 @@ function App() {
           <Routes>
             <Route path="/" element={<MyCalendar />}>
               <Route
-                path="my-calendar/todays-tasks"
+                path="/my-calendar/todays-tasks"
                 element={<TodaysTasks />}
               />
               <Route
@@ -67,12 +68,10 @@ function App() {
                 element={<EditAndLog />}
               />
             </Route>
-            <Route
-              path="/all-plants"
-              element={
-                <AllPlants />
-              }
-            />
+            <Route path="/log-in" element={<Login />} />
+            <Route path="/all-plants" element={<AllPlants />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/sign-up" element={<SignUp />} />
           </Routes>
         </>
       ) : (

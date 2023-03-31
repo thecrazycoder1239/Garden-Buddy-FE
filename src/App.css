@@ -57,6 +57,10 @@ button.plain-text {
   border-bottom: 2px dotted #333;
 }
 
+button.logout {
+  padding: 5px;
+}
+
 button.form {
   padding: 8px 15px;
   border-radius: 5px;
@@ -115,6 +119,12 @@ header svg {
   font-size: 2rem;
   position: absolute;
   right: 10px;
+  top: 10px;
+}
+
+header button {
+  position: absolute;
+  left: 10px;
   top: 10px;
 }
 
@@ -512,7 +522,7 @@ section.pagination h2 {
   display: block;
   flex-wrap: wrap;
   position: relative;
-  margin-top: 6rem;
+  margin-top: 4rem;
   margin-left: auto;
   margin-right: auto;
 }
@@ -522,6 +532,7 @@ section.pagination h2 {
   flex-direction: column;
   padding: 1rem;
   margin: 1rem;
+  margin-left: 0.5rem;
   border: 0.1rem solid var(--light-teal);
   border-radius: 25px;
   width: 60vw;
@@ -531,9 +542,19 @@ section.pagination h2 {
   margin-right: auto;
 }
 
+.login-error-message {
+  text-align: left;
+  color: rgb(156, 0, 0);
+  padding-top: 0.5rem;
+  position: relative;
+  margin-left: 40px;
+}
+
 #username-input, 
 #password-input, 
-#location-input, 
+#location-input,
+#first-name-input,
+#last-name-input, 
 #settings-username, 
 #settings-first-name, 
 #settings-surname, 
@@ -545,7 +566,7 @@ section.pagination h2 {
   margin-top: 0.5rem;
   font-size: 1rem;
   padding: 0.2rem;
-  margin-left: 30px;
+  margin-left: 35px;
   padding-left: 0.7rem;
 }
 
@@ -595,6 +616,7 @@ section.pagination h2 {
   width: 1.3rem;
   position: absolute;
   top: 3.05rem;
+
 }
 
 .password-eye {
@@ -602,6 +624,14 @@ section.pagination h2 {
   position: absolute;
   top: 3.2rem;
   right: 1.6rem;
+}
+
+.sign-up-text {
+  position: relative;
+  text-align: center;
+  top: 2rem;
+  padding-bottom: 3rem;
+  text-decoration: underline;
 }
 
 .edit-form {
@@ -666,12 +696,6 @@ section.pagination h2 {
 .settings-background {
   width: 100vw;
   height: 100vh;
-}
-
-@media only screen and (min-width: 900px) {
-  .input-field {
-    width: 35vw;
-  }
 }
 
 .toggle-options{
@@ -787,6 +811,18 @@ input:checked + .slider:before {
 
 .invisible {
   display: none !important;
+}
+
+@media only screen and (min-width: 900px) {
+  .input-field{
+    width: 40vw;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .input-field{
+    width: 85vw;
+  }
 }
 
 /* Install Button */
