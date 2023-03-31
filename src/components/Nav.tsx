@@ -22,9 +22,13 @@ export default function Nav() {
         <li>
           <Link to={"/all-plants"}>View All Plants</Link>
         </li>
-        <li>
-          <Link to={"/settings"}>Settings</Link>
-        </li>
+        {user !== null ? (
+          <li>
+            <Link to={"/settings"}>Settings</Link>
+          </li>
+        ) : (
+          <></>
+        )}
       </ul>
     </nav>
   );

@@ -611,14 +611,12 @@ section.pagination h2 {
   display: flex;
   flex-wrap: wrap;
   position: absolute;
-  top: 9.5rem;
+  top: 8.5rem;
   width: 90vw;
   display: block;
   left: 5vw;
-  background-color: #8ebc93;
   border-radius: 20px;
   opacity: 0.95;
-  box-shadow: 15px 15px 2px rgba(0, 0, 0, 0.215);
 }
 
 .edit-form-item {
@@ -627,7 +625,7 @@ section.pagination h2 {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
   padding-bottom: 1.5rem;
-  padding-top: 1.5rem;
+  padding-top: 1rem;
 }
 
 .edit-btn {
@@ -638,7 +636,7 @@ section.pagination h2 {
   position: relative;
   right: 0.75rem;
   border: 0.1rem solid grey;
-  border-radius: 0px 20px 20px 0px;
+  border-radius: 0px 5px 5px 0px;
   background-color: rgb(238, 238, 238);
 }
 
@@ -658,7 +656,7 @@ section.pagination h2 {
 #edit-profileurl {
   grid: 1 / 2 / 1 / 2;
   border: 1px solid var(--light-teal);
-  border-radius: 20px;
+  border-radius: 5px;
   display: block;
   padding: 0.2rem;
   padding-left: 0.7rem;
@@ -676,8 +674,7 @@ section.pagination h2 {
   flex-direction: column;
   flex-wrap: wrap;
   position: absolute;
-  top: 35rem;
-  background-color: #8ebc93;
+  top: 29rem;
   border-radius: 20px;
   padding: 0.6rem;
   width: 60vw;
@@ -692,8 +689,9 @@ section.pagination h2 {
 
 .label-text {
   position: relative;
-  top: 1.6rem;
+  top: 1.3rem;
   left: 4rem;
+  font-size: 1rem;
 }
 
 .toggle-label{
@@ -765,19 +763,30 @@ input:checked + .slider:before {
 
 .review-app-button {
   box-sizing: border-box;
-  background-color: #8ebc93;
   border: 0.1rem solid black;
   border-radius: 20px;
   position: absolute;
-  top: 47rem;
+  top: 41rem;
+  background-color: #93c499;
   padding: 1.5rem;
   font-size: 1.2rem;
-  width: 20rem;
-  left: calc(50% - 10rem)
+  width: 15rem;
+  left: calc(50% - 7.5rem)
 }
 
 .review-app-button:hover {
   scale: 1.1;
+}
+
+.settings-not-found-message {
+  position: relative;
+  text-align: center;
+  top: 10rem;
+  font-size: 1.2rem;
+  width: 60vw;
+  left: calc(50% - 30vw);
+  padding: 0.5rem;
+  border: 0.1rem solid black;
 }
 
 /* Toggle Visibility */
