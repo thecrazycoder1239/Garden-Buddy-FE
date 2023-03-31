@@ -20,6 +20,7 @@
 /* Add Tasks */
 /* Edit and Log - remove button and more info button */
 /* View All Plants */
+/* AddPlants Button */
 /* Search For a Plant */
 /* Sort Plants */
 /* Filter Plants */
@@ -407,6 +408,7 @@ ul.plant-cards li.plant-card {
   margin-bottom: 12px;
   display: flex;
   justify-content: space-between;
+  padding-bottom: 2rem;
 }
 
 ul.plant-cards li.plant-card h2,
@@ -424,12 +426,26 @@ ul.plant-cards li.plant-card p:last-of-type {
 
 ul.plant-cards li.plant-card div div.votes {
   margin-top: 4px;
+  position: relative;
+  top: 18px;
 }
 
 ul.plant-cards li.plant-card img {
   background: white;
   width: 150px;
   height: 130px;
+}
+
+.description-container{
+  height: 20px;
+  width: 60vw;
+}
+
+.plant-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
 }
 
 /* Pagination */
@@ -441,6 +457,35 @@ section.pagination {
 section.pagination h2 {
   border: 1px solid #333;
   padding: 5px 10px 8px;
+}
+
+/* AddPlants Button */
+
+.single-plant-container{
+  position: relative;
+}
+
+.date-selector{
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.5rem;
+}
+
+.add-plant-button{
+  position: absolute;
+  bottom: 0.5rem;
+  left: 10rem;
+  border: 1px solid #604f4f;
+  background: rgb(197, 197, 197);
+  border-radius: 15px;
+  cursor: pointer;
+  height: 2rem;
+  width: 3rem;
+}
+
+.add-plant-button:hover{
+  background-color:  rgb(125, 125, 125);
+  scale: 1.05;
 }
 
 /* Install Button */
