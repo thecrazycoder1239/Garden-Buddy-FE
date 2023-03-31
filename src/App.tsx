@@ -13,6 +13,7 @@ import EditAndLog from "./components/EditAndLog";
 import UpcomingTasks from "./components/UpcomingTasks";
 import MyPlants from "./components/MyPlants";
 import AllPlants from "./components/AllPlants";
+import SinglePlant from "./components/SinglePlant";
 
 // Styles
 import "./App.css";
@@ -23,7 +24,6 @@ import downloadIcon from "./assets/download.png";
 
 // Icons
 import { BiUserCircle } from "react-icons/bi";
-import SinglePlant from "./components/SinglePlant";
 import Settings from "./components/Settings";
 
 function App() {
