@@ -13,6 +13,7 @@ import EditAndLog from "./components/EditAndLog";
 import UpcomingTasks from "./components/UpcomingTasks";
 import MyPlants from "./components/MyPlants";
 import AllPlants from "./components/AllPlants";
+import SinglePlant from "./components/SinglePlant";
 
 // Styles
 import "./App.css";
@@ -68,6 +69,7 @@ function App() {
                 element={<EditAndLog />}
               />
             </Route>
+            <Route path="/all-plants/:_id" element={<SinglePlant />} />
             <Route path="/log-in" element={<Login />} />
             <Route path="/all-plants" element={<AllPlants />} />
             <Route path="/settings" element={<Settings />} />
