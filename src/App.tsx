@@ -56,7 +56,7 @@ function App() {
           <Routes>
             <Route path="/" element={<MyCalendar />}>
               <Route
-                path="my-calendar/todays-tasks"
+                path="/my-calendar/todays-tasks"
                 element={<TodaysTasks />}
               />
               <Route
