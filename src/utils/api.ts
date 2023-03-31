@@ -48,7 +48,7 @@ export const getSinglePlant = (_id: string) => {
 
 export const postPlantToUser = (user: User, plant_id: string, planted_date: Date) : Promise<UsersPlant> => {
   return gardenBuddy
-    .post(`/api/users/${user.username}/plants`, {password: user.password, plant_id: plant_id, planted_date: planted_date.toString()})
+    .post(`/api/users/${user.username}/plants`, {password: user.password, plant_id: plant_id, planted_date: planted_date.toISOString()})
     .then(({ data }) => {
       return data.plant;
     })

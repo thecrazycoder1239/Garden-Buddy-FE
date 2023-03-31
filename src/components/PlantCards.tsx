@@ -22,6 +22,7 @@ export default function PlantCards() {
     e.preventDefault();
     if (user) {
       postPlantToUser(user, e.target.value, date)
+      .then(console.log);
     }
     
     return({msg: 'added'})
