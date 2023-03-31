@@ -20,19 +20,19 @@ export default function PostComment() {
 };
 
   return (
-    <form className="post-comment" onSubmit={handleSubmit}>
-      <label htmlFor="post-comment-textarea">Post a comment</label>
-      <input
-        id="post-comment-textarea"
-        type="textarea"
-        value={commentInProgress}
-        onChange={handleChange}
-      ></input>
-      <button 
-        type="submit" 
-        >
-        Post
-      </button>
-    </form>
+    <>
+      <form className="post-comment" onSubmit={handleSubmit}>
+        <label htmlFor="post-comment-textarea">Add your comment</label>
+        <input
+          id="post-comment-textarea"
+          type="textarea"
+          value={commentInProgress}
+          onChange={handleChange}
+        ></input>
+        <button className="form" type="submit">
+          Post
+        </button>
+      </form>
+    </>
   );
 }

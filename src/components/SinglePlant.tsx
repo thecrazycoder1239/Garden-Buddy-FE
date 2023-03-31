@@ -32,7 +32,14 @@ export default function SinglePlant() {
           <h2>{singlePlant["name"]}</h2>
           <img src={singlePlant["openfarm_data"]["attributes"]["main_image_path"]} alt="plant image" />
           <p>{singlePlant["openfarm_data"]["attributes"]["description"]}</p>
-          <p>...other values from api '/crops/:id'</p>
+          <ul className="data-table">
+            <li><b>Sun requirements:</b> {singlePlant["openfarm_data"]["attributes"]["sun_requirements"]}</li>
+            <li><b>Sowing method:</b> {singlePlant["openfarm_data"]["attributes"]["sowing_method"]}</li>
+            <li><b>Height:</b> {singlePlant["openfarm_data"]["attributes"]["height"]}cm</li>
+            <li><b>Spread:</b> {singlePlant["openfarm_data"]["attributes"]["spread"]}cm</li>
+          </ul>
+          <button className="full-width">Add this plant to your calendar</button>
+          <div className="line-break"></div>
           <Comments />
         </>
       )}
