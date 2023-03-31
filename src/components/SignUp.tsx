@@ -23,6 +23,7 @@ export default function SignUp () {
     const [lastNameErr, setLastNameErr] = useState('');
     const [passwordErr, setPasswordErr] = useState('');
     const [passwordDefault, setPasswordDefault] = useState(true);
+    const [SendingRequest, setSendingRequest] = useState(false);
 
     const togglePasswordVisibility = () => {
         if (passwordVisibility === false ) {
@@ -100,12 +101,15 @@ export default function SignUp () {
             }
 
             if(goodRequest === true) {
+                setSendingRequest(true);
                 signUp(username, firstName, lastName, password).then(response => {
                     login({username, password})
+                    setSendingRequest(false);
                 }).catch(reason => {
                     if(reason.response.status === 409) {
                         setUsernameErr('username already exists')
                     }
+                    setSendingRequest(false)
                 })
             }
         }}> 
@@ -149,6 +153,7 @@ export default function SignUp () {
                 <input value={location} onChange={(e) => {setLocation(e.target.value)}} id="location-input"></input>
             </div> */}
                 <button className='submit-button' type="submit">Sign up</button>
+                <p className='request-waiting-message'>{SendingRequest ? "attempting to login, apologies for the wait!": ""}</p>
                 <Link to="/log-in">
                 <p className='sign-up-text'>Log in</p>
                 </Link>
