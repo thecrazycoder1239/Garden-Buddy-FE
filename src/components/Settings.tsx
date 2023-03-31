@@ -10,7 +10,16 @@ export default function Settings() {
   const [firstNameFormEdit, setFirstNameFormEdit] = useState(false);
   const [surnameFormEdit, setSurnameFormEdit] = useState(false);
   const [passwordFormEdit, setPasswordFormEdit] = useState(false);
+  const [currentPassword, setCurrentPassword] = useState('');
+  const [currentUsername, setCurrentUsername] = useState('');
+  const [currentFirstName, setCurrentFirstName] = useState('');
+  const [currentLastName, setCurrentLastName] = useState('');
+  const [passwordErr, setPasswordErr] = useState('');
+  const [lastNameErr, setLastNameErr] = useState('');
+  const [firstNameErr, setFirstNameErr] = useState('');
+  const [usernameErr, setUsernameErr] = useState('');
   // const [profileUrlFormEdit, setProfileUrlFormEdit] = useState(false);
+
 
   if(user) {
     return (
@@ -19,9 +28,28 @@ export default function Settings() {
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              if (usernameFormEdit) {
+
+              let goodUsername = true;
+              if(currentUsername === '') {
+                setUsernameErr('please input a username')
+                goodUsername = false;
+            } else if(currentUsername.length > 30) {
+                setUsernameErr('max 30 characters')
+                goodUsername = false;
+            } else if(currentUsername.match(/\s/g)) {
+                setUsernameErr("please replace spaces with '_' or '-'")
+                goodUsername= false;
+            } else {
+                setUsernameErr('')
+            }
+
+              if(goodUsername === true) {
+                console.log('username ready to patch')
                 // patch request
                 // rerender the page again, so the placeholders are updated
+              }
+
+              if (usernameFormEdit) {
                 setUsernameFormEdit(false);
               } else {
                 setUsernameFormEdit(true);
@@ -37,18 +65,46 @@ export default function Settings() {
               id="edit-username"
               placeholder={`${user.username}`}
               disabled={!usernameFormEdit ? true : false}
+              onChange={(e) => {
+                setCurrentUsername(e.target.value)
+              }}  
+              value={currentUsername}
             />
             <button className="edit-btn" type="submit">
               {usernameFormEdit ? "submit" : "edit"}
             </button>
+            {usernameFormEdit ? <button onClick={(e) => {
+              setCurrentUsername('')
+              setUsernameFormEdit(false)
+            }} className="edit-btn-cancel">cancel</button> : <></>}
+            <p className="login-error-message">{usernameErr === '' ? '' : usernameErr}</p>
           </form>
   
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              if (firstNameFormEdit) {
-                // patch request
+
+              let goodFirstName = true;
+            if(currentFirstName === '') {
+                setFirstNameErr('please input a first name')
+                goodFirstName = false;
+            } else if (!currentFirstName.match(/^[A-Z]/g)) {
+                setFirstNameErr('please capitalise the first letter of your name')
+                goodFirstName = false;
+            } else if (currentFirstName.length > 30) {
+                setFirstNameErr('max 30 characters')
+                goodFirstName = false;
+            } else {
+                setFirstNameErr('')
+            }
+
+            if(goodFirstName === true) {
+              console.log('ready for first name patch request')
+              // patch request
                 // rerender the page again, so the placeholders are updated
+            }
+
+              if (firstNameFormEdit) {
                 setFirstNameFormEdit(false);
               } else {
                 setFirstNameFormEdit(true);
@@ -64,18 +120,46 @@ export default function Settings() {
               id="edit-firstname"
               placeholder={`${user.first_name}`}
               disabled={!firstNameFormEdit ? true : false}
+              value={currentFirstName}
+              onChange={(e) => {
+                setCurrentFirstName(e.target.value)
+              }}  
             />
             <button className="edit-btn" type="submit">
               {firstNameFormEdit ? "submit" : "edit"}
             </button>
+            {firstNameFormEdit ? <button onClick={(e) => {
+              setCurrentFirstName('')
+              setFirstNameFormEdit(false)
+            }} className="edit-btn-cancel">cancel</button> : <></>}
+            <p className="login-error-message">{firstNameErr === '' ? '' : firstNameErr}</p>
           </form>
   
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              if (surnameFormEdit) {
+
+              let goodLastName = true
+              if(currentLastName === '') {
+                setLastNameErr('please input a last name')
+                goodLastName = false;
+            } else if (!currentLastName.match(/^[A-Z]/g)) {
+                setLastNameErr('please capitalise the first letter of your name')
+                goodLastName = false;
+            } else if(currentLastName.length > 50) {
+                setLastNameErr('max 50 characters')
+                goodLastName = false;
+            } else {
+                setLastNameErr('')
+            }    
+
+              if(goodLastName === true) {
+                console.log('last name ready for patch')
                 // patch request
                 // rerender the page again, so the placeholders are updated
+              }
+
+              if (surnameFormEdit) {
                 setSurnameFormEdit(false);
               } else {
                 setSurnameFormEdit(true);
@@ -91,23 +175,55 @@ export default function Settings() {
               id="edit-surname"
               placeholder={`${user.last_name}`}
               disabled={!surnameFormEdit ? true : false}
+              onChange={(e) => {
+                setCurrentLastName(e.target.value)
+              }}  
+              value={currentLastName}
             />
             <button className="edit-btn" type="submit">
               {surnameFormEdit ? "submit" : "edit"}
             </button>
+            {surnameFormEdit ? <button onClick={(e) => {
+              setCurrentLastName('')
+              setSurnameFormEdit(false)
+            }} className="edit-btn-cancel">cancel</button> : <></>}
+            <p className="login-error-message">{lastNameErr === '' ? '' : lastNameErr}</p>
           </form>
   
           <form
             onSubmit={(e) => {
               e.preventDefault();
+
+              let goodPassword = true;
               if (passwordFormEdit) {
+                if(currentPassword === '') {
+                  setPasswordErr('please input a password')
+                  goodPassword = false;
+              } else if(currentPassword.length < 8) {
+                  setPasswordErr('minimum 8 characters')
+                  goodPassword = false;
+              } else if(!currentPassword.match(/[0-9]/g)) {
+                  setPasswordErr('please include a number')
+                  goodPassword = false;
+              } else if(!currentPassword.match(/[A-Z]/g)) {
+                  setPasswordErr('please include a capital letter')
+                  goodPassword = false;
+              } else {
+                  setPasswordErr('')
+              }
+
+              if(goodPassword === true) {
+                console.log('ready for patch')
                 // patch request
                 // rerender the page again, so the placeholders are updated
+              }
+
+              if(passwordFormEdit) { 
                 setPasswordFormEdit(false);
               } else {
                 setPasswordFormEdit(true);
               }
-            }}
+            }}}
             className="edit-form-item"
           >
             <label className="edit-label" htmlFor="edit-password">
@@ -118,11 +234,19 @@ export default function Settings() {
               id="edit-password"
               placeholder={`${user.password}`}
               disabled={!passwordFormEdit ? true : false}
+              value={currentPassword}
+              onChange={(e) => {
+                setCurrentPassword(e.target.value)
+              }}  
             />
             <button className="edit-btn" type="submit">
               {passwordFormEdit ? "submit" : "edit"}
             </button>
-            {/* {passwordFormEdit ? <button className="">cancel edit</button> : <></>} */}
+            {passwordFormEdit ? <button onClick={(e) => {
+              setCurrentPassword('')
+              setPasswordFormEdit(false)
+            }} className="edit-btn-cancel">cancel</button> : <></>}
+            <p className="login-error-message">{passwordErr === '' ? '' : passwordErr}</p>
           </form>
   
           {/* <form
