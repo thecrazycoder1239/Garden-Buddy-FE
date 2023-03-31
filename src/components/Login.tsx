@@ -4,7 +4,7 @@ import lock from "../assets/lock.png";
 // import location from '../assets/location.png';
 import closedeye from "../assets/closed.png";
 import openeye from "../assets/open.png";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../contexts/User";
 import { Navigate, Link } from "react-router-dom";
 
@@ -14,8 +14,9 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [SendingRequest, setSendingRequest] = useState(false);
 
-  const { user, login, logout } = useContext(UserContext);
+  const { user, login} = useContext(UserContext);
 
   const togglePasswordVisibility = () => {
     if (passwordVisibility === false) {
@@ -32,8 +33,8 @@ export default function Login() {
       className="form"
       onSubmit={(e) => {
         e.preventDefault();
-
-        login({ username, password }).catch((reason) => {
+        setSendingRequest(true)
+        login({ username, password }).then(() => {setSendingRequest(false)}).catch((reason) => {
           if (password === "") {
             setPasswordError("please provide a password");
             setUsernameError("");
@@ -98,6 +99,7 @@ export default function Login() {
       <button className="submit-button" type="submit">
         Log in
       </button>
+      <p className='request-waiting-message'>{SendingRequest ? "attempting to log you in, apologies for the wait!": ""}</p>
       <Link to="/sign-up">
         <p className="sign-up-text">Sign Up</p>
       </Link>
