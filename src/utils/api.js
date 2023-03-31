@@ -1,12 +1,56 @@
+// import axios from "axios";
+
+// const growStuffAPI = axios.create({
+//   baseURL: "https://www.growstuff.org",
+// });
+
+// export const getPlants = () => {
+//   return growStuffAPI
+//     .get(`/crops.json`)
+//     .then(({ data }) => {
+//       return data;
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//     });
+// };
+
+// export const getSinglePlant = (_id) => {
+//   return growStuffAPI
+//     .get(`/crops/${_id}.json`)
+//     .then(({ data }) => {
+//       console.log(data, 'heree')
+//       return data;
+//     })
+//     .catch((error) => {
+//       console.log(error);
+//     });
+// };
+
 import axios from "axios";
 
+const gardenBuddy = axios.create({
+  baseURL: "https://garden-buddy.onrender.com",
+});
+
+export const valididateLogin = ({ username, password }) => {
+  return gardenBuddy
+    .post("/login", {
+      username,
+      password,
+    })
+    .then(({ data }) => {
+      return data.user;
+    });
+};
+
 const growStuffAPI = axios.create({
-  baseURL: "https://www.growstuff.org",
+  baseURL: "https://garden-buddy.onrender.com/growstuff",
 });
 
 export const getPlants = () => {
   return growStuffAPI
-    .get(`/crops.json`)
+    .get(`/crops`)
     .then(({ data }) => {
       return data;
     })
@@ -17,9 +61,9 @@ export const getPlants = () => {
 
 export const getSinglePlant = (_id) => {
   return growStuffAPI
-    .get(`/crops/${_id}.json`)
+    .get(`/crops/${_id}`)
     .then(({ data }) => {
-      console.log(data, 'heree')
+      console.log(data);
       return data;
     })
     .catch((error) => {
