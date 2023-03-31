@@ -14,13 +14,14 @@ export default function SinglePlant() {
   const [singlePlant, setSinglePlant] = useState<GrowStuffCrop | null>(null);
 
   useEffect(() => {
-    getSinglePlant(_id).then((data) => {
-      setIsLoadingSinglePlant(true);
-      setSinglePlant(data);
-      setIsLoadingSinglePlant(false);
-    });
-  }, []);
-
+    if (_id) {
+      getSinglePlant(_id).then((data) => {
+        setIsLoadingSinglePlant(true);
+        setSinglePlant(data);
+        setIsLoadingSinglePlant(false);
+      });
+    }
+  });
   return isLoadingSinglePlant ? (
     <h1>Plant Incoming...</h1>
   ) : (
