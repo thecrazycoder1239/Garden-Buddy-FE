@@ -1,13 +1,6 @@
 import { createContext, useState } from "react";
 import { valididateLogin } from "../utils/api";
 
-interface User {
-  username: string;
-  password: string;
-  first_name: string;
-  last_name: string;
-}
-
 interface UserContextType {
   user: User | null;
   login: ({

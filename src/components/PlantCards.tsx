@@ -1,11 +1,12 @@
-import AddPlantButton from "./AddPlantButton";
+import CalendarPicker from "./CalendarPicker";
 
 // Hooks
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { UserContext } from "../contexts/User";
 import { Link, useParams } from "react-router-dom";
 
 // API
-import { getPlants } from "../utils/api";
+import { getPlants, postPlantToUser } from "../utils/api";
 
 // Icons
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
@@ -15,9 +16,15 @@ export default function PlantCards() {
   const [plants, setPlants] = useState([]);
   const [date, setDate] = useState(new Date());
 
+  const {user} = useContext(UserContext);
+  
   const handleClick = (e: any) => {
     e.preventDefault();
-    console.log("plant id:", e.target.value, "chosen date:", date)
+    if (user) {
+      postPlantToUser(user, e.target.value, date)
+    }
+    
+    return({msg: 'added'})
   }
 
   useEffect(() => {
@@ -42,10 +49,12 @@ export default function PlantCards() {
         {plants.map((plant) => {
           return (
             <div className='single-plant-container'>
-              <AddPlantButton date={date} setDate={setDate}/>
+              <CalendarPicker date={date} setDate={setDate}/>
               <Link to={`/all-plants/${plant["_id"]}`}>
               <li className="plant-card" key={plant["_id"]}>
-              <button className="add-plant-button" onClick={handleClick} value={plant["_id"]}>Plant!</button>
+                {user? 
+              <button className="add-plant-button" onClick={handleClick} value={plant["_id"]}>Plant!</button> 
+                : <p className="add-plant-button-no-user-message">Sign in to add plant</p>}
               {/* <li onClick={() => setSinglePlant(plant["_id"])} className="plant-card" key={plant["_id"]}> */}
                 <div>
                   <h2>{plant["name"]}</h2>

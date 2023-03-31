@@ -1,17 +1,16 @@
 import React, {useState} from "react";
 import useParams from 'react-router-dom';
 import DatePicker from "react-datepicker";
-/* might need to install PropTypes */
 
-/* file source? or package from install */
+
 import "react-datepicker/dist/react-datepicker.css";
 
-interface AddPlantButtonProps {
+interface CalendarPickerProps {
     date: Date;
     setDate: React.Dispatch<React.SetStateAction<Date>>;
 }
 
-export default function AddPlantButton(props: AddPlantButtonProps){
+export default function CalendarPicker(props: CalendarPickerProps){
 
     const {date, setDate} = props;
 

@@ -483,6 +483,11 @@ section.pagination h2 {
   width: 3rem;
 }
 
+.add-plant-button:hover{
+  background-color:  rgb(125, 125, 125);
+  scale: 1.05;
+}
+
 /* Install Button */
 .install-btn {
   color: black;
