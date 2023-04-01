@@ -21,7 +21,7 @@ export default function SinglePlant() {
         setIsLoadingSinglePlant(false);
       });
     }
-  });
+  }, [_id]);
   return isLoadingSinglePlant ? (
     <h1>Plant Incoming...</h1>
   ) : (
