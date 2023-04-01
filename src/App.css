@@ -820,6 +820,33 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
+.user-btn-container {
+  position: relative;
+  top: 19rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.settings-logout-btn {
+  background-color: #93c499;
+  font-size: 1rem;
+  padding: 0.5rem;
+  width: 8rem;
+  height: 2.5rem;
+  border: 0.1rem solid black;
+  border-radius: 10px;
+}
+
+.settings-delete-account-btn {
+  background-color: #93c499;
+  font-size: 1rem;
+  padding: 0.5rem;
+  width: 8rem;
+  height: 2.5rem;
+  border: 0.1rem solid black;
+  border-radius: 10px;
+}
+
 .review-app-button {
   box-sizing: border-box;
   border: 0.1rem solid black;
@@ -830,10 +857,12 @@ input:checked + .slider:before {
   padding: 1.5rem;
   font-size: 1.2rem;
   width: 15rem;
-  left: calc(50% - 7.5rem)
+  left: calc(50% - 7.5rem);
 }
 
-.review-app-button:hover {
+.review-app-button:hover,
+.settings-delete-account-btn:hover,
+.settings-logout-btn:hover  {
   scale: 1.1;
 }
 

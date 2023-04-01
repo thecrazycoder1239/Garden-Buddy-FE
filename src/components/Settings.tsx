@@ -33,7 +33,7 @@ export default function Settings() {
               if(currentUsername === '') {
                 setUsernameErr('please input a username')
                 goodUsername = false;
-            } else if(currentUsername.length > 30) {
+              } else if(currentUsername.length > 30) {
                 setUsernameErr('max 30 characters')
                 goodUsername = false;
             } else if(currentUsername.match(/\s/g)) {
@@ -47,12 +47,6 @@ export default function Settings() {
                 console.log('username ready to patch')
                 // patch request
                 // rerender the page again, so the placeholders are updated
-              }
-
-              if (usernameFormEdit) {
-                setUsernameFormEdit(false);
-              } else {
-                setUsernameFormEdit(true);
               }
             }}
             className="edit-form-item"
@@ -70,13 +64,18 @@ export default function Settings() {
               }}  
               value={currentUsername}
             />
-            <button className="edit-btn" type="submit">
-              {usernameFormEdit ? "submit" : "edit"}
-            </button>
             {usernameFormEdit ? <button onClick={(e) => {
               setCurrentUsername('')
               setUsernameFormEdit(false)
-            }} className="edit-btn-cancel">cancel</button> : <></>}
+              setUsernameErr('')
+            }} className="edit-btn-cancel" type="button">cancel</button> : <button className="edit-btn" type="button" onClick={() => {
+              if (usernameFormEdit) {
+                setUsernameFormEdit(false);
+              } else {
+                setUsernameFormEdit(true);
+              }
+            }}>edit</button>}
+            {usernameFormEdit ? <button className="edit-btn" type="submit">submit</button> : <></>}
           </form>
           <p className="login-error-message">{usernameErr === '' ? '' : usernameErr}</p>
   
@@ -85,7 +84,7 @@ export default function Settings() {
               e.preventDefault();
 
               let goodFirstName = true;
-            if(currentFirstName === '') {
+              if(currentFirstName === '') {
                 setFirstNameErr('please input a first name')
                 goodFirstName = false;
             } else if (!currentFirstName.match(/^[A-Z]/g)) {
@@ -103,12 +102,6 @@ export default function Settings() {
               // patch request
                 // rerender the page again, so the placeholders are updated
             }
-
-              if (firstNameFormEdit) {
-                setFirstNameFormEdit(false);
-              } else {
-                setFirstNameFormEdit(true);
-              }
             }}
             className="edit-form-item"
           >
@@ -125,13 +118,18 @@ export default function Settings() {
                 setCurrentFirstName(e.target.value)
               }}  
             />
-            <button className="edit-btn" type="submit">
-              {firstNameFormEdit ? "submit" : "edit"}
-            </button>
             {firstNameFormEdit ? <button onClick={(e) => {
               setCurrentFirstName('')
               setFirstNameFormEdit(false)
-            }} className="edit-btn-cancel">cancel</button> : <></>}
+              setFirstNameErr('')
+            }} className="edit-btn-cancel" type="button">cancel</button> : <button className="edit-btn" type="button" onClick={() => {
+              if(firstNameFormEdit) { 
+                setFirstNameFormEdit(false);
+              } else {
+                setFirstNameFormEdit(true);
+              }
+            }}>edit</button>}
+            {firstNameFormEdit ? <button className="edit-btn" type="submit">submit</button> : <></>}
           </form>
           <p className="login-error-message">{firstNameErr === '' ? '' : firstNameErr}</p>
   
@@ -158,12 +156,6 @@ export default function Settings() {
                 // patch request
                 // rerender the page again, so the placeholders are updated
               }
-
-              if (surnameFormEdit) {
-                setSurnameFormEdit(false);
-              } else {
-                setSurnameFormEdit(true);
-              }
             }}
             className="edit-form-item"
           >
@@ -180,13 +172,18 @@ export default function Settings() {
               }}  
               value={currentLastName}
             />
-            <button className="edit-btn" type="submit">
-              {surnameFormEdit ? "submit" : "edit"}
-            </button>
             {surnameFormEdit ? <button onClick={(e) => {
               setCurrentLastName('')
               setSurnameFormEdit(false)
-            }} className="edit-btn-cancel">cancel</button> : <></>}
+              setLastNameErr('')
+            }} className="edit-btn-cancel" type="button">cancel</button> : <button className="edit-btn" type="button" onClick={() => {
+              if(surnameFormEdit) { 
+                setSurnameFormEdit(false);
+              } else {
+                setSurnameFormEdit(true);
+              }
+            }}>edit</button>}
+            {surnameFormEdit ? <button className="edit-btn" type="submit">submit</button>  : <></>}
           </form>
           <p className="login-error-message">{lastNameErr === '' ? '' : lastNameErr}</p>
   
@@ -195,8 +192,7 @@ export default function Settings() {
               e.preventDefault();
 
               let goodPassword = true;
-              if (passwordFormEdit) {
-                if(currentPassword === '') {
+              if(currentPassword === '') {
                   setPasswordErr('please input a password')
                   goodPassword = false;
               } else if(currentPassword.length < 8) {
@@ -218,12 +214,7 @@ export default function Settings() {
                 // rerender the page again, so the placeholders are updated
               }
 
-              if(passwordFormEdit) { 
-                setPasswordFormEdit(false);
-              } else {
-                setPasswordFormEdit(true);
-              }
-            }}}
+            }}
             className="edit-form-item"
           >
             <label className="edit-label" htmlFor="edit-password">
@@ -239,13 +230,17 @@ export default function Settings() {
                 setCurrentPassword(e.target.value)
               }}  
             />
-            <button className="edit-btn" type="submit">
-              {passwordFormEdit ? "submit" : "edit"}
-            </button>
             {passwordFormEdit ? <button onClick={(e) => {
               setCurrentPassword('')
               setPasswordFormEdit(false)
-            }} className="edit-btn-cancel">cancel</button> : <></>}
+              setPasswordErr('')
+            }} className="edit-btn-cancel" type="button">cancel</button> : <button className="edit-btn" type="button" onClick={() => {
+              if(passwordFormEdit) { 
+                setPasswordFormEdit(false);
+              }
+                setPasswordFormEdit(true);
+            }}>edit</button>}
+            {passwordFormEdit ? <button className="edit-btn" type="submit">submit</button> : <></>}
           </form>
           <p className="login-error-message">{passwordErr === '' ? '' : passwordErr}</p>
   
@@ -302,6 +297,11 @@ export default function Settings() {
               <span className="slider"></span>
             </label>
           </div>
+        </section>
+
+        <section className="user-btn-container">
+          <button className="settings-logout-btn">Log out</button>
+          <button className="settings-delete-account-btn">Delete account</button>
         </section>
   
         <button className="review-app-button">
