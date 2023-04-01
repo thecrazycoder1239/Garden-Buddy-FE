@@ -77,8 +77,8 @@ export default function Settings() {
               setCurrentUsername('')
               setUsernameFormEdit(false)
             }} className="edit-btn-cancel">cancel</button> : <></>}
-            <p className="login-error-message">{usernameErr === '' ? '' : usernameErr}</p>
           </form>
+          <p className="login-error-message">{usernameErr === '' ? '' : usernameErr}</p>
   
           <form
             onSubmit={(e) => {
@@ -132,8 +132,8 @@ export default function Settings() {
               setCurrentFirstName('')
               setFirstNameFormEdit(false)
             }} className="edit-btn-cancel">cancel</button> : <></>}
-            <p className="login-error-message">{firstNameErr === '' ? '' : firstNameErr}</p>
           </form>
+          <p className="login-error-message">{firstNameErr === '' ? '' : firstNameErr}</p>
   
           <form
             onSubmit={(e) => {
@@ -187,8 +187,8 @@ export default function Settings() {
               setCurrentLastName('')
               setSurnameFormEdit(false)
             }} className="edit-btn-cancel">cancel</button> : <></>}
-            <p className="login-error-message">{lastNameErr === '' ? '' : lastNameErr}</p>
           </form>
+          <p className="login-error-message">{lastNameErr === '' ? '' : lastNameErr}</p>
   
           <form
             onSubmit={(e) => {
@@ -246,8 +246,8 @@ export default function Settings() {
               setCurrentPassword('')
               setPasswordFormEdit(false)
             }} className="edit-btn-cancel">cancel</button> : <></>}
-            <p className="login-error-message">{passwordErr === '' ? '' : passwordErr}</p>
           </form>
+          <p className="login-error-message">{passwordErr === '' ? '' : passwordErr}</p>
   
           {/* <form
             onSubmit={(e) => {
