@@ -25,6 +25,7 @@ import downloadIcon from "./assets/download.png";
 // Icons
 import { BiUserCircle } from "react-icons/bi";
 import Settings from "./components/Settings";
+import NetworkStatus from "./components/NetworkStatus";
 
 function App() {
   const object: any = {};
@@ -57,6 +58,7 @@ function App() {
           {!hasLoadedOnce ? <Navigate to="/log-in" /> : <></>}
           <HeaderInstalled />
           <Nav />
+          <NetworkStatus />
           <Routes>
             <Route path="/" element={<MyCalendar />}>
               <Route
