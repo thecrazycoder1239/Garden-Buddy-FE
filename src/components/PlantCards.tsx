@@ -1,19 +1,22 @@
+// Components
 import SinglePlantCard from "./SinglePlantCard";
 
 // Hooks
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 // API
 import { getPlants } from "../utils/api";
 
 export default function PlantCards() {
+  const [searchParams] = useSearchParams();
   const [isLoadingPlants, setIsLoadingPlants] = useState(false);
   const [plants, setPlants] = useState<GrowStuffCrop[]>([]);
   const [date, setDate] = useState(new Date());
 
   useEffect(() => {
     setIsLoadingPlants(true);
-    getPlants()
+    getPlants(searchParams.get('search'))
       .then((data) => {
         setPlants(data);
       })
@@ -23,7 +26,9 @@ export default function PlantCards() {
       .finally(() => {
         setIsLoadingPlants(false);
       });
-  }, []);
+  }, [searchParams]);
+
+  console.log(searchParams, 'here')
 
   return isLoadingPlants ? (
     <h1>Plants incoming...</h1>
