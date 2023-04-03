@@ -106,3 +106,14 @@ export const postPlantToUser = (user: User, plant_id: string, planted_date: Date
       console.error(error);
     });
 };
+
+export const patchUserInfo = (user: User, first_name: string, last_name: string) => {
+  return gardenBuddy
+    .post(`/api/users/${user.username}`, {password: user.password, first_name, last_name})
+    .then(({ data }) => {
+      return data.plant;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
