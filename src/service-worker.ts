@@ -14,6 +14,8 @@ import { precacheAndRoute, createHandlerBoundToURL } from 'workbox-precaching';
 import { registerRoute } from 'workbox-routing';
 import { StaleWhileRevalidate } from 'workbox-strategies';
 
+import gardenBuddyIcon from './assets/plant-icon2.png'
+
 declare const self: ServiceWorkerGlobalScope;
 
 clientsClaim();
@@ -78,3 +80,12 @@ self.addEventListener('message', (event) => {
 });
 
 // Any other custom service worker logic can go here.
+self.addEventListener('push', (event) => {
+  if (event.data) {
+    const { title, options } = event.data.json();
+
+    options.icon = gardenBuddyIcon
+
+    self.registration.showNotification(title, options);
+  }
+})

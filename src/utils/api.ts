@@ -34,6 +34,22 @@ export const signUp = (username: string, first_name: string, last_name: string, 
     });
 };
 
+export const addSubscription = (user: User, pushSubscription: PushSubscription) => {
+  return gardenBuddy
+    .post("/add-subscription", {
+      user,
+      pushSubscription
+    })
+}
+
+export const removeSubscription = (pushSubscription: PushSubscription) => {
+  return gardenBuddy
+    .post(`/remove-subscription`, {
+      pushSubscription
+    })
+}
+
+
 const growStuffAPI = axios.create({
   baseURL: "https://garden-buddy.onrender.com/growstuff",
 });
