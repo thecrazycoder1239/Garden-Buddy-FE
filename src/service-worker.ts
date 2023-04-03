@@ -12,7 +12,7 @@ import { clientsClaim } from 'workbox-core';
 import { ExpirationPlugin } from 'workbox-expiration';
 import { precacheAndRoute, createHandlerBoundToURL } from 'workbox-precaching';
 import { registerRoute } from 'workbox-routing';
-import { StaleWhileRevalidate } from 'workbox-strategies';
+import { CacheFirst, StaleWhileRevalidate } from 'workbox-strategies';
 
 import gardenBuddyIcon from './assets/plant-icon2.png'
 
@@ -70,6 +70,29 @@ registerRoute(
     ],
   })
 );
+
+//Prefetching single plants
+registerRoute(
+  ({ url }) => /\/growstuff\/crops\/\d+/.test(url.pathname),
+  new CacheFirst({
+    cacheName: 'singlePlants',
+    plugins: [
+      new ExpirationPlugin({maxEntries: 10})
+    ]
+  })
+)
+
+//Prefetch last plants page
+registerRoute(
+  ({ url }) => url.pathname.includes('growstuff/crops') 
+    && !/\/crops\/\d+/.test(url.pathname),
+  new CacheFirst({
+    cacheName: 'allPlants',
+    plugins: [
+      new ExpirationPlugin({maxEntries: 1})
+    ]
+  })
+)
 
 // This allows the web app to trigger skipWaiting via
 // registration.waiting.postMessage({type: 'SKIP_WAITING'})
