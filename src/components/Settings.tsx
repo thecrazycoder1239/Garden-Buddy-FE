@@ -4,11 +4,11 @@ import { Link, Navigate } from "react-router-dom";
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
-import { deleteUser } from "../utils/api";
+import { deleteUser, patchUserInfo } from "../utils/api";
 import NotificationsSwitch from "./NotificationsSwitch";
 
 export default function Settings() {
-  const { user, logout } = useContext(UserContext);
+  const { user, logout, login } = useContext(UserContext);
 
 
 
@@ -28,7 +28,7 @@ export default function Settings() {
   const [modalPassword, setModalPassword] = useState('');
   const [processingDeleteAccount, setProcessingDeleteAccount] = useState(false);
   const [allowAccountDelete, setAllowAccountDelete] = useState(false);
-  const [modalPasswordErr, setModalPasswordErr] = useState('')
+  const [modalPasswordErr, setModalPasswordErr] = useState('');
   // const [profileUrlFormEdit, setProfileUrlFormEdit] = useState(false);
 
   function closeModal () {
@@ -116,9 +116,12 @@ export default function Settings() {
             }
 
             if(goodFirstName === true) {
-              console.log('ready for first name patch request')
-              // patch request
-                // rerender the page again, so the placeholders are updated
+              setFirstNameFormEdit(false)
+              patchUserInfo(user, currentFirstName, undefined).then(() => {
+                const username = user.username;
+                const password = user.password
+                login({ username, password})
+              })
             }
             }}
             className="edit-form-item"
@@ -170,9 +173,12 @@ export default function Settings() {
             }    
 
               if(goodLastName === true) {
-                console.log('last name ready for patch')
-                // patch request
-                // rerender the page again, so the placeholders are updated
+                setSurnameFormEdit(false)
+                patchUserInfo(user, undefined, currentLastName).then(() => {
+                  const username = user.username;
+                  const password = user.password
+                  login({ username, password})
+                })
               }
             }}
             className="edit-form-item"
