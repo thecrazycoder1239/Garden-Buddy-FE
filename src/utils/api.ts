@@ -34,6 +34,17 @@ export const signUp = (username: string, first_name: string, last_name: string, 
     });
 };
 
+export const deleteUser = (username: string, password: string) => {
+  return gardenBuddy
+    .delete(`/api/users/${username}`, {data: { password }})
+    .then(({ data }) => {
+      return data;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
+
 export const addSubscription = (user: User, pushSubscription: PushSubscription) => {
   return gardenBuddy
     .post("/add-subscription", {
@@ -48,7 +59,6 @@ export const removeSubscription = (pushSubscription: PushSubscription) => {
       pushSubscription
     })
 }
-
 
 const growStuffAPI = axios.create({
   baseURL: "https://garden-buddy.onrender.com/growstuff",
