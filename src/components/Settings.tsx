@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { UserContext } from "../contexts/User";
 
 export default function Settings() {
-  const { user } = useContext(UserContext);
+  const { user, logout } = useContext(UserContext);
 
 
 
@@ -300,7 +300,7 @@ export default function Settings() {
         </section>
 
         <section className="user-btn-container">
-          <button className="settings-logout-btn">Log out</button>
+          <button className="settings-logout-btn" onClick={logout}>Log out</button>
           <button className="settings-delete-account-btn">Delete account</button>
         </section>
   
