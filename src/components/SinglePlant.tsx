@@ -19,7 +19,8 @@ export default function SinglePlant() {
         setIsLoadingSinglePlant(true);
         setSinglePlant(data);
         setIsLoadingSinglePlant(false);
-      });
+      })
+      .catch(console.error)
     }
   }, [_id]);
   return isLoadingSinglePlant ? (

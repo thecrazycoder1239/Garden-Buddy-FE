@@ -347,6 +347,9 @@ export default function Settings() {
                 logout()
                 setAllowAccountDelete(true)
               })
+              .catch((error) => {
+                console.error(error);
+              })
             }
           }}>
             <div className="modal-input-container">

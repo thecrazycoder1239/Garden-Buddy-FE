@@ -7,16 +7,19 @@ import { useSearchParams } from "react-router-dom";
 
 // API
 import { getPlants } from "../utils/api";
+import useOnlineStatus from "../hooks/useOnlineStatus";
 
 export default function PlantCards() {
   const [searchParams] = useSearchParams();
-  const [isLoadingPlants, setIsLoadingPlants] = useState(false);
+  const [isLoadingPlants, setIsLoadingPlants] = useState(true);
+  const online = useOnlineStatus();
   const [plants, setPlants] = useState<GrowStuffCrop[]>([]);
-  const [date, setDate] = useState(new Date());
 
   useEffect(() => {
-    setIsLoadingPlants(true);
-    getPlants(searchParams.get('search'))
+    if (online) {
+
+      setIsLoadingPlants(true);
+      getPlants(searchParams.get('search'))
       .then((data) => {
         setPlants(data);
       })
@@ -26,7 +29,8 @@ export default function PlantCards() {
       .finally(() => {
         setIsLoadingPlants(false);
       });
-  }, [searchParams]);
+    }
+  }, [searchParams, online]);
 
   return isLoadingPlants ? (
     <h1>Plants incoming...</h1>
