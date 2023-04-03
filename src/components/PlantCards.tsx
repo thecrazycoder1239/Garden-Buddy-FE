@@ -28,8 +28,6 @@ export default function PlantCards() {
       });
   }, [searchParams]);
 
-  console.log(searchParams, 'here')
-
   return isLoadingPlants ? (
     <h1>Plants incoming...</h1>
   ) : (

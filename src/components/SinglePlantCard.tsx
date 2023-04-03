@@ -40,7 +40,7 @@ export default function SinglePlantCard({plant} : {plant: GrowStuffCrop}) {
 		if (user) {
             setButtonActive(false)
             changeColor();
-			postPlantToUser(user, e.target.value, date).then(console.log)
+			postPlantToUser(user, e.target.value, date)
             .finally(() => {
                     let timer = setTimeout(() => {
                         fadeColor();
