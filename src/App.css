@@ -765,13 +765,12 @@ section.pagination h2 {
   height: 34px;
 }
 
-#notifications-switch input, 
-#location-access-switch input,
-#dark-mode-switch input{
+#notifications-switch {
   position: absolute;
-  opacity: 0;
   width: 0;
   height: 0;
+  top: 10px;
+  left: 10px;
 }
 
 .slider{
@@ -803,7 +802,7 @@ input:checked + .slider {
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  outline: 1px solid blue;
 }
 
 input:checked + .slider:before {

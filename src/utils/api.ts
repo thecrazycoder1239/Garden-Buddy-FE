@@ -33,11 +33,37 @@ export const signUp = (username: string, first_name: string, last_name: string, 
     });
 };
 
+export const addSubscription = (user: User, pushSubscription: PushSubscription) => {
+  return gardenBuddy
+    .post("/add-subscription", {
+      user,
+      pushSubscription
+    })
+}
+
+export const removeSubscription = (pushSubscription: PushSubscription) => {
+  return gardenBuddy
+    .post(`/remove-subscription`, {
+      pushSubscription
+    })
+}
+
+
 const growStuffAPI = axios.create({
   baseURL: "https://garden-buddy.onrender.com/growstuff",
 });
 
-export const getPlants = () => {
+export const getPlants = (term: string | null) => {
+  if (term) {
+    return growStuffAPI
+      .get(`/crops/search`, {params: {term}})
+      .then(({ data }) => {
+        return data
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+  }
   return growStuffAPI
     .get(`/crops`)
     .then(({ data }) => {
@@ -71,14 +97,24 @@ export const postPlantToUser = (user: User, plant_id: string, planted_date: Date
     });
 };
 
-export const getUsersPlants = (user: User) : Promise<User> => {
+export const getUsersPlants = (user: User) : Promise<UsersPlant[]> => {
   return gardenBuddy
     .post(`/api/users/${user.username}/plants/access`, {password: user.password})
       .then(({data}) => {
-        console.log('here')
-        return data;
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-}
+        const plants = data.plants
+        return Promise.all(
+          plants.map((plant: UsersPlant) => {
+            const id = plant.plant_id.toString();
+            return getSinglePlant(id).then((singlePlant) => ({
+              ...singlePlant,
+              planted_date: plant.planted_date,
+              thumbnail_url: plant.thumbnail_url
+            }));
+          })
+          );
+        })
+        .catch((error) => {
+          console.log(error);
+          throw error;
+        })
+};

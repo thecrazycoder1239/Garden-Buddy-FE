@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { UserContext } from "../contexts/User";
+import NotificationsSwitch from "./NotificationsSwitch";
 
 export default function Settings() {
   const { user, logout } = useContext(UserContext);
@@ -273,14 +274,7 @@ export default function Settings() {
         </section>
   
         <section className="toggle-options">
-          <div className="toggle-option">
-            <p className="label-text">Notifications</p>
-  
-            <label className="toggle-label" htmlFor="notifications-switch">
-              <input id="notifications-switch" type="checkbox" hidden />
-              <span className="slider"></span>
-            </label>
-          </div>
+          <NotificationsSwitch />
   
           <div className="toggle-option">
             <p className="label-text">Location access</p>

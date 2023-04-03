@@ -10,6 +10,7 @@ import PlantCards from "./PlantCards";
 import Pagination from "./Pagination";
 
 export default function AllPlants() {
+  
   return (
     <section className="all-plants">
       <SearchForPlant />
