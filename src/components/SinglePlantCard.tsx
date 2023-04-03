@@ -3,18 +3,19 @@ import CalendarPicker from "./CalendarPicker";
 // Hooks
 import { useContext, useState } from "react";
 import { UserContext } from "../contexts/User";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 // API
 import { postPlantToUser } from "../utils/api";
 
 // Icons
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs"
 
 export default function SinglePlantCard({plant} : {plant: GrowStuffCrop}) {
 
     const [date, setDate] = useState(new Date());
-
+    
+    const [searchParams] = useSearchParams();
     const [buttonActive, setButtonActive] = useState(true);
     const [buttonStyle, setButtonStyle] = useState({transition: '0s', background: '#f1f1f1'});
 
@@ -77,11 +78,40 @@ export default function SinglePlantCard({plant} : {plant: GrowStuffCrop}) {
 							<p className="plant-description">{plant["description"]}</p>
 						</div>
 						<div className="votes">
-							<AiFillStar />
-							<AiFillStar />
-							<AiFillStar />
-							<AiOutlineStar />
-							<AiOutlineStar />
+              {
+                searchParams.get('search') ?
+                (() => {
+                  //Search score is different than without search, assume that growstuff has different ways of score being measured
+                  //We will assume that this relates to some match percentage. Let's arbitrarly set 1000 to be about 95% match and that 100%
+                  // is never attainable. 0 score is 0% match;
+                  // The plot we use is based on what looks about right, this is purely guessing
+                  // 100 - 5000 / (score + 50)
+
+                  return <p>{Math.floor(100 - 5000 / (plant._score + 50))}% match</p>
+                })() :
+                (() => {
+                  const score = plant._score
+
+                  const stars : React.ReactNode[] = [];
+
+                  let i = 0;
+                  //Note stars are static 
+
+                  for (; i < Math.floor(score / 2); i++) {
+                    stars.push(<BsStarFill key={i}></BsStarFill>)
+                  }
+
+                  if (Math.floor(score) % 2) {
+                    stars.push(<BsStarHalf key={i}></BsStarHalf>)
+                  }
+
+                  for (let i = stars.length; i < 5; i++) {
+                    stars.push(<BsStar key={i}></BsStar>)
+                  }
+
+                  return stars
+                })()
+              }
 						</div>
 					</div>
 					<img alt="plant" src={plant["thumbnail_url"]} />
