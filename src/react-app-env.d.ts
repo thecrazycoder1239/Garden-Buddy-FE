@@ -54,6 +54,16 @@ interface UsersPlant {
     logs: Log[];
 }
 
+interface OpenFarmData {
+  attributes: {
+    description: string;
+    main_image_path: string;
+    sun_requirements: string;
+    sowing_method: string;
+    height: number;
+    spread: number;
+  };
+}
 
 interface GrowStuffCrop {
 	//from '/crops'
@@ -71,14 +81,5 @@ interface GrowStuffCrop {
 	median_days_to_last_harvest: number;
 	perennial: boolean;
 
-	openfarm_data: {
-		attributes: {
-			description: string;
-			main_image_path: string;
-			sun_requirements: string;
-			sowing_method: string;
-			height: number;
-			spread: number;
-		};
-	};
+	openfarm_data: OpenFarmData | false;
 }

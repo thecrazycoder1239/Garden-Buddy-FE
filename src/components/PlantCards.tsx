@@ -33,7 +33,7 @@ export default function PlantCards() {
   }, [searchParams, online]);
 
   return isLoadingPlants ? (
-    <h1>Plants incoming...</h1>
+    <p className="p-loading-status">Plants incoming...</p>
   ) : (
     <section className="plant-cards">
       {/* <AddPlantButton date={date} setDate={setDate}/> */}
