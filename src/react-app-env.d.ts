@@ -27,6 +27,7 @@ interface GrowStuffCrop {
     };
   };
 }
+
 interface User {
     username: string;
     password: string;

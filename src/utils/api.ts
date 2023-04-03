@@ -20,7 +20,6 @@ export const valididateLogin = (userObject ?:{username: string, password: string
   }
 };
 
-
 export const signUp = (username: string, first_name: string, last_name: string, password: string) => {
   return gardenBuddy
     .post("/api/users", {
@@ -62,7 +61,8 @@ export const getSinglePlant = (_id: string) => {
 
 export const postPlantToUser = (user: User, plant_id: string, planted_date: Date) : Promise<UsersPlant> => {
   return gardenBuddy
-    .post(`/api/users/${user.username}/plants`, {password: user.password, plant_id: plant_id, planted_date: planted_date.toISOString()})
+    .post(`/api/users/${user.username}/plants`, {password: user.password, plant_id: plant_id, planted_date: planted_date.toISOString()
+    })
     .then(({ data }) => {
       return data.plant;
     })
@@ -70,3 +70,15 @@ export const postPlantToUser = (user: User, plant_id: string, planted_date: Date
       console.error(error);
     });
 };
+
+export const getUsersPlants = (user: User) : Promise<User> => {
+  return gardenBuddy
+    .post(`/api/users/${user.username}/plants/access`, {password: user.password})
+      .then(({data}) => {
+        console.log('here')
+        return data;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+}
