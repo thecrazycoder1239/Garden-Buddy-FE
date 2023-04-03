@@ -3,7 +3,7 @@ import CalendarPicker from "./CalendarPicker";
 // Hooks
 import { useContext, useState } from "react";
 import { UserContext } from "../contexts/User";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // API
 import { postPlantToUser } from "../utils/api";
@@ -42,7 +42,7 @@ export default function SinglePlantCard({plant} : {plant: GrowStuffCrop}) {
             changeColor();
 			postPlantToUser(user, e.target.value, date)
             .finally(() => {
-                    let timer = setTimeout(() => {
+                    setTimeout(() => {
                         fadeColor();
                         setButtonActive(true)
                 }, 3000)
