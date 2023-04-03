@@ -291,7 +291,12 @@ export default function Settings() {
         </section>
   
         <section className="toggle-options">
-          <NotificationsSwitch />
+          {
+            //A service worker is required for notifications to work
+            'serviceWorker' in navigator ?
+            <NotificationsSwitch /> :
+            <></>
+          }
   
           <div className="toggle-option">
             <p className="label-text">Location access</p>
