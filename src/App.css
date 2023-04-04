@@ -26,6 +26,8 @@
 /* Filter Plants */
 /* Plant Cards */
 /* Pagination */
+/* My Plant Card */
+/* Add Task Buttons */
 /* Toggle Visibility */
 /* Login Form */
 /* -------- */
@@ -482,16 +484,31 @@ ul.plant-cards li.single-plant-container img {
 }
 
 /* Pagination */
-section.pagination ul {
-  justify-content: center;
+
+section.pagination {
+  justify-content: space-around;
   display: flex;
-  gap: 5px;
+  padding: 1rem;
+  padding-right: 7rem;
+  padding-left: 7rem;
 }
+
 
 section.pagination ul li {
   border: 1px solid #49592a;
   padding: 5px 10px 8px;
   cursor: pointer;
+}
+
+section.pagination button {
+  border: 1px solid #333;
+  font-size: 1rem;
+  padding: 0.2rem;
+}
+
+section.pagination p {
+  font-size: 1rem;
+  padding: 0.2rem;
 }
 
 /* AddPlants Button */
@@ -922,6 +939,12 @@ input:checked + .slider:before {
   color: rgb(122, 0, 0);
 }
 
+.reached-the-end-of-plants {
+  padding: 3rem;
+  text-align: center;
+  font-size: 1rem;;
+}
+
 /* Toggle Visibility */
 .invisible {
   display: none !important;
@@ -929,6 +952,10 @@ input:checked + .slider:before {
 
 @media only screen and (min-width: 900px) {
   .input-field {
+    width: 40vw;
+  }
+
+  button.login{
     width: 40vw;
   }
 }
