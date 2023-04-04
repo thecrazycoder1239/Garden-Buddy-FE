@@ -2,11 +2,17 @@ import plantpot from "../assets/plant-icon2.png";
 import mail from "../assets/mail.png";
 import lock from "../assets/lock.png";
 // import location from '../assets/location.png';
-import closedeye from "../assets/closed.png";
-import openeye from "../assets/open.png";
+// import closedeye from "../assets/closed.png";
+// import openeye from "../assets/open.png";
+import openeye from "../assets/eye-regular.svg";
+import closedeye from "../assets/eye-slash-regular.svg";
 import { useContext, useState } from "react";
 import { UserContext } from "../contexts/User";
 import { Navigate, Link } from "react-router-dom";
+
+// Icons
+import { RiLockPasswordLine } from "react-icons/ri";
+import { AiOutlineMail } from "react-icons/ai";
 
 export default function Login() {
   const [passwordVisibility, setPasswordVisbility] = useState(false);
@@ -30,7 +36,7 @@ export default function Login() {
 
   return (
     <form
-      className="form"
+      className="login-form"
       onSubmit={(e) => {
         e.preventDefault();
         setSendingRequest(true);
@@ -43,7 +49,7 @@ export default function Login() {
               setPasswordError("please provide a password");
               setUsernameError("");
             } else if (username === "") {
-              setUsernameError("please provide a password");
+              setUsernameError("please provide a username");
               setPasswordError("");
             } else if (reason.response.status === 403) {
               setPasswordError("incorrect password");
@@ -55,12 +61,10 @@ export default function Login() {
           });
       }}
     >
-      <div className="image-div">
-        <img className="form-image" alt="user-profile" src={plantpot}></img>
-      </div>
+      <h2>Login</h2>
       <div className="input-field">
         <label className="label" htmlFor="username-input">
-          <img className="input-img" alt="" src={mail}></img>
+          <AiOutlineMail className="input-img" />
           Username
         </label>
         <input
@@ -75,7 +79,8 @@ export default function Login() {
       </div>
       <div className="input-field">
         <label className="label" htmlFor="password-input">
-          <img className="input-img" alt="" src={lock}></img>
+          {/* <img className="input-img" alt="" src={lock}></img> */}
+          <RiLockPasswordLine className="input-img" />
           Password
           <img
             className="password-eye"
@@ -100,7 +105,7 @@ export default function Login() {
                 location</label>
                 <input id="location-input"></input>
             </div> */}
-      <button className="submit-button" type="submit">
+      <button className="login" type="submit">
         Log in
       </button>
       <p className="request-waiting-message">
