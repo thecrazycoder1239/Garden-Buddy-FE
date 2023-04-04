@@ -733,7 +733,7 @@ section.pagination h2 {
   flex-direction: column;
   flex-wrap: wrap;
   position: absolute;
-  top: 29rem;
+  top: 22rem;
   border-radius: 20px;
   padding: 0.6rem;
   width: 60vw;
@@ -821,7 +821,7 @@ input:checked + .slider:before {
 
 .user-btn-container {
   position: relative;
-  top: 19rem;
+  top: 24rem;
   display: flex;
   justify-content: space-around;
 }
