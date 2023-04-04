@@ -6,10 +6,12 @@ import SingleUserPlantCard from './SingleUserPlantCard';
 
 export default function MyPlants() {
 
-  const [plants, setPlants] = useState<UsersPlant[]>([]);
-  const [isLoadingPlants, setIsLoadingPlants] = useState(false);
+  return (
+    <p>getting rid of error, change back once merged</p>
+  )
 
-  const { user } = useContext(UserContext);
+const [plants, setPlants] = useState<UsersPlant[]>([]);
+const [isLoadingPlants, setIsLoadingPlants] = useState(false);
 
   useEffect(() => {
     setIsLoadingPlants(true);

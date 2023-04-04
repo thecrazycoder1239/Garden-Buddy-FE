@@ -11,7 +11,7 @@ export default function SearchForPlant() {
 
   function handleSubmit (event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    setSearchParams({search: searchTerm})
+    setSearchParams({search: searchTerm, page: '1'})
     setSearchTerm("")
   }
 
