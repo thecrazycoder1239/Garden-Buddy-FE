@@ -17,3 +17,26 @@ export class StaleWhileRevalidatePosts extends Strategy {
     });
   }
 }
+
+export class CacheFirstPosts extends Strategy {
+  _handle(request: Request, handler: StrategyHandler) {
+    const startOfQuery = request.url.indexOf('?')
+
+    const cacheKey = request.url.slice(0, startOfQuery);
+
+    return handler.cacheMatch(cacheKey)
+      .then((response) => {
+        if (response) {
+          return response
+        }
+
+        return handler.fetch(request)
+          .then((response) => {
+            handler.waitUntil(handler.cachePut(cacheKey, response.clone()))
+
+            return response;
+          })
+
+      })
+  }
+}

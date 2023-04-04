@@ -15,7 +15,7 @@ import { registerRoute } from "workbox-routing";
 import { CacheFirst, StaleWhileRevalidate } from "workbox-strategies";
 
 import gardenBuddyIcon from "./assets/plant-icon2.png";
-import { StaleWhileRevalidatePosts } from "./strategies/strategies";
+import { CacheFirstPosts, StaleWhileRevalidatePosts } from "./strategies/strategies";
 
 declare const self: ServiceWorkerGlobalScope;
 
@@ -95,12 +95,21 @@ registerRoute(
 
 //Serve info from /access calls from cache then update in background
 registerRoute(
-  ({ url }) => url.pathname.endsWith("/access"),
+  ({ url }) => url.pathname.endsWith("/access") && !url.searchParams.get('cache'),
   new StaleWhileRevalidatePosts({
     cacheName: "usersPlantsInfo",
   }),
   "POST"
 );
+
+//Serve info that is unlikely to due to current user actions can be served cache first
+registerRoute(
+  ({ url }) => url.pathname.endsWith("/access") && url.searchParams.get('cache') === 'cache-first',
+  new CacheFirstPosts({
+    cacheName: "usersPlantsInfo"
+  }),
+  "POST"
+)
 
 // This allows the web app to trigger skipWaiting via
 // registration.waiting.postMessage({type: 'SKIP_WAITING'})
