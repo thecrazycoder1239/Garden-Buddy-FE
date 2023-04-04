@@ -21,6 +21,8 @@ interface Log {
 }
 
 interface UsersPlant {
+    name: string,
+    thumbnail_url: string,
     plant_id: number;
     users_plant_id: number;
     planted_date: string | null;
