@@ -116,6 +116,19 @@ export const postPlantToUser = (
     })
 };
 
+export const postTaskToUsersPlant = (
+	user: User,
+	users_plant_id: number,
+	task_slug: TaskSlug,
+	task_start_date: string
+) => {
+	return gardenBuddy.post(`/api/users-plants/${users_plant_id}/tasks`, {
+		password: user.password,
+		task_start_date: task_start_date,
+		task_slug: task_slug,
+	});
+};
+
 export const getUsersPlants = (user: User): Promise<UsersPlant[]> => {
   return gardenBuddy
     .post(`/api/users/${user.username}/plants/access`, {
@@ -129,7 +142,7 @@ export const getUsersPlants = (user: User): Promise<UsersPlant[]> => {
 export const getPlantImgFromSlug = (term: string): Promise<string> => {
   return getPlants(term)
   .then((plants) => {
-   return plants[0].thumbnail_url
+    return plants[0].thumbnail_url
   })
 }
 
@@ -162,4 +175,9 @@ export const getUsersPlantsInfo = (user: User): Promise<UsersPlant[]> => {
     })
     )
   })
+}
+
+export const deleteUsersPlantById = (user: User, users_plant_id: number): Promise<void> => {
+  return gardenBuddy
+    .delete(`/api/users-plants/${users_plant_id}`, {data: {password: user.password}})
 }
