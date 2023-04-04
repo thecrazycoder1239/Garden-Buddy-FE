@@ -163,3 +163,30 @@ export const getUsersPlantsInfo = (user: User): Promise<UsersPlant[]> => {
     )
   })
 }
+
+export const getUsersDetailedPlant = (users_plant_id: number, user: User): Promise<DetailedUsersPlant> => {
+  return gardenBuddy
+  .post(`/api/users-plants/${users_plant_id}/access`, {password: user.password})
+  .then(({data}) => {
+    return data.plant
+  })}
+
+ 
+
+
+export const getUsersPlantsTasks = (user: User): Promise<Task[]> => {
+  return getUsersPlants(user)
+  .then((plants) => {
+    return Promise.all (
+      plants.map((plant) => {
+        return getUsersDetailedPlant(plant.users_plant_id, user)
+
+      })
+    )
+  })
+  .then((detailedPlants) => {
+    return detailedPlants.reduce((tasks: Task[], detailedPlant) => {
+      return tasks.concat(detailedPlant.tasks)
+    }, [])
+  })
+}
