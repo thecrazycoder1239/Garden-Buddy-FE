@@ -17,7 +17,7 @@ export default function HeaderInstalled() {
       </Link>
       <BiUserCircle />
       {user !== null ? (
-        <button className="logout" onClick={logout}>
+        <button className="logout form" onClick={logout}>
           Logout
         </button>
       ) : (
