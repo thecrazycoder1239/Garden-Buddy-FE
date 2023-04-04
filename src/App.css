@@ -27,6 +27,7 @@
 /* Plant Cards */
 /* Pagination */
 /* Toggle Visibility */
+/* Login Form */
 /* -------- */
 
 /* Global */
@@ -59,6 +60,15 @@ button.plain-text {
 
 button.logout {
   padding: 5px;
+}
+
+button.login {
+  width: 100%;
+  padding: 18px 10px;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
 }
 
 button.form {
@@ -458,6 +468,7 @@ section.pagination ul {
 section.pagination ul li {
   border: 1px solid #333;
   padding: 5px 10px 8px;
+  cursor: pointer;
 }
 
 /* AddPlants Button */
@@ -469,6 +480,10 @@ section.pagination ul li {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.sign-in {
+  padding-bottom: 12px;
 }
 
 .add-plant-button {
@@ -516,28 +531,28 @@ section.pagination ul li {
   padding: 0.5rem;
 }
 
-/* .form {
-  display: block;
-  flex-wrap: wrap;
-  position: relative;
-  margin-top: 3rem;
-  margin-left: auto;
-  margin-right: auto;
-} */
-
 .input-field {
   display: flex;
   flex-direction: column;
   padding: 1rem;
   margin: 1rem;
   margin-left: 0.5rem;
-  border: 0.1rem solid var(--light-teal);
-  border-radius: 25px;
-  width: 60vw;
+  /* border: 0.1rem solid var(--light-teal); */
+  /* border-radius: 25px; */
+  /* width: 60vw; */
   background-color: white;
   position: relative;
   margin-left: auto;
   margin-right: auto;
+}
+
+.input-field label {
+  font-size: 1rem;
+}
+
+.input-field svg {
+  height: 1.6rem;
+  width: 1.6rem;
 }
 
 .login-error-message {
@@ -573,21 +588,17 @@ section.pagination ul li {
 #settings-surname,
 #settings-password,
 #settings-profile {
-  border: 1px solid var(--light-teal);
-  border-radius: 20px;
-  display: block;
+  border: 1px solid #333;
   margin-top: 0.5rem;
   font-size: 1rem;
   padding: 0.2rem;
   margin-left: 35px;
-  padding-left: 0.7rem;
+  padding: 10px;
 }
 
 .label {
   text-align: left;
   font-size: 1.2rem;
-  color: var(--dark-teal);
-  padding-left: 7px;
 }
 
 .image-div {
@@ -639,11 +650,8 @@ section.pagination ul li {
 }
 
 .sign-up-text {
-  position: relative;
-  text-align: center;
-  top: 2rem;
-  padding-bottom: 3rem;
   text-decoration: underline;
+  margin-top: 9px;
 }
 
 .edit-form {
@@ -950,9 +958,9 @@ input:checked + .slider:before {
 }
 
 @media only screen and (max-width: 550px) {
-  .input-field {
+  /* .input-field {
     width: 85vw;
-  }
+  } */
 
   .label-text {
     left: 1rem;
@@ -1066,4 +1074,13 @@ ul.comment-list li .avatar div {
   width: 50px;
   height: 50px;
   border-radius: 40px;
+}
+
+/* Login Form */
+form.login-form {
+  background: #f1f1f1;
+  margin: 18px 15px;
+  border-radius: 5px;
+  padding: 18px 15px 27px;
+  text-align: center;
 }

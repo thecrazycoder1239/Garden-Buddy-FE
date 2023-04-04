@@ -61,7 +61,9 @@ export default function SinglePlantCard({ plant }: { plant: GrowStuffCrop }) {
           <img alt="plant" src={plant["thumbnail_url"]} />
           <div className="description-container">
             <h2>{plant["name"]}</h2>
-            <p><i>{plant["scientific_name"]}</i></p>
+            <p>
+              <i>{plant["scientific_name"]}</i>
+            </p>
             <p className="plant-description">{plant["description"]}</p>
             <div className="votes">
               <AiFillStar />
@@ -87,9 +89,11 @@ export default function SinglePlantCard({ plant }: { plant: GrowStuffCrop }) {
           </button>
         </div>
       ) : (
-        <Link to="/log-in" className="add-plant-button-no-user-message">
-          Sign in to add plant
-        </Link>
+        <div className="sign-in set-plant-date">
+          <Link to="/log-in" className="add-plant-button-no-user-message">
+            <button className="form">Sign in to add plant</button>
+          </Link>
+        </div>
       )}
     </li>
   );

@@ -8,6 +8,10 @@ import { useContext, useState } from "react";
 import { UserContext } from "../contexts/User";
 import { Navigate, Link } from "react-router-dom";
 
+// Icons
+import {RiLockPasswordLine} from 'react-icons/ri'
+import { AiOutlineMail } from "react-icons/ai";
+
 export default function Login() {
   const [passwordVisibility, setPasswordVisbility] = useState(false);
   const [username, setUsername] = useState("");
@@ -30,33 +34,38 @@ export default function Login() {
 
   return (
     <form
-      className="form"
+      className="login-form"
       onSubmit={(e) => {
         e.preventDefault();
-        setSendingRequest(true)
-        login({ username, password }).then(() => {setSendingRequest(false)}).catch((reason) => {
-          if (password === "") {
-            setPasswordError("please provide a password");
-            setUsernameError("");
-          } else if (username === "") {
-            setUsernameError("please provide a password");
-            setPasswordError("");
-          } else if (reason.response.status === 403) {
-            setPasswordError("incorrect password");
-            setUsernameError("");
-          } else if (reason.response.status === 404) {
-            setUsernameError("username not found");
-            setPasswordError("");
-          }
-        });
+        setSendingRequest(true);
+        login({ username, password })
+          .then(() => {
+            setSendingRequest(false);
+          })
+          .catch((reason) => {
+            if (password === "") {
+              setPasswordError("please provide a password");
+              setUsernameError("");
+            } else if (username === "") {
+              setUsernameError("please provide a username");
+              setPasswordError("");
+            } else if (reason.response.status === 403) {
+              setPasswordError("incorrect password");
+              setUsernameError("");
+            } else if (reason.response.status === 404) {
+              setUsernameError("username not found");
+              setPasswordError("");
+            }
+          });
       }}
     >
-      <div className="image-div">
+      {/* <div className="image-div">
         <img className="form-image" alt="user-profile" src={plantpot}></img>
-      </div>
+      </div> */}
+      <h2>Login</h2>
       <div className="input-field">
         <label className="label" htmlFor="username-input">
-          <img className="input-img" alt="" src={mail}></img>
+          <AiOutlineMail className="input-img" />
           Username
         </label>
         <input
@@ -71,7 +80,8 @@ export default function Login() {
       </div>
       <div className="input-field">
         <label className="label" htmlFor="password-input">
-          <img className="input-img" alt="" src={lock}></img>
+          {/* <img className="input-img" alt="" src={lock}></img> */}
+          <RiLockPasswordLine className="input-img" />
           Password
           <img
             className="password-eye"
@@ -96,10 +106,14 @@ export default function Login() {
                 location</label>
                 <input id="location-input"></input>
             </div> */}
-      <button className="submit-button" type="submit">
+      <button className="login" type="submit">
         Log in
       </button>
-      <p className='request-waiting-message'>{SendingRequest ? "attempting to log you in, apologies for the wait!": ""}</p>
+      <p className="request-waiting-message">
+        {SendingRequest
+          ? "attempting to log you in, apologies for the wait!"
+          : ""}
+      </p>
       <Link to="/sign-up">
         <p className="sign-up-text">Sign Up</p>
       </Link>
