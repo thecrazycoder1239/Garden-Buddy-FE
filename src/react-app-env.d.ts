@@ -27,6 +27,7 @@ interface GrowStuffCrop {
     };
   };
 }
+
 interface User {
     username: string;
     password: string;
@@ -47,13 +48,14 @@ interface Log {
 }
 
 interface UsersPlant {
+    name: string,
+    thumbnail_url: string,
     plant_id: number;
     users_plant_id: number;
     planted_date: string | null;
     tasks: Task[];
     logs: Log[];
 }
-
 
 interface GrowStuffCrop {
 	//from '/crops'
