@@ -1103,8 +1103,7 @@ form.login-form {
   text-align: center;
 }
 .my-plant-container {
-  border :2px grey;
-  width: 85vw;
+  width: 100%;
   padding: 18px 15px;
   background: #f1f1f1;
   border-radius: 10px;
@@ -1112,7 +1111,24 @@ form.login-form {
   display: flex;
   justify-content: space-between;
   padding-bottom: 2rem;
+  gap: 10px;
+}
 
+.my-plant-container {
+  text-transform: capitalize;
+}
+
+.my-plant-container div {
+  width: calc(100% - 30vw);
+  display: flex-column;
+}
+
+.my-plant-container div button {
+  margin-top: 45px;
+}
+
+.my-plant-container div h2 {
+  margin-bottom: 4px;
 }
 
 .my-plant-container img {
