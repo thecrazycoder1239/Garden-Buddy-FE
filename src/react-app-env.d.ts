@@ -14,6 +14,7 @@ interface Task {
     users_task_id: number;
     task_slug: TaskSlug;
     task_start_date: string;
+    users_plant_id: number
 }
 
 

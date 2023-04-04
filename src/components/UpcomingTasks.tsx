@@ -60,6 +60,9 @@ export default function UpcomingTasks() {
 
 
   const dates = [...dateToTaskMap.keys()]
+  .filter((date)=> {
+    return new Date(date).getTime() >= new Date(new Date().toDateString()).getTime()
+  })
   dates.sort((a, b) => {
     if( a === b) return 0
     if(new Date(a).getTime() >= new Date(b).getTime()) return 1
