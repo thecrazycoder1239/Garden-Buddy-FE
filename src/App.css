@@ -418,11 +418,6 @@ ul.plant-cards li.single-plant-container a > div .votes {
   margin-top: 4px;
 }
 
-/* ul.plant-cards div.plant-card h2,
-ul.plant-cards div.plant-card p {
-  margin-block-end: 0.6rem;
-} */
-
 ul.plant-cards li.single-plant-container h2 {
   text-transform: capitalize;
 }
@@ -454,12 +449,13 @@ ul.plant-cards li.single-plant-container img {
 }
 
 /* Pagination */
-section.pagination {
+section.pagination ul {
   justify-content: center;
   display: flex;
+  gap: 5px;
 }
 
-section.pagination h2 {
+section.pagination ul li {
   border: 1px solid #333;
   padding: 5px 10px 8px;
 }

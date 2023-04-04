@@ -1,7 +1,14 @@
 export default function Pagination() {
     return (
       <section className="pagination">
-        <h2>Pagination placeholder</h2>
+        <ul>
+          <li>first</li>
+          <li>2</li>
+          <li>3</li>
+          <li>4</li>
+          <li>...</li>
+          <li>last</li>
+        </ul>
       </section>
     );
 }
