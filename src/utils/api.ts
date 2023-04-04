@@ -77,16 +77,21 @@ const growStuffAPI = axios.create({
   baseURL: "https://garden-buddy.onrender.com/growstuff",
 });
 
-export const getPlants = (term: string | null, page: number) => {
+export const getPlants = (term: string | null, page: string | null) => {
+
+  if(page === null) {
+    page = "1"
+  }
+
   if (term) {
     return growStuffAPI
-      .get(`/crops/search/?page=${page}`, { params: { term } })
+      .get(`/crops/search/`, { params: { term, page } })
       .then(({ data }) => {
         return data;
       })
   }
   return growStuffAPI
-    .get(`/crops/?page=${page}`)
+    .get(`/crops/`, { params: { page }})
     .then(({ data }) => {
       return data;
     })

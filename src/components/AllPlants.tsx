@@ -15,7 +15,7 @@ export default function AllPlants() {
     <section className="all-plants">
       <SearchForPlant />
       <div className="sort-filter-flex">
-      <button onClick={(e) => {
+      {/* <button onClick={(e) => {
         e.preventDefault()
         setSortBy("sowing-month-chrono")
       }}>closest to sowing month</button>
@@ -24,7 +24,7 @@ export default function AllPlants() {
       }}>Lowest maintenance</button>
       <button onClick={(e) => {
         e.preventDefault()
-      }}>Alphabetical order</button>
+      }}>Alphabetical order</button> */}
         {/* <FilterPlants /> */}
       </div>
       <PlantCards 
