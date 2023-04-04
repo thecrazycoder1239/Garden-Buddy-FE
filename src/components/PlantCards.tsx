@@ -14,14 +14,21 @@ export default function PlantCards() {
   const [isLoadingPlants, setIsLoadingPlants] = useState(true);
   const online = useOnlineStatus();
   const [plants, setPlants] = useState<GrowStuffCrop[]>([]);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [reachedTheEnd, setReachedTheEnd] = useState(false)
 
   useEffect(() => {
     if (online) {
       
       setIsLoadingPlants(true);
-      getPlants(searchParams.get('search'))
+      getPlants(searchParams.get('search'), pageNumber)
       .then((data) => {
-        setPlants(data);
+        if(data.length === 0) {
+          setReachedTheEnd(true)
+        } else {
+          setReachedTheEnd(false)
+          setPlants(data);
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -30,15 +37,20 @@ export default function PlantCards() {
         setIsLoadingPlants(false);
       });
     } else {
-      getPlants(searchParams.get('search'))
+      getPlants(searchParams.get('search'), pageNumber)
       .then((data) => {
-        setPlants(data)
         setIsLoadingPlants(false)
+        if(data.length === 0) {
+          setReachedTheEnd(true)
+        } else {
+          setReachedTheEnd(false)
+          setPlants(data);
+        }
       })
       // This call is not assumed to resolve, however it might if the result is cached
       .catch()
     }
-  }, [searchParams, online]);
+  }, [searchParams, online, pageNumber]);
 
   useEffect(() => {
     //Only prefetch if there is a serviceWorker
@@ -49,9 +61,28 @@ export default function PlantCards() {
     }
   }, [online, plants])
 
+
+  if(reachedTheEnd === true) {
+    return (
+    <>
+    <p className="reached-the-end-of-plants">You have viewed all our plants!</p>
+    <section className="pagination">
+        <button onClick={() => {
+          setPageNumber(pageNumber - 1)
+        }}>{'<'}</button>
+        <p>{pageNumber}</p>
+        <button onClick={() => {
+          setPageNumber(pageNumber + 1)
+        }}>{'>'}</button>
+    </section>
+    </>
+    )
+  }
+
   return isLoadingPlants ? (
     <p className="p-loading-status">Plants incoming...</p>
   ) : (
+    <>
     <section className="plant-cards">
       {/* <AddPlantButton date={date} setDate={setDate}/> */}
       <ul className="plant-cards">
@@ -60,5 +91,15 @@ export default function PlantCards() {
         })}
       </ul>
     </section>
+    <section className="pagination">
+        <button onClick={() => {
+          setPageNumber(pageNumber - 1)
+        }}>{'<'}</button>
+        <p>{pageNumber}</p>
+        <button onClick={() => {
+          setPageNumber(pageNumber + 1)
+        }}>{'>'}</button>
+    </section>
+    </>
   );
 }

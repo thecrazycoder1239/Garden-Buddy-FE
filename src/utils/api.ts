@@ -77,16 +77,16 @@ const growStuffAPI = axios.create({
   baseURL: "https://garden-buddy.onrender.com/growstuff",
 });
 
-export const getPlants = (term: string | null) => {
+export const getPlants = (term: string | null, page: number) => {
   if (term) {
     return growStuffAPI
-      .get(`/crops/search`, { params: { term } })
+      .get(`/crops/search/?page=${page}`, { params: { term } })
       .then(({ data }) => {
         return data;
       })
   }
   return growStuffAPI
-    .get(`/crops`)
+    .get(`/crops/?page=${page}`)
     .then(({ data }) => {
       return data;
     })
@@ -126,40 +126,40 @@ export const getUsersPlants = (user: User): Promise<UsersPlant[]> => {
     })
   }
   
-export const getPlantImgFromSlug = (term: string): Promise<string> => {
-  return getPlants(term)
-  .then((plants) => {
-   return plants[0].thumbnail_url
-  })
-}
+// export const getPlantImgFromSlug = (term: string): Promise<string> => {
+//   return getPlants(term)
+//   .then((plants) => {
+//    return plants[0].thumbnail_url
+//   })
+// }
 
-export const getUsersPlantInfo = (usersPlant: UsersPlant): Promise<UsersPlant> => {
-  return getSinglePlant(usersPlant.plant_id + "")
-  .then((singlePlant) => {
-    return Promise.all(
-      [
-      singlePlant,
-      getPlantImgFromSlug(singlePlant.slug),
-      usersPlant
-    ]
-    )
-  })
-  .then(([singlePlant, thumbnail_url, usersPlant]) => {
-    return {
-      ...singlePlant,
-      ...usersPlant,
-      thumbnail_url: thumbnail_url
-    } 
-  })
-}
+// export const getUsersPlantInfo = (usersPlant: UsersPlant): Promise<UsersPlant> => {
+//   return getSinglePlant(usersPlant.plant_id + "")
+//   .then((singlePlant) => {
+//     return Promise.all(
+//       [
+//       singlePlant,
+//       getPlantImgFromSlug(singlePlant.slug),
+//       usersPlant
+//     ]
+//     )
+//   })
+//   .then(([singlePlant, thumbnail_url, usersPlant]) => {
+//     return {
+//       ...singlePlant,
+//       ...usersPlant,
+//       thumbnail_url: thumbnail_url
+//     } 
+//   })
+// }
 
-export const getUsersPlantsInfo = (user: User): Promise<UsersPlant[]> => {
-  return getUsersPlants(user)
-  .then((plants) => {
-    return Promise.all (
-      plants.map((plant) => {
-      return getUsersPlantInfo(plant)
-    })
-    )
-  })
-}
+// export const getUsersPlantsInfo = (user: User): Promise<UsersPlant[]> => {
+//   return getUsersPlants(user)
+//   .then((plants) => {
+//     return Promise.all (
+//       plants.map((plant) => {
+//       return getUsersPlantInfo(plant)
+//     })
+//     )
+//   })
+// }

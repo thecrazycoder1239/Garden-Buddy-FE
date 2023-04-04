@@ -465,13 +465,22 @@ ul.plant-cards div.plant-card img {
 
 /* Pagination */
 section.pagination {
-  justify-content: center;
+  justify-content: space-around;
   display: flex;
+  padding: 1rem;
+  padding-right: 7rem;
+  padding-left: 7rem;
 }
 
-section.pagination h2 {
+section.pagination button {
   border: 1px solid #333;
-  padding: 5px 10px 8px;
+  font-size: 1rem;
+  padding: 0.2rem;
+}
+
+section.pagination p {
+  font-size: 1rem;
+  padding: 0.2rem;
 }
 
 /* AddPlants Button */
@@ -959,6 +968,12 @@ input:checked + .slider:before {
   position: relative;
   bottom: 10px;
   color: rgb(122, 0, 0);
+}
+
+.reached-the-end-of-plants {
+  padding: 3rem;
+  text-align: center;
+  font-size: 1rem;;
 }
 
 /* Toggle Visibility */
