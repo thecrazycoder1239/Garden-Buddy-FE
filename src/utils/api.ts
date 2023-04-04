@@ -176,3 +176,8 @@ export const getUsersPlantsInfo = (user: User): Promise<UsersPlant[]> => {
     )
   })
 }
+
+export const deleteUsersPlantById = (user: User, users_plant_id: number): Promise<void> => {
+  return gardenBuddy
+    .delete(`/api/users-plants/${users_plant_id}`, {data: {password: user.password}})
+}

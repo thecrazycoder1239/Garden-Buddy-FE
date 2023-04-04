@@ -36,7 +36,7 @@ export default function MyPlants() {
             <ul className="plants-cards">
               <div className="plant-cards">
               {plants.map((plant) => {
-                return <SingleUserPlantCard plant={plant} key={plant.plant_id} />;
+                return <SingleUserPlantCard setPlants={setPlants} plant={plant} key={plant.users_plant_id} />;
               })}
               </div>
               
