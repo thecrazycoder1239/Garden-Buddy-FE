@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { getUsersPlants } from "../utils/api";
 import { UserContext } from "../contexts/User";
-import SingleUserPlantCardDb from './SingleUserPlantCardDb';
+import SingleUserPlantCard from './SingleUserPlantCard';
 
 
 export default function MyPlants() {
@@ -36,7 +36,7 @@ export default function MyPlants() {
           <section className="my-plants">
             <ul className="my-plants-cards">
               {plants.map((plant) => {
-                return <SingleUserPlantCardDb plant={plant} key={plant.plant_id} />;
+                return <SingleUserPlantCard plant={plant} key={plant.plant_id} />;
               })}
             </ul>
           </section>

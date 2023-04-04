@@ -118,3 +118,9 @@ export const getUsersPlants = (user: User) : Promise<UsersPlant[]> => {
           throw error;
         })
 };
+
+export const postTaskToUsersPlant = (user: User, users_plant_id: string, task_slug: string, task_start_date: Date) => {
+  return gardenBuddy
+    .post('/:users_plant_id/tasks', {password: user.password, start_date: task_start_date,
+      task_slug: task_slug})
+}
