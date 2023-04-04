@@ -1,7 +1,4 @@
 // Hooks
-import { Routes, Route } from 'react-router-dom'
-import { useState } from 'react'
-
 // Components
 import SearchForPlant from "./SearchForPlant";
 import SortPlants from "./SortPlants";

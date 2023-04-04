@@ -47,9 +47,6 @@ export const deleteUser = (username: string, password: string) => {
     .then(({ data }) => {
       return data;
     })
-    .catch((error) => {
-      console.error(error);
-    });
 };
 
 export const addSubscription = (
@@ -68,6 +65,14 @@ export const removeSubscription = (pushSubscription: PushSubscription) => {
   });
 };
 
+export const patchUserInfo = (user: User, first_name: string | undefined, last_name: string | undefined) => {
+  return gardenBuddy
+    .patch(`/api/users/${user.username}`, {password: user.password, first_name, last_name})
+    .then(({ data }) => {
+      return data.user;
+    })
+};
+
 const growStuffAPI = axios.create({
   baseURL: "https://garden-buddy.onrender.com/growstuff",
 });
@@ -79,18 +84,12 @@ export const getPlants = (term: string | null) => {
       .then(({ data }) => {
         return data;
       })
-      .catch((error) => {
-        console.error(error);
-      });
   }
   return growStuffAPI
     .get(`/crops`)
     .then(({ data }) => {
       return data;
     })
-    .catch((error) => {
-      console.error(error);
-    });
 };
 
 export const getSinglePlant = (_id: string): Promise<GrowStuffCrop> => {
@@ -99,9 +98,6 @@ export const getSinglePlant = (_id: string): Promise<GrowStuffCrop> => {
     .then(({ data }) => {
       return data;
     })
-    .catch((error) => {
-      console.error(error);
-    });
 };
 
 export const postPlantToUser = (
@@ -118,25 +114,6 @@ export const postPlantToUser = (
     .then(({ data }) => {
       return data.plant;
     })
-    .catch((error) => {
-      console.error(error);
-    });
-};
-
-export const patchUserInfo = (
-  user: User,
-  first_name: string,
-  last_name: string
-) => {
-  return gardenBuddy
-    .post(`/api/users/${user.username}`, {
-      password: user.password,
-      first_name,
-      last_name,
-    })
-    .then(({ data }) => {
-      return data.plant;
-    });
 };
 
 export const getUsersPlants = (user: User): Promise<UsersPlant[]> => {

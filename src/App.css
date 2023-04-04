@@ -143,6 +143,20 @@ nav ul li.active {
   border-bottom: 2px solid #bbb;
 }
 
+/* Network Status */
+
+.NetworkStatus {
+  margin: 0px auto -10px auto;
+  text-align: center;
+}
+
+/* Loading */
+
+.p-loading-status {
+  margin: 15px 5px;
+  font-size: 1rem;
+}
+
 /* My Calendar */
 section.my-calendar {
   padding: 18px 10px;
@@ -733,7 +747,7 @@ section.pagination h2 {
   flex-direction: column;
   flex-wrap: wrap;
   position: absolute;
-  top: 29rem;
+  top: 22rem;
   border-radius: 20px;
   padding: 0.6rem;
   width: 60vw;
@@ -821,7 +835,7 @@ input:checked + .slider:before {
 
 .user-btn-container {
   position: relative;
-  top: 19rem;
+  top: 24rem;
   display: flex;
   justify-content: space-around;
 }
@@ -1027,6 +1041,10 @@ section.single-plant img {
 
 section.single-plant .line-break {
   margin: 18px 0;
+}
+
+.p-data-missing {
+  margin: 5px 0px;
 }
 
 /* Data Table */
