@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { getUsersPlants } from "../utils/api";
+import { getUsersPlantsInfo } from "../utils/api";
 import { UserContext } from "../contexts/User";
 import SingleUserPlantCard from './SingleUserPlantCard';
 
@@ -14,7 +14,7 @@ export default function MyPlants() {
   useEffect(() => {
     setIsLoadingPlants(true);
     if (user) {
-    getUsersPlants(user)
+    getUsersPlantsInfo(user)
     .then((data) => {
       setPlants(data);
     })
@@ -32,11 +32,14 @@ export default function MyPlants() {
         <h1>Plants incoming...</h1>
         ) : (
           <>
-          <section className="my-plants">
-            <ul className="my-plants-cards">
+          <section className="plant-cards">
+            <ul className="plants-cards">
+              <div className="plant-cards">
               {plants.map((plant) => {
                 return <SingleUserPlantCard plant={plant} key={plant.plant_id} />;
               })}
+              </div>
+              
             </ul>
           </section>
           </>
