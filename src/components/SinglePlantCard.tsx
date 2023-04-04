@@ -3,24 +3,24 @@ import CalendarPicker from "./CalendarPicker";
 // Hooks
 import { useContext, useState } from "react";
 import { UserContext } from "../contexts/User";
-import { Link, useParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 // API
 import { postPlantToUser } from "../utils/api";
 
 // Icons
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs"
 
 export default function SinglePlantCard({ plant }: { plant: GrowStuffCrop }) {
-  const [date, setDate] = useState(new Date());
-
-  const [buttonActive, setButtonActive] = useState(true);
   const [buttonStyle, setButtonStyle] = useState({
     transition: "0s",
     background: "#333",
   });
 
   const { user } = useContext(UserContext);
+    const [date, setDate] = useState(new Date());
+    const [searchParams] = useSearchParams();
+    const [buttonActive, setButtonActive] = useState(true);
 
   function changeColor() {
     setButtonStyle({
@@ -36,65 +36,88 @@ export default function SinglePlantCard({ plant }: { plant: GrowStuffCrop }) {
     });
   }
 
-  const handleClick = (e: any) => {
-    e.preventDefault();
-    if (user) {
-      setButtonActive(false);
-      changeColor();
-      postPlantToUser(user, e.target.value, date)
-        .then(console.log)
-        .finally(() => {
-          let timer = setTimeout(() => {
-            fadeColor();
-            setButtonActive(true);
-          }, 3000);
-        });
-    }
-    return { msg: "added" };
-  };
 
-  return (
-    <li className="single-plant-container" key={plant["_id"]}>
-      <Link to={`/all-plants/${plant["_id"]}`}>
-        {/* <li onClick={() => setSinglePlant(plant["_id"])} className="plant-card" key={plant["_id"]}> */}
-        <div>
-          <img alt="plant" src={plant["thumbnail_url"]} />
-          <div className="description-container">
-            <h2>{plant["name"]}</h2>
-            <p>
-              <i>{plant["scientific_name"]}</i>
-            </p>
-            <p className="plant-description">{plant["description"]}</p>
-            <div className="votes">
-              <AiFillStar />
-              <AiFillStar />
-              <AiFillStar />
-              <AiOutlineStar />
-              <AiOutlineStar />
-            </div>
-          </div>
-        </div>
-      </Link>
-      {user ? (
-        <div className="set-plant-date">
-          <CalendarPicker date={date} setDate={setDate} />
-          <button
-            style={buttonStyle}
-            className="form"
-            onClick={handleClick}
-            value={plant["_id"]}
-            disabled={!buttonActive}
-          >
-            Plant!
-          </button>
-        </div>
-      ) : (
-        <div className="sign-in set-plant-date">
-          <Link to="/log-in" className="add-plant-button-no-user-message">
-            <button className="form">Sign in to add plant</button>
-          </Link>
-        </div>
-      )}
-    </li>
-  );
+	const handleClick = (e: any) => {
+		e.preventDefault();
+		if (user) {
+            setButtonActive(false)
+            changeColor();
+			postPlantToUser(user, e.target.value, date)
+            .finally(() => {
+                    setTimeout(() => {
+                        fadeColor();
+                        setButtonActive(true)
+                }, 3000)
+            })
+		}
+		return { msg: "added" };
+	};
+
+	return (
+		<li className="single-plant-container" key={plant["_id"]}>
+			<CalendarPicker date={date} setDate={setDate} />
+			<Link to={`/all-plants/${plant["_id"]}`}>
+				<div className="plant-card" key={plant["_id"]}>
+					{user ? (
+						<button
+                            style={buttonStyle}
+							className="add-plant-button"
+							onClick={handleClick}
+							value={plant["_id"]}
+                            disabled={!buttonActive}
+						>
+							Plant!
+						</button>
+					) : (
+						<p className="add-plant-button-no-user-message">Sign in to add plant</p>
+					)}
+					{/* <li onClick={() => setSinglePlant(plant["_id"])} className="plant-card" key={plant["_id"]}> */}
+					<div>
+						<h2>{plant["name"]}</h2>
+						<p>{plant["scientific_name"]}</p>
+						<div className="description-container">
+							<p className="plant-description">{plant["description"]}</p>
+						</div>
+						<div className="votes">
+              {
+                searchParams.get('search') ?
+                (() => {
+                  //Search score is different than without search, assume that growstuff has different ways of score being measured
+                  //We will assume that this relates to some match percentage. Let's arbitrarly set 1000 to be about 95% match and that 100%
+                  // is never attainable. 0 score is 0% match;
+                  // The plot we use is based on what looks about right, this is purely guessing
+                  // 100 - 5000 / (score + 50)
+
+                  return <p>{Math.floor(100 - 5000 / (plant._score + 50))}% match</p>
+                })() :
+                (() => {
+                  const score = plant._score
+
+                  const stars : React.ReactNode[] = [];
+
+                  let i = 0;
+                  //Note stars are static 
+
+                  for (; i < Math.floor(score / 2); i++) {
+                    stars.push(<BsStarFill key={i}></BsStarFill>)
+                  }
+
+                  if (Math.floor(score) % 2) {
+                    stars.push(<BsStarHalf key={i}></BsStarHalf>)
+                  }
+
+                  for (let i = stars.length; i < 5; i++) {
+                    stars.push(<BsStar key={i}></BsStar>)
+                  }
+
+                  return stars
+                })()
+              }
+						</div>
+					</div>
+					<img alt="plant" src={plant["thumbnail_url"]} />
+				</div>
+			</Link>
+		</li>
+	);
 }

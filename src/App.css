@@ -153,6 +153,20 @@ nav ul li.active {
   border-bottom: 2px solid #bbb;
 }
 
+/* Network Status */
+
+.NetworkStatus {
+  margin: 0px auto -10px auto;
+  text-align: center;
+}
+
+/* Loading */
+
+.p-loading-status {
+  margin: 15px 5px;
+  font-size: 1rem;
+}
+
 /* My Calendar */
 section.my-calendar {
   padding: 18px 10px;
@@ -732,7 +746,7 @@ section.pagination ul li {
   flex-direction: column;
   flex-wrap: wrap;
   position: absolute;
-  top: 29rem;
+  top: 22rem;
   border-radius: 20px;
   padding: 0.6rem;
   width: 60vw;
@@ -820,7 +834,7 @@ input:checked + .slider:before {
 
 .user-btn-container {
   position: relative;
-  top: 19rem;
+  top: 24rem;
   display: flex;
   justify-content: space-around;
 }
@@ -1028,6 +1042,10 @@ section.single-plant .line-break {
   margin: 18px 0;
 }
 
+.p-data-missing {
+  margin: 5px 0px;
+}
+
 /* Data Table */
 ul.data-table {
   margin: 12px 0;
@@ -1083,4 +1101,21 @@ form.login-form {
   border-radius: 5px;
   padding: 18px 15px 27px;
   text-align: center;
+}
+.my-plant-container {
+  border :2px grey;
+  width: 85vw;
+  padding: 18px 15px;
+  background: #f1f1f1;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 2rem;
+
+}
+
+.my-plant-container img {
+  max-width: 30vw;
+
 }
