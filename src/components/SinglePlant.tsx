@@ -17,12 +17,19 @@ export default function SinglePlant() {
 
   useEffect(() => {
     if (_id && online) {
-      setIsLoadingSinglePlant(true);
+      setIsLoadingSinglePlant(true); 
       getSinglePlant(_id).then((data) => {
         setSinglePlant(data);
         setIsLoadingSinglePlant(false);
       })
       .catch(console.error)
+    } else if (_id) {
+      getSinglePlant(_id).then(data => {
+        setSinglePlant(data);
+        setIsLoadingSinglePlant(false)
+      })
+      //This is only expected to resolve if the response is cached
+      .catch()
     }
   }, [_id, online]);
   return isLoadingSinglePlant ? (
