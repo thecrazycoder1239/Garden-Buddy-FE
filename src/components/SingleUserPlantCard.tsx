@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 import CalendarTaskPicker from "./CalendarTaskPicker";
 import { postTaskToUsersPlant } from "../utils/api";
 import { deleteUsersPlantById } from "../utils/api";
-import { getUsersPlantsInfo } from "../utils/api";
+import { getUsersPlants } from "../utils/api";
 
 export default function SingleUserPlantCard({
 	plant,
@@ -56,7 +56,7 @@ export default function SingleUserPlantCard({
 				.then(() => {
 					setDeleteMessage("Plant was removed");
 					if (user) {
-						getUsersPlantsInfo(user).then((plants) => setPlants(plants));
+						getUsersPlants(user).then((plants) => setPlants(plants));
 					}
 					setTimeout(() => {
 						setPlants((currentPlants) => {

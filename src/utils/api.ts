@@ -143,44 +143,6 @@ export const getUsersPlants = (user: User): Promise<UsersPlant[]> => {
       return data.plants
     })
   }
-  
-export const getPlantImgFromSlug = (term: string): Promise<string> => {
-  return getPlants(term, "1")
-  .then((plants) => {
-    return plants[0].thumbnail_url
-  })
-}
-
-export const getUsersPlantInfo = (usersPlant: UsersPlant): Promise<UsersPlant> => {
-  return getSinglePlant(usersPlant.plant_id + "")
-  .then((singlePlant) => {
-    return Promise.all(
-      [
-      singlePlant,
-      getPlantImgFromSlug(singlePlant.slug),
-      usersPlant
-    ]
-    )
-  })
-  .then(([singlePlant, thumbnail_url, usersPlant]) => {
-    return {
-      ...singlePlant,
-      ...usersPlant,
-      thumbnail_url: thumbnail_url
-    } 
-  })
-}
-
-export const getUsersPlantsInfo = (user: User): Promise<UsersPlant[]> => {
-  return getUsersPlants(user)
-  .then((plants) => {
-    return Promise.all (
-      plants.map((plant) => {
-      return getUsersPlantInfo(plant)
-    })
-    )
-  })
-}
 
 export const getUsersDetailedPlant = (users_plant_id: number, user: User): Promise<DetailedUsersPlant> => {
   return gardenBuddy
