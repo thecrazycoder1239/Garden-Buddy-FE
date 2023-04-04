@@ -145,7 +145,7 @@ export const getUsersPlants = (user: User): Promise<UsersPlant[]> => {
   }
   
 export const getPlantImgFromSlug = (term: string): Promise<string> => {
-  return getPlants(term)
+  return getPlants(term, "1")
   .then((plants) => {
     return plants[0].thumbnail_url
   })
