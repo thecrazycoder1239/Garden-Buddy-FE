@@ -2,15 +2,21 @@ import plantpot from "../assets/plant-icon2.png";
 import mail from "../assets/mail.png";
 import lock from "../assets/lock.png";
 // import location from '../assets/location.png';
-import closedeye from "../assets/closed.png";
-import openeye from "../assets/open.png";
+// import closedeye from "../assets/closed.png";
+// import openeye from "../assets/open.png";
+import openeye from "../assets/eye-regular.svg";
+import closedeye from "../assets/eye-slash-regular.svg";
 import { useContext, useState } from "react";
 import { UserContext } from "../contexts/User";
 import { Navigate, Link } from "react-router-dom";
 
 // Icons
 import {RiLockPasswordLine} from 'react-icons/ri'
-import { AiOutlineMail } from "react-icons/ai";
+import {
+  AiOutlineEye, 
+  AiOutlineEyeInvisible,
+  AiOutlineMail,
+} from "react-icons/ai";
 
 export default function Login() {
   const [passwordVisibility, setPasswordVisbility] = useState(false);
