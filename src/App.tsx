@@ -1,6 +1,6 @@
 // Hooks
 import { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 // Components
@@ -31,6 +31,7 @@ function App() {
   const [deferredPrompt, setDeferredPrompt] = useState(object);
   const [ableToInstall, setAbleToInstall] = useState(false);
   const [hasInstalled, setHasInstalled] = useState(false);
+  const [ hasLoadedOnce, setHasLoadedOnce ] = useState(false);
 
   useEffect(() => {
     window.addEventListener("beforeinstallprompt", (event) => {
@@ -40,6 +41,8 @@ function App() {
     window.addEventListener("appinstalled", () => {
       setHasInstalled(true);
     });
+
+    setHasLoadedOnce(true);
   }, []);
 
   const handleInstall = () => {
@@ -51,6 +54,7 @@ function App() {
       {/* {hasInstalled && ableToInstall ? ( */}
       {true ? (
         <>
+          {!hasLoadedOnce ? <Navigate to="/log-in" /> : <></>}
           <HeaderInstalled />
           <Nav />
           <Routes>

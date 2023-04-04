@@ -35,9 +35,11 @@ interface User {
     last_name: string;
 }
 
+type TaskSlug='water' | 'prune' | 'look for bugs' | 'health check' | 'harvest' | 'fertilise'
+
 interface Task {
     users_task_id: number;
-    task_slug: string;
+    task_slug: TaskSlug;
     task_start_date: string;
 }
 

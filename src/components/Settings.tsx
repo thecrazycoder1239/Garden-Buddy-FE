@@ -1,5 +1,10 @@
 import { useContext, useState } from "react";
 import { UserContext } from "../contexts/User";
+import { Link, Navigate } from "react-router-dom";
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
+import { deleteUser } from "../utils/api";
 import NotificationsSwitch from "./NotificationsSwitch";
 
 export default function Settings() {
@@ -19,8 +24,20 @@ export default function Settings() {
   const [lastNameErr, setLastNameErr] = useState('');
   const [firstNameErr, setFirstNameErr] = useState('');
   const [usernameErr, setUsernameErr] = useState('');
+  const [openModal, setOpenModal] = useState(false);
+  const [modalPassword, setModalPassword] = useState('');
+  const [processingDeleteAccount, setProcessingDeleteAccount] = useState(false);
+  const [allowAccountDelete, setAllowAccountDelete] = useState(false);
+  const [modalPasswordErr, setModalPasswordErr] = useState('')
   // const [profileUrlFormEdit, setProfileUrlFormEdit] = useState(false);
 
+  function closeModal () {
+    setOpenModal(false);
+  }
+
+  if (!user && allowAccountDelete === true) {
+    return <Navigate to="/sign-up" />;
+  }
 
   if(user) {
     return (
@@ -284,23 +301,66 @@ export default function Settings() {
             </label>
           </div>
   
-          <div className="toggle-option">
+          {/* <div className="toggle-option">
             <p className="label-text">Dark Mode</p>
             <label className="toggle-label" htmlFor="dark-mode-switch">
               <input id="dark-mode-switch" type="checkbox" hidden />
               <span className="slider"></span>
             </label>
-          </div>
+          </div> */}
         </section>
 
         <section className="user-btn-container">
+          <Link to={"/log-in"}>
           <button className="settings-logout-btn" onClick={logout}>Log out</button>
-          <button className="settings-delete-account-btn">Delete account</button>
+          </Link>
+          <button className="settings-delete-account-btn" onClick={(() => {setOpenModal(true)})}>Delete account</button>
         </section>
+
+        <Modal
+        open={openModal}
+        onClose={closeModal}
+        aria-labelledby="delete account confirmation"
+        aria-describedby="enter password and confirm to delete the account"
+      >
+        <Box className="modal">
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Are you Sure?
+          </Typography>
+          <form onSubmit={(e) => {
+            e.preventDefault();
+
+            if(modalPassword === "") {
+              setModalPasswordErr("please input a password")
+            } else if (modalPassword !== user.password) {
+              setModalPasswordErr("incorrect password")
+            } else {
+              setModalPasswordErr("")
+              setProcessingDeleteAccount(true);
+              deleteUser(user.username, modalPassword).then(() => {
+                setProcessingDeleteAccount(false)
+                logout()
+                setAllowAccountDelete(true)
+              })
+            }
+          }}>
+            <div className="modal-input-container">
+              <label id="confirm-password-text" htmlFor="confirm-password">confirm password: </label>
+              <input id="confirm-password" value={modalPassword} onChange={(e) => {setModalPassword(e.target.value)}}></input>
+            </div>
+            <p className="modal-password-err">{modalPasswordErr !== "" ? modalPasswordErr : ""}</p>
+            <div className="modal-btn-container">
+              <button className="modal-cancel-btn" onClick={() => {closeModal()}}>cancel</button>
+              <button className="modal-confirm-btn" type="submit">delete account</button>
+            </div>
+          </form>
+          <p className="modal-delete-account-waiting-msg">{processingDeleteAccount ? "attempting to delete your account, apologies for the wait!" : ""}</p>
+        </Box>
+      </Modal>
   
-        <button className="review-app-button">
+        {/* <button className="review-app-button">
           Leave a review on Garden Buddy!
-        </button>
+        </button> */}
       </>
     );
   } else {

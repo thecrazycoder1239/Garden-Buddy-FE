@@ -16,7 +16,7 @@ export default function Login() {
   const [passwordError, setPasswordError] = useState("");
   const [SendingRequest, setSendingRequest] = useState(false);
 
-  const { user, login} = useContext(UserContext);
+  const { user, login } = useContext(UserContext);
 
   const togglePasswordVisibility = () => {
     if (passwordVisibility === false) {
@@ -33,22 +33,26 @@ export default function Login() {
       className="form"
       onSubmit={(e) => {
         e.preventDefault();
-        setSendingRequest(true)
-        login({ username, password }).then(() => {setSendingRequest(false)}).catch((reason) => {
-          if (password === "") {
-            setPasswordError("please provide a password");
-            setUsernameError("");
-          } else if (username === "") {
-            setUsernameError("please provide a password");
-            setPasswordError("");
-          } else if (reason.response.status === 403) {
-            setPasswordError("incorrect password");
-            setUsernameError("");
-          } else if (reason.response.status === 404) {
-            setUsernameError("username not found");
-            setPasswordError("");
-          }
-        });
+        setSendingRequest(true);
+        login({ username, password })
+          .then(() => {
+            setSendingRequest(false);
+          })
+          .catch((reason) => {
+            if (password === "") {
+              setPasswordError("please provide a password");
+              setUsernameError("");
+            } else if (username === "") {
+              setUsernameError("please provide a password");
+              setPasswordError("");
+            } else if (reason.response.status === 403) {
+              setPasswordError("incorrect password");
+              setUsernameError("");
+            } else if (reason.response.status === 404) {
+              setUsernameError("username not found");
+              setPasswordError("");
+            }
+          });
       }}
     >
       <div className="image-div">
@@ -99,7 +103,11 @@ export default function Login() {
       <button className="submit-button" type="submit">
         Log in
       </button>
-      <p className='request-waiting-message'>{SendingRequest ? "attempting to log you in, apologies for the wait!": ""}</p>
+      <p className="request-waiting-message">
+        {SendingRequest
+          ? "attempting to log you in, apologies for the wait!"
+          : ""}
+      </p>
       <Link to="/sign-up">
         <p className="sign-up-text">Sign Up</p>
       </Link>

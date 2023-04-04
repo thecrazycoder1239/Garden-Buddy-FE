@@ -33,6 +33,17 @@ export const signUp = (username: string, first_name: string, last_name: string, 
     });
 };
 
+export const deleteUser = (username: string, password: string) => {
+  return gardenBuddy
+    .delete(`/api/users/${username}`, {data: { password }})
+    .then(({ data }) => {
+      return data;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
+
 export const addSubscription = (user: User, pushSubscription: PushSubscription) => {
   return gardenBuddy
     .post("/add-subscription", {
@@ -47,7 +58,6 @@ export const removeSubscription = (pushSubscription: PushSubscription) => {
       pushSubscription
     })
 }
-
 
 const growStuffAPI = axios.create({
   baseURL: "https://garden-buddy.onrender.com/growstuff",
@@ -119,8 +129,34 @@ export const getUsersPlants = (user: User) : Promise<UsersPlant[]> => {
         })
 };
 
-export const postTaskToUsersPlant = (user: User, users_plant_id: string, task_slug: string, task_start_date: Date) => {
-  return gardenBuddy
-    .post('/:users_plant_id/tasks', {password: user.password, start_date: task_start_date,
-      task_slug: task_slug})
-}
+export const postTaskToUsersPlant = (
+	user: User,
+	users_plant_id: number,
+	task_slug: TaskSlug,
+	task_start_date: string
+) => {
+	return gardenBuddy.post(`/api/users-plants/${users_plant_id}/tasks`, {
+		password: user.password,
+		task_start_date: task_start_date,
+		task_slug: task_slug,
+	});
+};
+
+export const patchUserInfo = (
+	user: User,
+	first_name: string,
+	last_name: string
+) => {
+	return gardenBuddy
+		.post(`/api/users/${user.username}`, {
+			password: user.password,
+			first_name,
+			last_name,
+		})
+		.then(({ data }) => {
+			return data.plant;
+		})
+		.catch((error) => {
+			console.error(error);
+		});
+};
