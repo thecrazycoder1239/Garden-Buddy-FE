@@ -14,13 +14,13 @@ export default function SingleUserPlantCardDb({plant} : {plant: UsersPlant}){
     }
 
     return (
-		<li className="my-plant-container">
-			<h2>{plant.name}</h2>
-			<p>Growing Since: {plant.planted_date}</p>
-			<img alt="plant" src={plant.thumbnail_url} />
-		</li>
-			
-			
-		
-);
+      <li className="my-plant-container">
+        <img alt="plant" src={plant.thumbnail_url} />
+        <div>
+          <h2>{plant.name}</h2>
+          <p>Growing since: {plant.planted_date}</p>
+          <button className="form">Remove from plants</button>
+        </div>
+      </li>
+    );
 }
