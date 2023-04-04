@@ -14,7 +14,9 @@ interface Task {
     users_task_id: number;
     task_slug: TaskSlug;
     task_start_date: string;
+    users_plant_id: number
 }
+
 
 interface Log {
     log_id: number;
@@ -23,14 +25,18 @@ interface Log {
 }
 
 interface UsersPlant {
-    name: string,
-    thumbnail_url: string,
-    plant_id: number;
-    users_plant_id: number;
-    planted_date: string | null;
+  name: string,
+  thumbnail_url: string,
+  plant_id: number;
+  users_plant_id: number;
+  planted_date: string | null;
+}
+interface DetailedUsersPlant extends UsersPlant{
     tasks: Task[];
     logs: Log[];
 }
+
+
 
 interface OpenFarmData {
   attributes: {
