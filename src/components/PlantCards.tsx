@@ -110,11 +110,11 @@ export default function PlantCards() {
     </section>
     <section className="pagination">
         <button onClick={() => {
-            setSearchParams({page: (pageNumber - 1).toString()})
+            changePageNumber(pageNumber - 1)
         }} disabled={pageNumber === 1}>{'<'}</button>
         <p>{pageNumber}</p>
         <button onClick={() => {
-          setSearchParams({page: (pageNumber + 1).toString()})
+          changePageNumber(pageNumber + 1)
         }}>{'>'}</button>
     </section>
     </>
