@@ -9,114 +9,122 @@ import { Link, useSearchParams } from "react-router-dom";
 import { postPlantToUser } from "../utils/api";
 
 // Icons
-import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs"
+import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
 
-export default function SinglePlantCard({plant} : {plant: GrowStuffCrop}) {
+export default function SinglePlantCard({ plant }: { plant: GrowStuffCrop }) {
+  const [buttonStyle, setButtonStyle] = useState({
+    transition: "0s",
+    background: "#333",
+  });
 
-    const [date, setDate] = useState(new Date());
-    
-    const [searchParams] = useSearchParams();
-    const [buttonActive, setButtonActive] = useState(true);
-    const [buttonStyle, setButtonStyle] = useState({transition: '0s', background: '#f1f1f1'});
+  const { user } = useContext(UserContext);
+  const [date, setDate] = useState(new Date());
+  const [searchParams] = useSearchParams();
+  const [buttonActive, setButtonActive] = useState(true);
 
-	const { user } = useContext(UserContext);
+  function changeColor() {
+    setButtonStyle({
+      transition: "0.3s",
+      background: "#1ec765",
+    });
+  }
 
+  function fadeColor() {
+    setButtonStyle({
+      transition: "0.3s",
+      background: "#333",
+    });
+  }
 
-    function changeColor(){
-            setButtonStyle({
-                transition: '0.3s',
-                background: '#1ec765'
-            })
-        }
+  const handleClick = (e: any) => {
+    e.preventDefault();
+    if (user) {
+      setButtonActive(false);
+      changeColor();
+      postPlantToUser(user, e.target.value, date).finally(() => {
+        setTimeout(() => {
+          fadeColor();
+          setButtonActive(true);
+        }, 3000);
+      });
+    }
+    return { msg: "added" };
+  };
 
-    function fadeColor(){
-        setButtonStyle({
-            transition: '0.3s',
-            background: '#f1f1f1'
-            })
-        }
+  return (
+    <li className="single-plant-container" key={plant["_id"]}>
+      <Link to={`/all-plants/${plant["_id"]}`}>
+        <div>
+          <img alt="plant" src={plant["thumbnail_url"]} />
 
-	const handleClick = (e: any) => {
-		e.preventDefault();
-		if (user) {
-            setButtonActive(false)
-            changeColor();
-			postPlantToUser(user, e.target.value, date)
-            .finally(() => {
-                    setTimeout(() => {
-                        fadeColor();
-                        setButtonActive(true)
-                }, 3000)
-            })
-		}
-		return { msg: "added" };
-	};
+          <div className="description-container">
+            <h2>{plant["name"]}</h2>
+            <p>
+              <i>{plant["scientific_name"]}</i>
+            </p>
+            <p className="plant-description">{plant["description"]}</p>
 
-	return (
-		<li className="single-plant-container">
-			<CalendarPicker date={date} setDate={setDate} />
-			<Link to={`/all-plants/${plant["_id"]}`}>
-				<div className="plant-card" key={plant["_id"]}>
-					{user ? (
-						<button
-                            style={buttonStyle}
-							className="add-plant-button"
-							onClick={handleClick}
-							value={plant["_id"]}
-                            disabled={!buttonActive}
-						>
-							Plant!
-						</button>
-					) : (
-						<p className="add-plant-button-no-user-message">Sign in to add plant</p>
-					)}
-					{/* <li onClick={() => setSinglePlant(plant["_id"])} className="plant-card" key={plant["_id"]}> */}
-					<div>
-						<h2>{plant["name"]}</h2>
-						<p>{plant["scientific_name"]}</p>
-						<div className="description-container">
-							<p className="plant-description">{plant["description"]}</p>
-						</div>
-						<div className="votes">
-              {
-                searchParams.get('search') ?
-                (() => {
-                  //Search score is different than without search, assume that growstuff has different ways of score being measured
-                  //We will assume that this relates to some match percentage. Let's arbitrarly set 1000 to be about 95% match and that 100%
-                  // is never attainable. 0 score is 0% match;
-                  // The plot we use is based on what looks about right, this is purely guessing
-                  // 100 - 5000 / (score + 50)
+            <div className="votes">
+              {searchParams.get("search")
+                ? (() => {
+                    //Search score is different than without search, assume that growstuff has different ways of score being measured
+                    //We will assume that this relates to some match percentage. Let's arbitrarly set 1000 to be about 95% match and that 100%
+                    // is never attainable. 0 score is 0% match;
+                    // The plot we use is based on what looks about right, this is purely guessing
+                    // 100 - 5000 / (score + 50)
 
-                  return <p>{Math.floor(100 - 5000 / (plant._score + 50))}% match</p>
-                })() :
-                (() => {
-                  const score = plant._score
+                    return (
+                      <p>
+                        {Math.floor(100 - 5000 / (plant._score + 50))}% match
+                      </p>
+                    );
+                  })()
+                : (() => {
+                    const score = plant._score;
 
-                  const stars : React.ReactNode[] = [];
+                    const stars: React.ReactNode[] = [];
 
-                  let i = 0;
-                  //Note stars are static 
+                    let i = 0;
+                    //Note stars are static
 
-                  for (; i < Math.floor(score / 2); i++) {
-                    stars.push(<BsStarFill key={i}></BsStarFill>)
-                  }
+                    for (; i < Math.floor(score / 2); i++) {
+                      stars.push(<BsStarFill key={i}></BsStarFill>);
+                    }
 
-                  if (Math.floor(score) % 2) {
-                    stars.push(<BsStarHalf key={i}></BsStarHalf>)
-                  }
+                    if (Math.floor(score) % 2) {
+                      stars.push(<BsStarHalf key={i}></BsStarHalf>);
+                    }
 
-                  for (let i = stars.length; i < 5; i++) {
-                    stars.push(<BsStar key={i}></BsStar>)
-                  }
+                    for (let i = stars.length; i < 5; i++) {
+                      stars.push(<BsStar key={i}></BsStar>);
+                    }
 
-                  return stars
-                })()
-              }
-						</div>
-					</div>
-					<img alt="plant" src={plant["thumbnail_url"]} />
-				</div>
-			</Link>
-		</li>
-	);
+                    return stars;
+                  })()}
+            </div>
+          </div>
+        </div>
+      </Link>
+      {user ? (
+        <div className="set-plant-date">
+          <CalendarPicker date={date} setDate={setDate} />
+          <button
+            style={buttonStyle}
+            className="form"
+            onClick={handleClick}
+            value={plant["_id"]}
+            disabled={!buttonActive}
+          >
+            Plant!
+          </button>
+        </div>
+      ) : (
+        <div className="sign-in set-plant-date">
+          <Link to="/log-in" className="add-plant-button-no-user-message s">
+            <button className="form">Sign in to add plant</button>
+          </Link>
+        </div>
+      )}
+    </li>
+  );
 }

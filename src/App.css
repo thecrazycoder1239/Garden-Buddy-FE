@@ -27,6 +27,7 @@
 /* Plant Cards */
 /* Pagination */
 /* Toggle Visibility */
+/* Login Form */
 /* -------- */
 
 /* Global */
@@ -59,6 +60,15 @@ button.plain-text {
 
 button.logout {
   padding: 5px;
+}
+
+button.login {
+  width: 100%;
+  padding: 18px 10px;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
 }
 
 button.form {
@@ -415,103 +425,102 @@ section.plant-cards {
   margin-top: 18px;
 }
 
-ul.plant-cards div.plant-card {
-  padding: 18px 15px;
+ul.plant-cards li.single-plant-container {
   background: #f1f1f1;
   border-radius: 10px;
   margin-bottom: 12px;
+  box-shadow: 0px 2px 2px #f1f1f1;
+}
+
+ul.plant-cards li.single-plant-container a > div {
+  padding: 18px 15px 12px;
   display: flex;
-  justify-content: space-between;
-  padding-bottom: 2rem;
+  gap: 10px;
 }
 
-ul.plant-cards div.plant-card h2,
-ul.plant-cards div.plant-card p {
-  margin-block-end: 0.6rem;
+ul.plant-cards li.single-plant-container a > div .votes {
+  margin-top: 4px;
 }
 
-ul.plant-cards div.plant-card h2 {
+ul.plant-cards li.single-plant-container h2 {
   text-transform: capitalize;
 }
 
-ul.plant-cards div.plant-card p:last-of-type {
+ul.plant-cards li.single-plant-container p:last-of-type {
   margin-block-end: 0;
 }
 
-ul.plant-cards div.plant-card div div.votes {
-  margin-top: 4px;
-  position: relative;
-  top: 18px;
+ul.plant-cards li.single-plant-container p i {
+  color: #666;
 }
 
-ul.plant-cards div.plant-card img {
+ul.plant-cards li.single-plant-container .plant-description {
+  margin: 3px 0;
+}
+
+ul.plant-cards li.single-plant-container img {
   background: white;
-  width: 150px;
-  height: 130px;
-  border-radius: 8px;
-}
-
-.description-container{
-  height: 20px;
-  width: 60vw;
+  max-width: 150px;
+  height: auto;
+  border-radius: 5px;
 }
 
 .plant-description {
   display: -webkit-box;
   -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;  
+  -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
 /* Pagination */
-section.pagination {
+section.pagination ul {
   justify-content: center;
   display: flex;
+  gap: 5px;
 }
 
-section.pagination h2 {
+section.pagination ul li {
   border: 1px solid #333;
   padding: 5px 10px 8px;
+  cursor: pointer;
 }
 
 /* AddPlants Button */
 
-.single-plant-container{
-  position: relative;
+.set-plant-date {
+  padding: 10px 15px 18px;
+  background: #ddd;
+  border-radius: 0 0 5px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.date-selector{
-  position: absolute;
-  bottom: 0.5rem;
-  left: 0.5rem;
+.sign-in {
+  padding-bottom: 12px;
 }
 
-.add-plant-button{
-  position: absolute;
-  bottom: 0.5rem;
-  left: 10rem;
-  border: 1px solid #604f4f;
-  background: rgb(197, 197, 197);
+.add-plant-button {
+  background: #333;
+
   border-radius: 15px;
   cursor: pointer;
-  height: 2rem;
+  height: auto;
   width: 3rem;
 }
 
-.add-plant-button:hover{
-  background-color:  rgb(125, 125, 125);
-  scale: 1.05;
+#plant-date {
+  cursor: pointer;
+  padding: 5px;
+  margin-top: 3px;
 }
 
 /* Install Button */
 .install-btn {
   color: black;
-  /* left: 4rem; */
-  /* top: 2rem; */
   font-size: 1rem;
   border-radius: 0.5rem;
   border: 0.2rem;
-  /* display:flex; */
 }
 
 /* .install-btn:hover,
@@ -523,7 +532,6 @@ section.pagination h2 {
 
 .install-btn-text {
   border-radius: 0.3rem 0rem 0rem 0.3rem;
-  /* background-color: var(--lime-green); */
   padding: 0.5rem;
   height: 2rem;
   margin: 0rem;
@@ -535,16 +543,6 @@ section.pagination h2 {
   height: 2rem;
   width: 2rem;
   padding: 0.5rem;
-  /* background-color:  #8ebc93; */
-}
-
-.form {
-  display: block;
-  flex-wrap: wrap;
-  position: relative;
-  margin-top: 3rem;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .input-field {
@@ -553,13 +551,22 @@ section.pagination h2 {
   padding: 1rem;
   margin: 1rem;
   margin-left: 0.5rem;
-  border: 0.1rem solid var(--light-teal);
-  border-radius: 25px;
-  width: 60vw;
+  /* border: 0.1rem solid var(--light-teal); */
+  /* border-radius: 25px; */
+  /* width: 60vw; */
   background-color: white;
   position: relative;
   margin-left: auto;
   margin-right: auto;
+}
+
+.input-field label {
+  font-size: 1rem;
+}
+
+.input-field svg {
+  height: 1.6rem;
+  width: 1.6rem;
 }
 
 .login-error-message {
@@ -585,31 +592,27 @@ section.pagination h2 {
   padding-top: 1rem;
 }
 
-#username-input, 
-#password-input, 
+#username-input,
+#password-input,
 #location-input,
 #first-name-input,
-#last-name-input, 
-#settings-username, 
-#settings-first-name, 
-#settings-surname, 
-#settings-password, 
+#last-name-input,
+#settings-username,
+#settings-first-name,
+#settings-surname,
+#settings-password,
 #settings-profile {
-  border: 1px solid var(--light-teal);
-  border-radius: 20px;
-  display: block;
+  border: 1px solid #333;
   margin-top: 0.5rem;
   font-size: 1rem;
   padding: 0.2rem;
   margin-left: 35px;
-  padding-left: 0.7rem;
+  padding: 10px;
 }
 
 .label {
   text-align: left;
   font-size: 1.2rem;
-  color: var(--dark-teal);
-  padding-left: 7px;
 }
 
 .image-div {
@@ -628,7 +631,7 @@ section.pagination h2 {
   top: 10%;
 }
 
-.submit-button{
+.submit-button {
   display: block;
   padding: 1em;
   background: var(--lime-green);
@@ -651,7 +654,6 @@ section.pagination h2 {
   width: 1.3rem;
   position: absolute;
   top: 3.05rem;
-
 }
 
 .password-eye {
@@ -662,11 +664,8 @@ section.pagination h2 {
 }
 
 .sign-up-text {
-  position: relative;
-  text-align: center;
-  top: 2rem;
-  padding-bottom: 3rem;
   text-decoration: underline;
+  margin-top: 9px;
 }
 
 .edit-form {
@@ -722,10 +721,10 @@ section.pagination h2 {
   padding-right: 1rem;
 }
 
-#edit-username, 
-#edit-firstname, 
-#edit-surname, 
-#edit-password, 
+#edit-username,
+#edit-firstname,
+#edit-surname,
+#edit-password,
 #edit-profileurl {
   grid: 1 / 2 / 1 / 2;
   border: 1px solid var(--light-teal);
@@ -742,7 +741,7 @@ section.pagination h2 {
   height: 100vh;
 }
 
-.toggle-options{
+.toggle-options {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -767,7 +766,7 @@ section.pagination h2 {
   font-size: 1rem;
 }
 
-.toggle-label{
+.toggle-label {
   position: absolute;
   display: block;
   margin-left: 1rem;
@@ -787,7 +786,7 @@ section.pagination h2 {
   left: 10px;
 }
 
-.slider{
+.slider {
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -795,8 +794,8 @@ section.pagination h2 {
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 .slider:before {
@@ -807,12 +806,12 @@ section.pagination h2 {
   left: 4px;
   bottom: 4px;
   background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: #2196f3;
 }
 
 input:focus + .slider {
@@ -825,11 +824,11 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
-.slider{
+.slider {
   border-radius: 34px;
 }
 
-.slider:before{
+.slider:before {
   border-radius: 50%;
 }
 
@@ -875,7 +874,7 @@ input:checked + .slider:before {
 
 .review-app-button:hover,
 .settings-delete-account-btn:hover,
-.settings-logout-btn:hover  {
+.settings-logout-btn:hover {
   scale: 1.1;
 }
 
@@ -967,15 +966,15 @@ input:checked + .slider:before {
 }
 
 @media only screen and (min-width: 900px) {
-  .input-field{
+  .input-field {
     width: 40vw;
   }
 }
 
 @media only screen and (max-width: 550px) {
-  .input-field{
+  /* .input-field {
     width: 85vw;
-  }
+  } */
 
   .label-text {
     left: 1rem;
@@ -1029,7 +1028,7 @@ section.single-plant {
 }
 
 section.single-plant h2 {
-  text-transform: capitalize!important;
+  text-transform: capitalize !important;
 }
 
 section.single-plant img {
@@ -1095,9 +1094,16 @@ ul.comment-list li .avatar div {
   border-radius: 40px;
 }
 
+/* Login Form */
+form.login-form {
+  background: #f1f1f1;
+  margin: 18px 15px;
+  border-radius: 5px;
+  padding: 18px 15px 27px;
+  text-align: center;
+}
 .my-plant-container {
-  border :2px grey;
-  width: 85vw;
+  width: 100%;
   padding: 18px 15px;
   background: #f1f1f1;
   border-radius: 10px;
@@ -1105,7 +1111,24 @@ ul.comment-list li .avatar div {
   display: flex;
   justify-content: space-between;
   padding-bottom: 2rem;
+  gap: 10px;
+}
 
+.my-plant-container {
+  text-transform: capitalize;
+}
+
+.my-plant-container div {
+  width: calc(100% - 30vw);
+  display: flex-column;
+}
+
+.my-plant-container div button {
+  margin-top: 45px;
+}
+
+.my-plant-container div h2 {
+  margin-bottom: 4px;
 }
 
 .my-plant-container img {
