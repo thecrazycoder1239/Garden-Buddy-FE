@@ -26,7 +26,7 @@
 /* Filter Plants */
 /* Plant Cards */
 /* Pagination */
-/* User Plant Cards */
+/* My Plant Card */
 /* Add Task Buttons */
 /* Toggle Visibility */
 /* -------- */
@@ -961,46 +961,6 @@ input:checked + .slider:before {
   position: relative;
   bottom: 10px;
   color: rgb(122, 0, 0);
-}
-
-/* User Plant Cards */
-.task-buttons {
-  display: flex;
-  justify-content: space-around;
-}
-
-/* Add Task Buttons */
-.add-task-button {
-  border: 2px solid #333;
-  border-radius: 20px;
-  background: #f1f1f1;
-  margin-bottom: 6px;
-  cursor: pointer;
-  margin: 0.5rem;
-  padding: 0.5rem;
-}
-
-.add-task-button:hover{
-  scale: 1.05;
-  background-color: #dadada;
-}
-
-/* Date Selector */
-.task-date-selector{
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
-  border: 2px solid #333;
-  border-radius: 20px;
-  background: #f1f1f1;
-  cursor: pointer;
-  margin: 0.5rem;
-  padding: 0.5rem;
-}
-
-.task-date-selector:hover{
-  scale: 1.05;
-  background-color: #79b351;
 }
 
 /* Toggle Visibility */

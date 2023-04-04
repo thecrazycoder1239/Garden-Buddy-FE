@@ -32,13 +32,12 @@ export default function SingleUserPlantCard({
 	if(user) {
 	return (
 		<section className="my-plants">
-			<ul className="my-plants-cards">
+			<ul className="my-plant-card">
 				<li>
-					<h2>{plant.users_plant_id}</h2>
 					<h2>{plant.name}</h2>
 					<p>Growing Since: {plant.planted_date ? new Date(plant.planted_date).toDateString() : "not applicable"}</p>
-					<img alt="plant" src={plant.thumbnail_url} />
-					<button className="task-menu-button" onClick={() => {setIsModalOpen(true)}}>
+					<img className='my-plant-img' alt="plant" src={plant.thumbnail_url} />
+					<button className="task-date-selector" onClick={() => {setIsModalOpen(true)}}>
 						Add Task
 					</button>
 					<Modal
