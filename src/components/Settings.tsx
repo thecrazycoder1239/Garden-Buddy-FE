@@ -251,9 +251,6 @@ export default function Settings() {
                 // }}
                 // value={currentUsername}
               />
-              
-
-
 
               {/* {usernameFormEdit ? <button onClick={(e) => {
               setCurrentUsername('')
@@ -303,18 +300,19 @@ export default function Settings() {
             <label className="edit-label" htmlFor="edit-password">
               Password:
             </label>
-            <input
-              type="text"
-              id="edit-password"
-              placeholder={`${user.password}`}
-              disabled={true}
-              // disabled={!passwordFormEdit ? true : false}
-              // value={currentPassword}
-              // onChange={(e) => {
-              //   setCurrentPassword(e.target.value)
-              // }}
-            />
-            {/* {passwordFormEdit ? <button onClick={(e) => {
+            <div>
+              <input
+                type="text"
+                id="edit-password"
+                placeholder={`${user.password}`}
+                disabled={true}
+                // disabled={!passwordFormEdit ? true : false}
+                // value={currentPassword}
+                // onChange={(e) => {
+                //   setCurrentPassword(e.target.value)
+                // }}
+              />
+              {/* {passwordFormEdit ? <button onClick={(e) => {
               setCurrentPassword('')
               setPasswordFormEdit(false)
               setPasswordErr('')
@@ -325,6 +323,7 @@ export default function Settings() {
                 setPasswordFormEdit(true);
             }}>edit</button>}
             {passwordFormEdit ? <button className="edit-btn" type="submit">submit</button> : <></>} */}
+            </div>
           </form>
           {/* <p className="login-error-message">{passwordErr === '' ? '' : passwordErr}</p> */}
 
@@ -381,12 +380,12 @@ export default function Settings() {
 
         <section className="user-btn-container">
           <Link to={"/log-in"}>
-            <button className="settings-logout-btn" onClick={logout}>
+            <button className="full-width" onClick={logout}>
               Log out
             </button>
           </Link>
           <button
-            className="settings-delete-account-btn"
+            className="full-width"
             onClick={() => {
               setOpenModal(true);
             }}
@@ -430,7 +429,7 @@ export default function Settings() {
             >
               <div className="modal-input-container">
                 <label id="confirm-password-text" htmlFor="confirm-password">
-                  confirm password:{" "}
+                  Confirm password:{" "}
                 </label>
                 <input
                   id="confirm-password"
@@ -445,15 +444,15 @@ export default function Settings() {
               </p>
               <div className="modal-btn-container">
                 <button
-                  className="modal-cancel-btn"
+                  className="form"
                   onClick={() => {
                     closeModal();
                   }}
                 >
-                  cancel
+                  Cancel
                 </button>
-                <button className="modal-confirm-btn" type="submit">
-                  delete account
+                <button className="form" type="submit">
+                  Delete account
                 </button>
               </div>
             </form>
