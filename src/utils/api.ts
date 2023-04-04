@@ -40,9 +40,6 @@ export const deleteUser = (username: string, password: string) => {
     .then(({ data }) => {
       return data;
     })
-    .catch((error) => {
-      console.error(error);
-    });
 };
 
 export const addSubscription = (user: User, pushSubscription: PushSubscription) => {
@@ -66,9 +63,6 @@ export const patchUserInfo = (user: User, first_name: string | undefined, last_n
     .then(({ data }) => {
       return data.user;
     })
-    .catch((error) => {
-      console.error(error);
-    });
 };
 
 const growStuffAPI = axios.create({
@@ -82,18 +76,12 @@ export const getPlants = (term: string | null) => {
       .then(({ data }) => {
         return data
       })
-      .catch((error) => {
-        console.error(error)
-      })
   }
   return growStuffAPI
     .get(`/crops`)
     .then(({ data }) => {
       return data;
     })
-    .catch((error) => {
-      console.error(error);
-    });
 };
 
 export const getSinglePlant = (_id: string) => {
@@ -102,9 +90,6 @@ export const getSinglePlant = (_id: string) => {
     .then(({ data }) => {
       return data;
     })
-    .catch((error) => {
-      console.error(error);
-    });
 };
 
 export const postPlantToUser = (user: User, plant_id: string, planted_date: Date) : Promise<UsersPlant> => {
@@ -113,7 +98,4 @@ export const postPlantToUser = (user: User, plant_id: string, planted_date: Date
     .then(({ data }) => {
       return data.plant;
     })
-    .catch((error) => {
-      console.error(error);
-    });
 };

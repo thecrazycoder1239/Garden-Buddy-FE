@@ -7,31 +7,44 @@ import { getSinglePlant } from "../utils/api";
 
 // Components
 import Comments from './Comments'
+import useOnlineStatus from "../hooks/useOnlineStatus";
 
 export default function SinglePlant() {
   const { _id } = useParams();
-  const [isLoadingSinglePlant, setIsLoadingSinglePlant] = useState(false);
+  const online = useOnlineStatus();
+  const [isLoadingSinglePlant, setIsLoadingSinglePlant] = useState(true);
   const [singlePlant, setSinglePlant] = useState<GrowStuffCrop | null>(null);
 
   useEffect(() => {
-    if (_id) {
+    if (_id && online) {
+      setIsLoadingSinglePlant(true); 
       getSinglePlant(_id).then((data) => {
-        setIsLoadingSinglePlant(true);
         setSinglePlant(data);
         setIsLoadingSinglePlant(false);
-      });
+      })
+      .catch(console.error)
+    } else if (_id) {
+      getSinglePlant(_id).then(data => {
+        setSinglePlant(data);
+        setIsLoadingSinglePlant(false)
+      })
+      //This is only expected to resolve if the response is cached
+      .catch()
     }
-  }, [_id]);
+  }, [_id, online]);
   return isLoadingSinglePlant ? (
-    <h1>Plant Incoming...</h1>
+    <p className="p-loading-status">Plant Incoming...</p>
   ) : (
     <section className="single-plant">
       {singlePlant === null ? (
         <></>
       ) : (
         <>
+
           <h2>{singlePlant["name"]}</h2>
-          <img src={singlePlant["openfarm_data"]["attributes"]["main_image_path"]} alt="plant image" />
+        { singlePlant.openfarm_data ?
+        <>
+          <img src={singlePlant["openfarm_data"]["attributes"]["main_image_path"]} alt="plant" />
           <p>{singlePlant["openfarm_data"]["attributes"]["description"]}</p>
           <ul className="data-table">
             <li><b>Sun requirements:</b> {singlePlant["openfarm_data"]["attributes"]["sun_requirements"]}</li>
@@ -39,6 +52,9 @@ export default function SinglePlant() {
             <li><b>Height:</b> {singlePlant["openfarm_data"]["attributes"]["height"]}cm</li>
             <li><b>Spread:</b> {singlePlant["openfarm_data"]["attributes"]["spread"]}cm</li>
           </ul>
+        </> :
+          <p className="p-data-missing">This crop is missing data</p>
+          }
           <button className="full-width">Add this plant to your calendar</button>
           <div className="line-break"></div>
           <Comments />
