@@ -11,12 +11,8 @@ import { UserContext } from "../contexts/User";
 import { Navigate, Link } from "react-router-dom";
 
 // Icons
-import {RiLockPasswordLine} from 'react-icons/ri'
-import {
-  AiOutlineEye, 
-  AiOutlineEyeInvisible,
-  AiOutlineMail,
-} from "react-icons/ai";
+import { RiLockPasswordLine } from "react-icons/ri";
+import { AiOutlineMail } from "react-icons/ai";
 
 export default function Login() {
   const [passwordVisibility, setPasswordVisbility] = useState(false);
@@ -26,7 +22,7 @@ export default function Login() {
   const [passwordError, setPasswordError] = useState("");
   const [SendingRequest, setSendingRequest] = useState(false);
 
-  const { user, login} = useContext(UserContext);
+  const { user, login } = useContext(UserContext);
 
   const togglePasswordVisibility = () => {
     if (passwordVisibility === false) {
@@ -65,9 +61,6 @@ export default function Login() {
           });
       }}
     >
-      {/* <div className="image-div">
-        <img className="form-image" alt="user-profile" src={plantpot}></img>
-      </div> */}
       <h2>Login</h2>
       <div className="input-field">
         <label className="label" htmlFor="username-input">
