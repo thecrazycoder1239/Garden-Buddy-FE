@@ -25,7 +25,7 @@ const { user } = useContext(UserContext);
       setIsLoadingPlants(false);
     })
   }
-}, [])
+}, [user])
 
     return (
       isLoadingPlants ? (
