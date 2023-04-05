@@ -89,7 +89,7 @@ registerRoute(
     !/\/crops\/\d+/.test(url.pathname),
   new CacheFirst({
     cacheName: "allPlants",
-    plugins: [new ExpirationPlugin({ maxEntries: 1 })],
+    plugins: [new ExpirationPlugin({ maxEntries: 4 })],
   })
 );
 

@@ -50,18 +50,33 @@ export default function PlantCards() {
       .catch()
     }
   }, [searchParams, online]);
-
+  
   useEffect(() => {
     //Only prefetch if there is a serviceWorker
     if (online && ('serviceWorker' in navigator)) {
       Promise.all(
         plants.map(plant => getSinglePlant(plant._id))
-      )
-    }
-  }, [online, plants])
+        )
 
-  const page = searchParams.get("page")
+        const currentPage = searchParams.get("page");
+        
+        if (currentPage) {
+          if (+currentPage > 1) {
+            getPlants(searchParams.get("search"), (+currentPage - 1) + '')
+          }
+        }
 
+        if (currentPage) {
+          getPlants(searchParams.get("search"), (+currentPage + 1) + '')
+        } else {
+          getPlants(searchParams.get("search"), "2")
+        }
+
+      }
+    }, [online, plants, searchParams])
+    
+    const page = searchParams.get("page")
+    
   let pageNumber = 1;
   if(page !== null) {
     pageNumber = parseInt(page)
