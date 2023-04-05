@@ -67,13 +67,20 @@ export default function NotificationsSwitch() {
   }, [checked])
 
   return (
-    <div className="toggle-option">
-      <p className="label-text">Notifications</p>
-      <p>{err}</p>
-      <label className="toggle-label" htmlFor="notifications-switch">
-        <input id="notifications-switch" type="checkbox" checked={checked} onClick={() => setChecked(!checked)} />
-        <span className="slider"></span>
-      </label>
-    </div>
+    <>
+      <div className="toggle-option">
+        <p className="label-text">Notifications</p>
+        <p>{err}</p>
+        <label className="toggle-label" htmlFor="notifications-switch">
+          <input
+            id="notifications-switch"
+            type="checkbox"
+            checked={checked}
+            onClick={() => setChecked(!checked)}
+          />
+          <span className="slider"></span>
+        </label>
+      </div>
+    </>
   );
 }

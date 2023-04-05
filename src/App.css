@@ -33,11 +33,15 @@
 /* -------- */
 
 /* Global */
+.clear {
+  clear: both;
+}
+
 * {
   padding: 0;
   margin: 0;
   list-style: none;
-  color: #111;
+  color: #3b4822;
   box-sizing: border-box;
 }
 
@@ -48,7 +52,7 @@ button {
 
 button.full-width {
   width: 100%;
-  border: 2px solid #333;
+  border: 2px solid #49592a;
   background: none;
   padding: 18px 10px;
   border-radius: 15px;
@@ -57,7 +61,7 @@ button.full-width {
 button.plain-text {
   background: none;
   border: none;
-  border-bottom: 2px dotted #333;
+  border-bottom: 2px dotted #49592a;
 }
 
 button.logout {
@@ -67,7 +71,7 @@ button.logout {
 button.login {
   width: 100%;
   padding: 18px 10px;
-  background: #333;
+  background: #49592a;
   color: white;
   border: none;
   border-radius: 4px;
@@ -77,13 +81,13 @@ button.form {
   padding: 8px 15px;
   border-radius: 5px;
   border: none;
-  background: #333;
+  background: #49592a;
   color: white;
 }
 
 /* Checkbox */
 input[type="checkbox"] {
-  border: 2px solid #333;
+  border: 2px solid #49592a;
   width: 15px;
   height: 15px;
 }
@@ -112,14 +116,14 @@ a {
 .line-break {
   width: 100%;
   height: 1px;
-  background: #999;
+  background: #cdd0c0;
 }
 
 /* Header */
 header {
   padding: 18px 20px;
   position: relative;
-  border-bottom: 2px solid #333;
+  border-bottom: 2px solid #49592a;
 }
 
 header h1 {
@@ -142,7 +146,7 @@ header button {
 
 /* Nav */
 nav {
-  background: #f1f1f1;
+  background: #f0f1ec;
   padding: 12px 10px;
 }
 
@@ -151,9 +155,14 @@ nav ul {
   justify-content: space-around;
 }
 
-nav ul li.active {
-  border-bottom: 2px solid #bbb;
+nav ul li svg {
+  font-size: 1.1rem;
+  transform: translateY(4px) translateX(-4px);
 }
+
+/* nav ul li.active {
+  border-bottom: 2px solid #bbb;
+} */
 
 /* Network Status */
 
@@ -181,18 +190,18 @@ ul.my-calendar-tabs {
 }
 
 ul.my-calendar-tabs li {
-  border: 2px solid #333;
+  border: 2px solid #49592a;
   border-radius: 20px;
   padding: 5px 10px;
 }
 
 ul.my-calendar-tabs li.active {
-  background: #f1f1f1;
+  background: #f0f1ec;
 }
 
 ul.task-cards li {
   padding: 18px 15px;
-  background: #f1f1f1;
+  background: #f0f1ec;
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
@@ -311,7 +320,7 @@ section.edit-tasks form.task-frequency input[type="radio"] {
   appearance: none;
   width: 15px;
   height: 15px;
-  border: 2px solid #333;
+  border: 2px solid #49592a;
   border-radius: 50%;
   background-clip: content-box;
   padding: 2px;
@@ -319,7 +328,7 @@ section.edit-tasks form.task-frequency input[type="radio"] {
 }
 
 section.edit-tasks form.task-frequency input[type="radio"]:checked {
-  background-color: #333;
+  background-color: #49592a;
 }
 
 /* Add Tasks */
@@ -347,7 +356,7 @@ section.edit-tasks form.add-tasks .add-another-task {
 }
 
 section.edit-tasks form.add-tasks .add-another-task input[type="text"] {
-  border: 1px solid #333;
+  border: 1px solid #49592a;
   min-width: 300px;
   border-radius: 4px;
 }
@@ -372,7 +381,7 @@ section.all-plants {
 
 /* Search For Plant */
 form.search-for-plant {
-  border: 1px solid #333;
+  border: 1px solid #49592a;
 }
 
 form.search-for-plant input[type="search"],
@@ -406,7 +415,7 @@ form.sort-plants {
 form.sort-plants select {
   margin-top: 9px;
   width: 100%;
-  border: 1px solid #333;
+  border: 1px solid #49592a;
   padding: 10px;
 }
 
@@ -418,7 +427,7 @@ form.filter-plants {
 form.filter-plants select {
   margin-top: 9px;
   width: 100%;
-  border: 1px solid #333;
+  border: 1px solid #49592a;
   padding: 10px;
 }
 
@@ -428,10 +437,10 @@ section.plant-cards {
 }
 
 ul.plant-cards li.single-plant-container {
-  background: #f1f1f1;
+  background: #f0f1ec;
   border-radius: 10px;
   margin-bottom: 12px;
-  box-shadow: 0px 2px 2px #f1f1f1;
+  box-shadow: 0px 2px 2px #f0f1ec;
 }
 
 ul.plant-cards li.single-plant-container a > div {
@@ -484,6 +493,13 @@ section.pagination {
   padding-left: 7rem;
 }
 
+
+section.pagination ul li {
+  border: 1px solid #49592a;
+  padding: 5px 10px 8px;
+  cursor: pointer;
+}
+
 section.pagination button {
   border: 1px solid #333;
   font-size: 1rem;
@@ -499,7 +515,7 @@ section.pagination p {
 
 .set-plant-date {
   padding: 10px 15px 18px;
-  background: #ddd;
+  background: #cdd0c0;
   border-radius: 0 0 5px 5px;
   display: flex;
   align-items: center;
@@ -511,7 +527,7 @@ section.pagination p {
 }
 
 .add-plant-button {
-  background: #333;
+  background: #49592a;
 
   border-radius: 15px;
   cursor: pointer;
@@ -580,13 +596,10 @@ section.pagination p {
 }
 
 .login-error-message {
-  text-align: center;
   color: rgb(156, 0, 0);
   padding-top: 0.5rem;
-  position: relative;
-  margin-left: 40px;
   margin-top: 0rem;
-  margin-bottom: 0rem;
+  margin-bottom: 0;
 }
 
 .password-instructions {
@@ -612,7 +625,7 @@ section.pagination p {
 #settings-surname,
 #settings-password,
 #settings-profile {
-  border: 1px solid #333;
+  border: 1px solid #49592a;
   margin-top: 0.5rem;
   font-size: 1rem;
   padding: 0.2rem;
@@ -679,56 +692,26 @@ section.pagination p {
 }
 
 .edit-form {
-  display: flex;
-  flex-wrap: wrap;
-  position: absolute;
-  top: 8.5rem;
-  width: 90vw;
-  display: block;
-  left: 5vw;
-  border-radius: 20px;
-  opacity: 0.95;
+  background: #f0f1ec;
+  margin: 27px 15px 0;
+  padding: 18px 10px;
+}
+
+.edit-form h2 {
+  text-align: center;
+  margin-bottom: 9px;
 }
 
 .edit-form-item {
-  width: 100vw;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
-  padding-top: 1rem;
+  background: white;
+  padding: 10px;
+  margin-bottom: 9px;
 }
 
-.edit-btn {
-  grid-area: 1 / 3 / 1 / 3;
-  font-size: 1rem;
-  color: var(--dark-teal);
-  width: 30%;
-  position: relative;
-  right: 0.75rem;
-  border-radius: 0px 5px 5px 0px;
-  border: 0.1rem solid grey;
-  background-color: rgb(238, 238, 238);
-}
-
-.edit-btn-cancel {
-  grid-area: 1 / 3 / 1 / 3;
-  font-size: 1rem;
-  color: var(--dark-teal);
-  width: 11%;
-  height: 1.7rem;
-  position: absolute;
-  right: 1rem;
-  border: 0.1rem solid grey;
-  border-radius: 5px 5px 5px 5px;
-  background-color: rgb(238, 238, 238);
-}
-
-.edit-label {
-  grid: 1 / 1 / 1 / 1;
-  font-size: 1.3rem;
-  position: relative;
-  text-align: center;
-  padding-right: 1rem;
+.edit-form-item > div {
+  display: flex;
+  gap: 5px;
+  margin-top: 4px;
 }
 
 #edit-username,
@@ -736,37 +719,19 @@ section.pagination p {
 #edit-surname,
 #edit-password,
 #edit-profileurl {
-  grid: 1 / 2 / 1 / 2;
-  border: 1px solid var(--light-teal);
-  border-radius: 5px;
-  display: block;
-  padding: 0.2rem;
-  padding-left: 0.7rem;
+  padding: 5px;
   font-size: 1rem;
-  padding-right: 1rem;
-}
-
-.settings-background {
-  width: 100vw;
-  height: 100vh;
+  border: 1px solid #49592a;
 }
 
 .toggle-options {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  position: absolute;
-  top: 22rem;
-  border-radius: 20px;
-  padding: 0.6rem;
-  width: 60vw;
-  left: calc(50% - 30vw);
-  box-sizing: border-box;
+  display: block;
+  margin-bottom: 63px;
 }
 
 .toggle-option {
   display: flex;
-  height: 50px;
+  padding: 0 10px;
 }
 
 .label-text {
@@ -803,7 +768,7 @@ section.pagination p {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: #cdd0c0;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -821,12 +786,12 @@ section.pagination p {
 }
 
 input:checked + .slider {
-  background-color: #2196f3;
+  background-color: #49592a;
 }
 
-input:focus + .slider {
-  outline: 1px solid blue;
-}
+/* input:focus + .slider {
+  outline: 1px solid #49592a;
+} */
 
 input:checked + .slider:before {
   -webkit-transform: translateX(26px);
@@ -843,10 +808,13 @@ input:checked + .slider:before {
 }
 
 .user-btn-container {
-  position: relative;
-  top: 24rem;
-  display: flex;
-  justify-content: space-around;
+  padding: 0 15px;
+}
+
+.user-btn-container button {
+  /* position: relative; */
+  /* top: 24rem; */
+  margin: 0 0 9px;
 }
 
 .settings-logout-btn {
@@ -905,8 +873,7 @@ input:checked + .slider:before {
   left: calc(50% - 175px);
   width: 350px;
   height: 200px;
-  background-color: #93c499;
-  border: 2px solid #000;
+  background: #f0f1ec;
   box-shadow: 24px;
   padding: 2rem;
   border-radius: 5px;
@@ -923,6 +890,7 @@ input:checked + .slider:before {
   margin-left: auto;
   margin-right: auto;
   width: 150px;
+  padding: 5px;
 }
 
 #confirm-password-text {
@@ -931,6 +899,7 @@ input:checked + .slider:before {
   margin-left: auto;
   margin-right: auto;
   font-size: 0.9rem;
+  padding: 5px;
 }
 
 .modal-btn-container {
@@ -1073,7 +1042,7 @@ ul.data-table {
 
 ul.data-table li {
   padding: 5px;
-  background: #f1f1f1;
+  background: #f0f1ec;
 }
 
 ul.data-table li:nth-of-type(even) {
@@ -1086,7 +1055,7 @@ form.post-comment {
 }
 
 form.post-comment input[type="textarea"] {
-  border: 1px solid #333;
+  border: 1px solid #49592a;
   border-radius: 5px;
   padding: 5px;
   width: 100%;
@@ -1108,15 +1077,33 @@ ul.comment-list li:last-of-type {
 }
 
 ul.comment-list li .avatar div {
-  border: 1px solid #333;
+  border: 1px solid #49592a;
   width: 50px;
   height: 50px;
   border-radius: 40px;
 }
 
+ul.comment-list li:first-of-type .avatar div {
+  background: url('./assets/avatar1.png');
+  background-size: 50px 50px;
+  background-repeat: no-repeat;
+}
+
+ul.comment-list li:nth-of-type(2) .avatar div {
+  background: url('./assets/avatar2.png');
+  background-size: 50px 50px;
+  background-repeat: no-repeat;
+}
+
+ul.comment-list li:nth-of-type(3) .avatar div {
+  background: url('./assets/avatar3.png');
+  background-size: 50px 50px;
+  background-repeat: no-repeat;
+}
+
 /* Login Form */
 form.login-form {
-  background: #f1f1f1;
+  background: #f0f1ec;
   margin: 18px 15px;
   border-radius: 5px;
   padding: 18px 15px 27px;
@@ -1125,7 +1112,7 @@ form.login-form {
 .my-plant-container {
   width: 100%;
   padding: 18px 15px;
-  background: #f1f1f1;
+  background: #f0f1ec;
   border-radius: 10px;
   margin-bottom: 12px;
   display: flex;

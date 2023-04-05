@@ -14,7 +14,7 @@ import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
 export default function SinglePlantCard({ plant }: { plant: GrowStuffCrop }) {
   const [buttonStyle, setButtonStyle] = useState({
     transition: "0s",
-    background: "#333",
+    background: "#49592a",
   });
 
   const { user } = useContext(UserContext);
@@ -25,14 +25,14 @@ export default function SinglePlantCard({ plant }: { plant: GrowStuffCrop }) {
   function changeColor() {
     setButtonStyle({
       transition: "0.3s",
-      background: "#1ec765",
+      background: "#6e8641",
     });
   }
 
   function fadeColor() {
     setButtonStyle({
       transition: "0.3s",
-      background: "#333",
+      background: "#49592a",
     });
   }
 
@@ -43,7 +43,7 @@ export default function SinglePlantCard({ plant }: { plant: GrowStuffCrop }) {
       changeColor();
       postPlantToUser(user, e.target.value, date).finally(() => {
         setTimeout(() => {
-          fadeColor();
+          // fadeColor();
           setButtonActive(true);
         }, 3000);
       });

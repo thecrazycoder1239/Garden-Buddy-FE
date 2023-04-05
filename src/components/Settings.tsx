@@ -1,16 +1,14 @@
 import { useContext, useState } from "react";
 import { UserContext } from "../contexts/User";
 import { Link, Navigate } from "react-router-dom";
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
-import Box from '@mui/material/Box';
+import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
+import Box from "@mui/material/Box";
 import { deleteUser, patchUserInfo } from "../utils/api";
 import NotificationsSwitch from "./NotificationsSwitch";
 
 export default function Settings() {
   const { user, logout, login } = useContext(UserContext);
-
-
 
   // const [usernameFormEdit, setUsernameFormEdit] = useState(false);
   const [firstNameFormEdit, setFirstNameFormEdit] = useState(false);
@@ -18,20 +16,20 @@ export default function Settings() {
   // const [passwordFormEdit, setPasswordFormEdit] = useState(false);
   // const [currentPassword, setCurrentPassword] = useState('');
   // const [currentUsername, setCurrentUsername] = useState('');
-  const [currentFirstName, setCurrentFirstName] = useState('');
-  const [currentLastName, setCurrentLastName] = useState('');
+  const [currentFirstName, setCurrentFirstName] = useState("");
+  const [currentLastName, setCurrentLastName] = useState("");
   // const [passwordErr, setPasswordErr] = useState('');
-  const [lastNameErr, setLastNameErr] = useState('');
-  const [firstNameErr, setFirstNameErr] = useState('');
+  const [lastNameErr, setLastNameErr] = useState("");
+  const [firstNameErr, setFirstNameErr] = useState("");
   // const [usernameErr, setUsernameErr] = useState('');
   const [openModal, setOpenModal] = useState(false);
-  const [modalPassword, setModalPassword] = useState('');
+  const [modalPassword, setModalPassword] = useState("");
   const [processingDeleteAccount, setProcessingDeleteAccount] = useState(false);
   const [allowAccountDelete, setAllowAccountDelete] = useState(false);
-  const [modalPasswordErr, setModalPasswordErr] = useState('');
+  const [modalPasswordErr, setModalPasswordErr] = useState("");
   // const [profileUrlFormEdit, setProfileUrlFormEdit] = useState(false);
 
-  function closeModal () {
+  function closeModal() {
     setOpenModal(false);
   }
 
@@ -39,93 +37,121 @@ export default function Settings() {
     return <Navigate to="/sign-up" />;
   }
 
-  if(user) {
+  if (user) {
     return (
       <>
         <section className="edit-form">
-
-        <form
+          <h2>Settings</h2>
+          <form
             onSubmit={(e) => {
               e.preventDefault();
 
               let goodFirstName = true;
-              if(currentFirstName === '') {
-                setFirstNameErr('please input a first name')
+              if (currentFirstName === "") {
+                setFirstNameErr("please input a first name");
                 goodFirstName = false;
-            } else if (!currentFirstName.match(/^[A-Z]/g)) {
-                setFirstNameErr('please capitalise the first letter of your name')
+              } else if (!currentFirstName.match(/^[A-Z]/g)) {
+                setFirstNameErr(
+                  "please capitalise the first letter of your name"
+                );
                 goodFirstName = false;
-            } else if (currentFirstName.length > 30) {
-                setFirstNameErr('max 30 characters')
+              } else if (currentFirstName.length > 30) {
+                setFirstNameErr("max 30 characters");
                 goodFirstName = false;
-            } else {
-                setFirstNameErr('')
-            }
+              } else {
+                setFirstNameErr("");
+              }
 
-            if(goodFirstName === true) {
-              setFirstNameFormEdit(false)
-              patchUserInfo(user, currentFirstName, undefined).then(() => {
-                const username = user.username;
-                const password = user.password
-                login({ username, password})
-              })
-            }
+              if (goodFirstName === true) {
+                setFirstNameFormEdit(false);
+                patchUserInfo(user, currentFirstName, undefined).then(() => {
+                  const username = user.username;
+                  const password = user.password;
+                  login({ username, password });
+                });
+              }
             }}
             className="edit-form-item"
           >
             <label className="edit-label" htmlFor="edit-firstname">
               First name:
             </label>
-            <input
-              type="text"
-              id="edit-firstname"
-              placeholder={`${user.first_name}`}
-              disabled={!firstNameFormEdit ? true : false}
-              value={currentFirstName}
-              onChange={(e) => {
-                setCurrentFirstName(e.target.value)
-              }}  
-            />
-            {firstNameFormEdit ? <button onClick={(e) => {
-              setCurrentFirstName('')
-              setFirstNameFormEdit(false)
-              setFirstNameErr('')
-            }} className="edit-btn-cancel" type="button">cancel</button> : <button className="edit-btn" type="button" onClick={() => {
-              if(firstNameFormEdit) { 
-                setFirstNameFormEdit(false);
-              } else {
-                setFirstNameFormEdit(true);
-              }
-            }}>edit</button>}
-            {firstNameFormEdit ? <button className="edit-btn" type="submit">submit</button> : <></>}
+            <div>
+              <input
+                type="text"
+                id="edit-firstname"
+                placeholder={`${user.first_name}`}
+                disabled={!firstNameFormEdit ? true : false}
+                value={currentFirstName}
+                onChange={(e) => {
+                  setCurrentFirstName(e.target.value);
+                }}
+              />
+              {firstNameFormEdit ? (
+                <>
+                  <button className="form" type="submit">
+                    submit
+                  </button>
+                  <button
+                    onClick={(e) => {
+                      setCurrentFirstName("");
+                      setFirstNameFormEdit(false);
+                      setFirstNameErr("");
+                    }}
+                    className="form"
+                    type="button"
+                  >
+                    cancel
+                  </button>
+                </>
+              ) : (
+                <button
+                  className="form"
+                  type="button"
+                  onClick={() => {
+                    if (firstNameFormEdit) {
+                      setFirstNameFormEdit(false);
+                    } else {
+                      setFirstNameFormEdit(true);
+                    }
+                  }}
+                >
+                  edit
+                </button>
+              )}
+            </div>
+            <p className="login-error-message">
+              {firstNameErr === "" ? "" : firstNameErr}
+            </p>
           </form>
-          <p className="login-error-message">{firstNameErr === '' ? '' : firstNameErr}</p>
-  
+
           <form
             onSubmit={(e) => {
               e.preventDefault();
 
-              let goodLastName = true
-              if(currentLastName === '') {
-                setLastNameErr('please input a last name')
+              let goodLastName = true;
+              if (currentLastName === "") {
+                setLastNameErr("please input a last name");
                 goodLastName = false;
-            } else if (!currentLastName.match(/^[A-Z]/g)) {
-                setLastNameErr('please capitalise the first letter of your name')
+              } else if (!currentLastName.match(/^[A-Z]/g)) {
+                setLastNameErr(
+                  "please capitalise the first letter of your name"
+                );
                 goodLastName = false;
-            } else if(currentLastName.length > 50) {
-                setLastNameErr('max 50 characters')
+              } else if (currentLastName.length > 50) {
+                setLastNameErr("max 50 characters");
                 goodLastName = false;
-            } else {
-                setLastNameErr('')
-            }    
+              } else {
+                setLastNameErr("");
+              }
 
-              if(goodLastName === true) {
-                setSurnameFormEdit(false)
+              if (goodLastName === true) {
+                setSurnameFormEdit(false);
                 patchUserInfo(user, undefined, currentLastName).then(() => {
                   const username = user.username;
-                  const password = user.password
-                  login({ username, password})
-                })
+                  const password = user.password;
+                  login({ username, password });
+                });
               }
             }}
             className="edit-form-item"
@@ -133,72 +159,100 @@ export default function Settings() {
             <label className="edit-label" htmlFor="edit-surname">
               Last name:
             </label>
-            <input
-              type="text"
-              id="edit-surname"
-              placeholder={`${user.last_name}`}
-              disabled={!surnameFormEdit ? true : false}
-              onChange={(e) => {
-                setCurrentLastName(e.target.value)
-              }}  
-              value={currentLastName}
-            />
-            {surnameFormEdit ? <button onClick={(e) => {
-              setCurrentLastName('')
-              setSurnameFormEdit(false)
-              setLastNameErr('')
-            }} className="edit-btn-cancel" type="button">cancel</button> : <button className="edit-btn" type="button" onClick={() => {
-              if(surnameFormEdit) { 
-                setSurnameFormEdit(false);
-              } else {
-                setSurnameFormEdit(true);
-              }
-            }}>edit</button>}
-            {surnameFormEdit ? <button className="edit-btn" type="submit">submit</button>  : <></>}
+            <div>
+              <input
+                type="text"
+                id="edit-surname"
+                placeholder={`${user.last_name}`}
+                disabled={!surnameFormEdit ? true : false}
+                onChange={(e) => {
+                  setCurrentLastName(e.target.value);
+                }}
+                value={currentLastName}
+              />
+
+              {surnameFormEdit ? (
+                <>
+                  <button className="form" type="submit">
+                    submit
+                  </button>
+
+                  <button
+                    onClick={(e) => {
+                      setCurrentLastName("");
+                      setSurnameFormEdit(false);
+                      setLastNameErr("");
+                    }}
+                    className="form"
+                    type="button"
+                  >
+                    cancel
+                  </button>
+                </>
+              ) : (
+                <button
+                  className="form"
+                  type="button"
+                  onClick={() => {
+                    if (surnameFormEdit) {
+                      setSurnameFormEdit(false);
+                    } else {
+                      setSurnameFormEdit(true);
+                    }
+                  }}
+                >
+                  edit
+                </button>
+              )}
+            </div>
+            <p className="login-error-message">
+              {lastNameErr === "" ? "" : lastNameErr}
+            </p>
           </form>
-          <p className="login-error-message">{lastNameErr === '' ? '' : lastNameErr}</p>
 
           <form
             onSubmit={(e) => {
               e.preventDefault();
 
-            //   let goodUsername = true;
-            //   if(currentUsername === '') {
-            //     setUsernameErr('please input a username')
-            //     goodUsername = false;
-            //   } else if(currentUsername.length > 30) {
-            //     setUsernameErr('max 30 characters')
-            //     goodUsername = false;
-            // } else if(currentUsername.match(/\s/g)) {
-            //     setUsernameErr("please replace spaces with '_' or '-'")
-            //     goodUsername= false;
-            // } else {
-            //     setUsernameErr('')
-            // }
+              //   let goodUsername = true;
+              //   if(currentUsername === '') {
+              //     setUsernameErr('please input a username')
+              //     goodUsername = false;
+              //   } else if(currentUsername.length > 30) {
+              //     setUsernameErr('max 30 characters')
+              //     goodUsername = false;
+              // } else if(currentUsername.match(/\s/g)) {
+              //     setUsernameErr("please replace spaces with '_' or '-'")
+              //     goodUsername= false;
+              // } else {
+              //     setUsernameErr('')
+              // }
 
-            //   if(goodUsername === true) {
-            //     console.log('username ready to patch')
-            //     // patch request
-            //     // rerender the page again, so the placeholders are updated
-            //   }
+              //   if(goodUsername === true) {
+              //     console.log('username ready to patch')
+              //     // patch request
+              //     // rerender the page again, so the placeholders are updated
+              //   }
             }}
             className="edit-form-item"
           >
             <label className="edit-label" htmlFor="edit-username">
               Username:
-            </label> 
-            <input
-              type="text"
-              id="edit-username"
-              placeholder={`${user.username}`}
-              disabled={true}
-              // disabled={!usernameFormEdit ? true : false}
-              // onChange={(e) => {
-              //   setCurrentUsername(e.target.value)
-              // }}  
-              // value={currentUsername}
-            />
-            {/* {usernameFormEdit ? <button onClick={(e) => {
+            </label>
+            <div>
+              <input
+                type="text"
+                id="edit-username"
+                placeholder={`${user.username}`}
+                disabled={true}
+                // disabled={!usernameFormEdit ? true : false}
+                // onChange={(e) => {
+                //   setCurrentUsername(e.target.value)
+                // }}
+                // value={currentUsername}
+              />
+
+              {/* {usernameFormEdit ? <button onClick={(e) => {
               setCurrentUsername('')
               setUsernameFormEdit(false)
               setUsernameErr('')
@@ -210,9 +264,10 @@ export default function Settings() {
               }
             }}>edit</button>}
             {usernameFormEdit ? <button className="edit-btn" type="submit">submit</button> : <></>} */}
+            </div>
           </form>
           {/* <p className="login-error-message">{usernameErr === '' ? '' : usernameErr}</p> */}
-  
+
           <form
             onSubmit={(e) => {
               e.preventDefault();
@@ -239,25 +294,25 @@ export default function Settings() {
               //   // patch request
               //   // rerender the page again, so the placeholders are updated
               // }
-
             }}
             className="edit-form-item"
           >
             <label className="edit-label" htmlFor="edit-password">
               Password:
             </label>
-            <input
-              type="text"
-              id="edit-password"
-              placeholder={`${user.password}`}
-              disabled={true}
-              // disabled={!passwordFormEdit ? true : false}
-              // value={currentPassword}
-              // onChange={(e) => {
-              //   setCurrentPassword(e.target.value)
-              // }}  
-            />
-            {/* {passwordFormEdit ? <button onClick={(e) => {
+            <div>
+              <input
+                type="text"
+                id="edit-password"
+                placeholder={`${user.password}`}
+                disabled={true}
+                // disabled={!passwordFormEdit ? true : false}
+                // value={currentPassword}
+                // onChange={(e) => {
+                //   setCurrentPassword(e.target.value)
+                // }}
+              />
+              {/* {passwordFormEdit ? <button onClick={(e) => {
               setCurrentPassword('')
               setPasswordFormEdit(false)
               setPasswordErr('')
@@ -268,9 +323,10 @@ export default function Settings() {
                 setPasswordFormEdit(true);
             }}>edit</button>}
             {passwordFormEdit ? <button className="edit-btn" type="submit">submit</button> : <></>} */}
+            </div>
           </form>
           {/* <p className="login-error-message">{passwordErr === '' ? '' : passwordErr}</p> */}
-  
+
           {/* <form
             onSubmit={(e) => {
               e.preventDefault();
@@ -298,15 +354,13 @@ export default function Settings() {
             </button>
           </form> */}
         </section>
-  
+
         <section className="toggle-options">
           {
             //A service worker is required for notifications to work
-            'serviceWorker' in navigator ?
-            <NotificationsSwitch /> :
-            <></>
+            "serviceWorker" in navigator ? <NotificationsSwitch /> : <></>
           }
-  
+
           {/* <div className="toggle-option">
             <p className="label-text">Location access</p>
             <label className="toggle-label" htmlFor="location-access-switch">
@@ -314,7 +368,7 @@ export default function Settings() {
               <span className="slider"></span>
             </label>
           </div> */}
-  
+
           {/* <div className="toggle-option">
             <p className="label-text">Dark Mode</p>
             <label className="toggle-label" htmlFor="dark-mode-switch">
@@ -326,61 +380,100 @@ export default function Settings() {
 
         <section className="user-btn-container">
           <Link to={"/log-in"}>
-          <button className="settings-logout-btn" onClick={logout}>Log out</button>
+            <button className="full-width" onClick={logout}>
+              Log out
+            </button>
           </Link>
-          <button className="settings-delete-account-btn" onClick={(() => {setOpenModal(true)})}>Delete account</button>
+          <button
+            className="full-width"
+            onClick={() => {
+              setOpenModal(true);
+            }}
+          >
+            Delete account
+          </button>
         </section>
 
         <Modal
-        open={openModal}
-        onClose={closeModal}
-        aria-labelledby="delete account confirmation"
-        aria-describedby="enter password and confirm to delete the account"
-      >
-        <Box className="modal">
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Are you Sure?
-          </Typography>
-          <form onSubmit={(e) => {
-            e.preventDefault();
+          open={openModal}
+          onClose={closeModal}
+          aria-labelledby="delete account confirmation"
+          aria-describedby="enter password and confirm to delete the account"
+        >
+          <Box className="modal">
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              Are you Sure?
+            </Typography>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
 
-            if(modalPassword === "") {
-              setModalPasswordErr("please input a password")
-            } else if (modalPassword !== user.password) {
-              setModalPasswordErr("incorrect password")
-            } else {
-              setModalPasswordErr("")
-              setProcessingDeleteAccount(true);
-              deleteUser(user.username, modalPassword).then(() => {
-                setProcessingDeleteAccount(false)
-                logout()
-                setAllowAccountDelete(true)
-              })
-              .catch((error) => {
-                console.error(error);
-              })
-            }
-          }}>
-            <div className="modal-input-container">
-              <label id="confirm-password-text" htmlFor="confirm-password">confirm password: </label>
-              <input id="confirm-password" value={modalPassword} onChange={(e) => {setModalPassword(e.target.value)}}></input>
-            </div>
-            <p className="modal-password-err">{modalPasswordErr !== "" ? modalPasswordErr : ""}</p>
-            <div className="modal-btn-container">
-              <button className="modal-cancel-btn" onClick={() => {closeModal()}}>cancel</button>
-              <button className="modal-confirm-btn" type="submit">delete account</button>
-            </div>
-          </form>
-          <p className="modal-delete-account-waiting-msg">{processingDeleteAccount ? "attempting to delete your account, apologies for the wait!" : ""}</p>
-        </Box>
-      </Modal>
-  
+                if (modalPassword === "") {
+                  setModalPasswordErr("please input a password");
+                } else if (modalPassword !== user.password) {
+                  setModalPasswordErr("incorrect password");
+                } else {
+                  setModalPasswordErr("");
+                  setProcessingDeleteAccount(true);
+                  deleteUser(user.username, modalPassword)
+                    .then(() => {
+                      setProcessingDeleteAccount(false);
+                      logout();
+                      setAllowAccountDelete(true);
+                    })
+                    .catch((error) => {
+                      console.error(error);
+                    });
+                }
+              }}
+            >
+              <div className="modal-input-container">
+                <label id="confirm-password-text" htmlFor="confirm-password">
+                  Confirm password:{" "}
+                </label>
+                <input
+                  id="confirm-password"
+                  value={modalPassword}
+                  onChange={(e) => {
+                    setModalPassword(e.target.value);
+                  }}
+                ></input>
+              </div>
+              <p className="modal-password-err">
+                {modalPasswordErr !== "" ? modalPasswordErr : ""}
+              </p>
+              <div className="modal-btn-container">
+                <button
+                  className="form"
+                  onClick={() => {
+                    closeModal();
+                  }}
+                >
+                  Cancel
+                </button>
+                <button className="form" type="submit">
+                  Delete account
+                </button>
+              </div>
+            </form>
+            <p className="modal-delete-account-waiting-msg">
+              {processingDeleteAccount
+                ? "attempting to delete your account, apologies for the wait!"
+                : ""}
+            </p>
+          </Box>
+        </Modal>
+
         {/* <button className="review-app-button">
           Leave a review on Garden Buddy!
         </button> */}
       </>
     );
   } else {
-    return (<p className="settings-not-found-message">please log in before viewing settings</p>)
+    return (
+      <p className="settings-not-found-message">
+        please log in before viewing settings
+      </p>
+    );
   }
 }
