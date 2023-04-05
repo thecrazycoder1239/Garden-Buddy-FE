@@ -72,7 +72,7 @@ export default function TodaysTask({
             padding: "8px 15px",
             borderRadius: "5px",
             border: "none",
-            background: "#333",
+            background: "#49592a",
             color: "white",
           }}
           to={`/my-calendar/${task.users_plant_id}/edit-log`}
