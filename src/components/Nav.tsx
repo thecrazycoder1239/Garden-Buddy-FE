@@ -9,7 +9,7 @@ export default function Nav() {
   return (
     <nav>
       <ul>
-        {user === null ? (
+        { !user || !user.password ? (
           <li>
             <Link to={"/log-in"}>Log in</Link>
           </li>
@@ -22,7 +22,7 @@ export default function Nav() {
         <li>
           <Link to={"/all-plants"}>View All Plants</Link>
         </li>
-        {user !== null ? (
+        {user && user.password ? (
           <li>
             <Link to={"/settings"}>Settings</Link>
           </li>

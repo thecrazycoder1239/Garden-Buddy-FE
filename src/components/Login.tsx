@@ -30,7 +30,7 @@ export default function Login() {
     } else setPasswordVisbility(false);
   };
 
-  if (user) {
+  if (user && user.password) {
     return <Navigate to="/all-plants" />;
   }
 

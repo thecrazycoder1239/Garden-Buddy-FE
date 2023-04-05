@@ -16,7 +16,7 @@ export default function HeaderInstalled() {
         <h1>Garden Buddy</h1>
       </Link>
       <BiUserCircle />
-      {user !== null ? (
+      {user && user.password ? (
         <button className="logout form" onClick={logout}>
           Logout
         </button>

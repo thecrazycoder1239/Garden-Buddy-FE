@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { deleteTaskById, getUsersDetailedPlant } from "../utils/api";
 import { UserContext } from "../contexts/User";
+import getPreviousSessionUser from "../utils/getPreviousSessionsUsername";
 
 export default function TodaysTask({
   task,
@@ -36,7 +37,7 @@ export default function TodaysTask({
       {checked ? (
         <button
           onClick={() => {
-            if (user) {
+            if (user && user.password) {
               deleteTaskById(task.users_task_id, user).then(() => {
                 if ("serviceWorker" in navigator) {
                   return getUsersDetailedPlant(task.users_plant_id, user);
@@ -68,7 +69,11 @@ export default function TodaysTask({
           }}
           to={`/my-calendar/${task.users_plant_id}/edit-log`}
         >
-          Edit / Log
+          {
+            user && user.password ?
+            'Edit / Log' :
+            'View'
+          }
         </Link>
       )}
     </li>

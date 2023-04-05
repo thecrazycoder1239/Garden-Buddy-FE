@@ -31,8 +31,8 @@ export default function UpcomingTasks() {
   }, [tasks]);
 
   useEffect(() => {
-    setIsLoadingTasks(true);
     if (user) {
+      setIsLoadingTasks(true);
       getUsersPlantsTasks(user)
         .then((usersTasks) => {
           setTasks(usersTasks);

@@ -39,7 +39,7 @@ export default function Settings() {
     return <Navigate to="/sign-up" />;
   }
 
-  if(user) {
+  if(user && user.password) {
     return (
       <>
         <section className="edit-form">
