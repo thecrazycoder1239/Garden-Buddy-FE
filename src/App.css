@@ -1122,7 +1122,7 @@ form.login-form {
   padding: 18px 15px 27px;
   text-align: center;
 }
-.my-plant-container {
+/* .my-plant-container {
   width: 100%;
   padding: 18px 15px;
   background: #f0f1ec;
@@ -1132,9 +1132,9 @@ form.login-form {
   justify-content: space-between;
   padding-bottom: 2rem;
   gap: 10px;
-}
+} */
 
-.my-plant-container {
+/* .my-plant-container {
   text-transform: capitalize;
 }
 
@@ -1154,4 +1154,42 @@ form.login-form {
 .my-plant-container img {
   max-width: 30vw;
 
+} */
+
+.my-plant-container {
+  width: 100%;
+  padding: 18px 15px;
+  background: #f0f1ec;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between; 
+  padding-bottom: 2rem;
+  gap: 10px;
+}
+
+.my-plant-container {
+  text-transform: capitalize;
+}
+
+.my-plant-container div {
+  width: calc(100% - 30vw);
+  display: flex-column;
+}
+
+.my-plant-container > div > p {
+  margin-bottom: 12px;
+}
+
+.my-plant-container > div > button {
+  margin-right: 5px;
+}
+
+.my-plant-container div h2 {
+  margin-bottom: 4px;
+}
+
+.my-plant-container img {
+  max-width: 30vw;
+  height: auto;
 }
