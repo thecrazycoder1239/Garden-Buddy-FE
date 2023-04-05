@@ -4,7 +4,7 @@ import { UserContext } from "../contexts/User";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import CalendarTaskPicker from "./CalendarTaskPicker";
-import { postTaskToUsersPlant } from "../utils/api";
+import { getUsersDetailedPlant, postTaskToUsersPlant } from "../utils/api";
 import { deleteUsersPlantById } from "../utils/api";
 import { getUsersPlants } from "../utils/api";
 
@@ -42,7 +42,14 @@ export default function SingleUserPlantCard({
 				plant.users_plant_id,
 				selectedButton,
 				date.toISOString()
-			);
+			)
+      .then(() => {
+        if ('serviceWorker' in navigator) {
+          return getUsersDetailedPlant(plant.users_plant_id, user)
+        }
+
+        return;
+      })
 			setSelectedButton("");
 			setDate(null);
 			setTaskMessage("Task created!");
