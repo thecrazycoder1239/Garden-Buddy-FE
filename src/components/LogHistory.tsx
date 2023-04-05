@@ -9,7 +9,6 @@ export default function LogHistory({logs}: {logs: Log[]}) {
         <ul>
           {
             copiedLogs.map(log => {
-              console.log(log.log_date, log.body)
               return <li>{new Intl.DateTimeFormat('en-UK', {
                 year: 'numeric', month: 'numeric', day: 'numeric'
               }).format(new Date(log.log_date))}: {log.body}</li>
