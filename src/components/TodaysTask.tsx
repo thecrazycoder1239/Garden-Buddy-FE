@@ -35,29 +35,37 @@ export default function TodaysTask({
         {task.plant.name}
       </label>
       {checked ? (
-        <button
-          onClick={() => {
-            if (user && user.password) {
-              deleteTaskById(task.users_task_id, user).then(() => {
-                if ("serviceWorker" in navigator) {
-                  return getUsersDetailedPlant(task.users_plant_id, user);
-                }
-              });
-              setTodaysTasks((currTasks) => {
-                if (currTasks) {
-                  return currTasks.filter((currTask) => {
-                    return task.users_task_id !== currTask.users_task_id;
+        <>
+          {user && user.password ? (
+            <button
+              onClick={() => {
+                if (user && user.password) {
+                  deleteTaskById(task.users_task_id, user).then(() => {
+                    if ("serviceWorker" in navigator) {
+                      return getUsersDetailedPlant(task.users_plant_id, user);
+                    }
+                  });
+                  setTodaysTasks((currTasks) => {
+                    if (currTasks) {
+                      return currTasks.filter((currTask) => {
+                        return task.users_task_id !== currTask.users_task_id;
+                      });
+                    }
+
+                    return null;
                   });
                 }
-
-                return null;
-              });
-            }
-          }}
-          className="form"
-        >
-          Delete
-        </button>
+              }}
+              className="form"
+            >
+              Delete
+            </button>
+          ) : (
+            <Link to="/log-in" className="add-plant-button-no-user-message s">
+              <button className="form">Sign in to delete task</button>
+            </Link>
+          )}
+        </>
       ) : (
         <Link
           style={{
@@ -69,11 +77,7 @@ export default function TodaysTask({
           }}
           to={`/my-calendar/${task.users_plant_id}/edit-log`}
         >
-          {
-            user && user.password ?
-            'Edit / Log' :
-            'View'
-          }
+          {user && user.password ? "Edit / Log" : "View"}
         </Link>
       )}
     </li>
