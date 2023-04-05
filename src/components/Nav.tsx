@@ -15,7 +15,7 @@ export default function Nav() {
   return (
     <nav>
       <ul>
-        {user === null ? (
+        { !user || !user.password ? (
           <li>
             <Link to={"/log-in"}>
               <BiLogIn />
@@ -37,7 +37,7 @@ export default function Nav() {
             View All Plants
           </Link>
         </li>
-        {user !== null ? (
+        {user && user.password ? (
           <li>
             <Link to={"/settings"}>
               <FiSettings />

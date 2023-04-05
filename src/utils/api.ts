@@ -46,7 +46,7 @@ export const deleteUser = (username: string, password: string) => {
     .delete(`/api/users/${username}`, { data: { password } })
     .then(({ data }) => {
       return data;
-    })
+    });
 };
 
 export const addSubscription = (
@@ -65,12 +65,20 @@ export const removeSubscription = (pushSubscription: PushSubscription) => {
   });
 };
 
-export const patchUserInfo = (user: User, first_name: string | undefined, last_name: string | undefined) => {
+export const patchUserInfo = (
+  user: User,
+  first_name: string | undefined,
+  last_name: string | undefined
+) => {
   return gardenBuddy
-    .patch(`/api/users/${user.username}`, {password: user.password, first_name, last_name})
+    .patch(`/api/users/${user.username}`, {
+      password: user.password,
+      first_name,
+      last_name,
+    })
     .then(({ data }) => {
       return data.user;
-    })
+    });
 };
 
 const growStuffAPI = axios.create({
@@ -78,9 +86,8 @@ const growStuffAPI = axios.create({
 });
 
 export const getPlants = (term: string | null, page: string | null) => {
-
-  if(page === null) {
-    page = "1"
+  if (page === null) {
+    page = "1";
   }
 
   if (term) {
@@ -88,21 +95,17 @@ export const getPlants = (term: string | null, page: string | null) => {
       .get(`/crops/search/`, { params: { term, page } })
       .then(({ data }) => {
         return data;
-      })
+      });
   }
-  return growStuffAPI
-    .get(`/crops/`, { params: { page }})
-    .then(({ data }) => {
-      return data;
-    })
+  return growStuffAPI.get(`/crops/`, { params: { page } }).then(({ data }) => {
+    return data;
+  });
 };
 
 export const getSinglePlant = (_id: string): Promise<GrowStuffCrop> => {
-  return growStuffAPI
-    .get(`/crops/${_id}`)
-    .then(({ data }) => {
-      return data;
-    })
+  return growStuffAPI.get(`/crops/${_id}`).then(({ data }) => {
+    return data;
+  });
 };
 
 export const postPlantToUser = (
@@ -118,71 +121,120 @@ export const postPlantToUser = (
     })
     .then(({ data }) => {
       return data.plant;
-    })
+    });
 };
 
 export const postTaskToUsersPlant = (
-	user: User,
-	users_plant_id: number,
-	task_slug: TaskSlug,
-	task_start_date: string
+  user: User,
+  users_plant_id: number,
+  task_slug: TaskSlug,
+  task_start_date: string
 ) => {
-	return gardenBuddy.post(`/api/users-plants/${users_plant_id}/tasks`, {
-		password: user.password,
-		task_start_date: task_start_date,
-		task_slug: task_slug,
-	});
+  return gardenBuddy.post(`/api/users-plants/${users_plant_id}/tasks`, {
+    password: user.password,
+    task_start_date: task_start_date,
+    task_slug: task_slug,
+  });
 };
+
+export const postLogToUsersPlant = (
+  user: User,
+  users_plant_id: number,
+  body: string,
+  log_date: string,
+) : Promise<Log> => {
+  return gardenBuddy.post(`/api/users-plants/${users_plant_id}/logs`, {
+    password: user.password,
+    body,
+    log_date,
+  })
+  .then(({ data }) => {
+    return data.log;
+  })
+}
 
 export const getUsersPlants = (user: User): Promise<UsersPlant[]> => {
   return gardenBuddy
     .post(`/api/users/${user.username}/plants/access`, {
       password: user.password,
     })
-    .then(({data}) => {
-      return data.plants
-    })
-  }
-  
-export const getPlantImgFromSlug = (term: string): Promise<string> => {
-  return getPlants(term, "1")
-  .then((plants) => {
-    return plants[0].thumbnail_url
-  })
-}
+    .then(({ data }) => {
+      return data.plants;
+    });
+};
 
-export const getUsersPlantInfo = (usersPlant: UsersPlant): Promise<UsersPlant> => {
-  return getSinglePlant(usersPlant.plant_id + "")
-  .then((singlePlant) => {
-    return Promise.all(
-      [
-      singlePlant,
-      getPlantImgFromSlug(singlePlant.slug),
-      usersPlant
-    ]
-    )
-  })
-  .then(([singlePlant, thumbnail_url, usersPlant]) => {
-    return {
-      ...singlePlant,
-      ...usersPlant,
-      thumbnail_url: thumbnail_url
-    } 
-  })
-}
-
-export const getUsersPlantsInfo = (user: User): Promise<UsersPlant[]> => {
-  return getUsersPlants(user)
-  .then((plants) => {
-    return Promise.all (
-      plants.map((plant) => {
-      return getUsersPlantInfo(plant)
-    })
-    )
-  })
-}
-
-export const deleteUsersPlantById = (user: User, users_plant_id: number): Promise<void> => {
+export const getUsersDetailedPlant = (
+  users_plant_id: number,
+  user: User
+): Promise<DetailedUsersPlant> => {
   return gardenBuddy
-    .delete(`/api/users-plants/${users_plant_id}`, {data: {password: user.password}})
-}
+    .post(`/api/users-plants/${users_plant_id}/access`, {
+      password: user.password,
+    })
+    .then(({ data }) => {
+      return data.plant;
+    });
+};
+
+export const getUsersDetailedPlantCacheFirst = (
+  users_plant_id: number,
+  user: User
+): Promise<DetailedUsersPlant> => {
+  return gardenBuddy
+    .post(`/api/users-plants/${users_plant_id}/access?cache=cache-first`, {
+      password: user.password,
+    })
+    .then(({ data }) => {
+      return data.plant;
+    });
+};
+
+const getUsersPlantTasks = (
+  usersPlant: UsersPlant,
+  user: User
+): Promise<(Task & { plant: UsersPlant })[]> => {
+  return getUsersDetailedPlantCacheFirst(usersPlant.users_plant_id, user).then(
+    (detailedPlant) => {
+      return detailedPlant.tasks.map((task) => {
+        return {
+          ...task,
+          plant: usersPlant,
+        };
+      });
+    }
+  );
+};
+
+export const getUsersPlantsTasks = (
+  user: User
+): Promise<(Task & { plant: UsersPlant })[]> => {
+  return getUsersPlants(user)
+    .then((plants) => {
+      return Promise.all(
+        plants.map((plant) => getUsersPlantTasks(plant, user))
+      );
+    })
+    .then((arraysOfTasks) => {
+      return arraysOfTasks.reduce((allTasks, currTasks) => {
+        return allTasks.concat(currTasks);
+      }, []);
+    });
+};
+
+export const deleteUsersPlantById = (
+  user: User,
+  users_plant_id: number
+): Promise<void> => {
+  return gardenBuddy.delete(`/api/users-plants/${users_plant_id}`, {
+    data: { password: user.password },
+  });
+};
+
+export const deleteTaskById = (
+  users_task_id: number,
+  user: User
+): Promise<void> => {
+  return gardenBuddy.delete(`/api/users-tasks/${users_task_id}`, {
+    data: { password: user.password },
+  });
+};

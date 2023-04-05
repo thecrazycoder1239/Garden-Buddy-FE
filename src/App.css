@@ -228,8 +228,21 @@ section.todays-tasks input[type="checkbox"] {
   margin-right: 10px;
 }
 
-section.todays-tasks button.add-more-plants {
+section.today-tasks ul a {
+  margin: 10px 5px;
+  padding: 8px 15px;
+  border-radius: 5px;
+  border: none;
+  background: #333;
+  color: white;
+}
+
+section.todays-tasks .add-more-plants {
   margin-top: 12px;
+}
+
+section.todays-tasks .task-cards {
+  margin-bottom: 30px;
 }
 
 /* Upcoming Tasks */

@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import { valididateLogin } from "../utils/api";
+import getPreviousSessionUser from "../utils/getPreviousSessionsUsername";
 
 interface UserContextType {
   user: User | null;
@@ -20,8 +21,7 @@ export const UserContext = createContext<UserContextType>({
 });
 
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
-  const [user, setUser] = useState<User | null>(null);
-
+  const [user, setUser] = useState<User | null>(getPreviousSessionUser());
   const login = ({
     username,
     password,
@@ -31,11 +31,13 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   }): Promise<void> => {
     return valididateLogin({ username, password }).then((user) => {
       setUser(user);
+      localStorage.setItem('previousSessionUsername', user.username)
     });
   };
 
   const logout = () => {
     setUser(null);
+    localStorage.setItem('previousSessionUsername', '')
   };
 
   return (

@@ -105,7 +105,7 @@ export default function SinglePlantCard({ plant }: { plant: GrowStuffCrop }) {
           </div>
         </div>
       </Link>
-      {user ? (
+      {user && user.password ? (
         <div className="set-plant-date">
           <CalendarPicker date={date} setDate={setDate} />
           <button

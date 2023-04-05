@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { getUsersPlantsInfo } from "../utils/api";
+import { getUsersPlants } from "../utils/api";
 import { UserContext } from "../contexts/User";
 import SingleUserPlantCard from './SingleUserPlantCard';
 
@@ -14,7 +14,7 @@ const { user } = useContext(UserContext);
   useEffect(() => {
     setIsLoadingPlants(true);
     if (user) {
-    getUsersPlantsInfo(user)
+    getUsersPlants(user)
     .then((data) => {
       setPlants(data);
     })
