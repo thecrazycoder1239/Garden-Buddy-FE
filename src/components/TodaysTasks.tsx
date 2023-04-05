@@ -49,17 +49,17 @@ export default function TodaysTasks() {
       )}
       <Link
         to="/all-plants"
-        className="full-width add-more-plants"
-        style={{
-          margin: "auto",
-          width: "100%",
-          border: "2px solid #333",
-          background: "none",
-          padding: "18px 10px",
-          borderRadius: "15px",
-        }}
+        // className="add-more-plants"
+        // style={{
+        //   margin: "auto",
+        //   width: "100%",
+        //   border: "2px solid #333",
+        //   background: "none",
+        //   padding: "18px 10px",
+        //   borderRadius: "15px",
+        // }}
       >
-        Add more plants to your calendar
+        <button className="full-width">Add more plants to your calendar</button>
       </Link>
     </section>
   );

@@ -50,7 +50,8 @@ button {
   cursor: pointer;
 }
 
-button.full-width {
+button.full-width,
+a.full-width {
   width: 100%;
   border: 2px solid #49592a;
   background: none;
@@ -90,6 +91,7 @@ input[type="checkbox"] {
   border: 2px solid #49592a;
   width: 15px;
   height: 15px;
+  transform: translateY(3px)
 }
 
 /* Fonts */
