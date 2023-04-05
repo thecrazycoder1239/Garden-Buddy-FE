@@ -137,6 +137,22 @@ export const postTaskToUsersPlant = (
   });
 };
 
+export const postLogToUsersPlant = (
+  user: User,
+  users_plant_id: number,
+  body: string,
+  log_date: string,
+) : Promise<Log> => {
+  return gardenBuddy.post(`/api/users-plants/${users_plant_id}/logs`, {
+    password: user.password,
+    body,
+    log_date,
+  })
+  .then(({ data }) => {
+    return data.log;
+  })
+}
+
 export const getUsersPlants = (user: User): Promise<UsersPlant[]> => {
   return gardenBuddy
     .post(`/api/users/${user.username}/plants/access`, {

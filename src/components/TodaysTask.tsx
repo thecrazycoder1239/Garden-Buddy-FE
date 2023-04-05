@@ -66,7 +66,7 @@ export default function TodaysTask({
             background: "#333",
             color: "white",
           }}
-          to={"/my-calendar/plant_id/edit-log"}
+          to={`/my-calendar/${task.users_plant_id}/edit-log`}
         >
           Edit / Log
         </Link>

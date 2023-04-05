@@ -71,7 +71,7 @@ function App() {
               />
               <Route path="/my-calendar/my-plants" element={<MyPlants />} />
               <Route
-                path="/my-calendar/plant_id/edit-log"
+                path="/my-calendar/:plant_id/edit-log"
                 element={<EditAndLog />}
               />
             </Route>
