@@ -39,7 +39,7 @@ export default function SignUp () {
 
     const { user, login } = useContext(UserContext);
 
-    if(user) {
+    if(user && user.password) {
         return <Navigate to="/all-plants" />;
     }
 
